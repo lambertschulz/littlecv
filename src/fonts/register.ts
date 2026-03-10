@@ -1,31 +1,34 @@
 import { Font } from '@react-pdf/renderer'
 
-import InterVariable from './files/Inter-Variable.ttf'
-import RobotoVariable from './files/Roboto-Variable.ttf'
-import PlayfairVariable from './files/PlayfairDisplay-Variable.ttf'
+import InterRegular from './files/Inter-Regular.ttf'
+import InterBold from './files/Inter-Bold.ttf'
+import RobotoRegular from './files/Roboto-Regular.ttf'
+import RobotoBold from './files/Roboto-Bold.ttf'
+import PlayfairRegular from './files/PlayfairDisplay-Regular.ttf'
+import PlayfairBold from './files/PlayfairDisplay-Bold.ttf'
 
 export function registerBundledFonts() {
   Font.register({
     family: 'Inter',
     fonts: [
-      { src: InterVariable, fontWeight: 'normal' },
-      { src: InterVariable, fontWeight: 'bold' },
+      { src: InterRegular, fontWeight: 'normal' },
+      { src: InterBold, fontWeight: 'bold' },
     ],
   })
 
   Font.register({
     family: 'Roboto',
     fonts: [
-      { src: RobotoVariable, fontWeight: 'normal' },
-      { src: RobotoVariable, fontWeight: 'bold' },
+      { src: RobotoRegular, fontWeight: 'normal' },
+      { src: RobotoBold, fontWeight: 'bold' },
     ],
   })
 
   Font.register({
     family: 'Playfair Display',
     fonts: [
-      { src: PlayfairVariable, fontWeight: 'normal' },
-      { src: PlayfairVariable, fontWeight: 'bold' },
+      { src: PlayfairRegular, fontWeight: 'normal' },
+      { src: PlayfairBold, fontWeight: 'bold' },
     ],
   })
 

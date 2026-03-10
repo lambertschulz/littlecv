@@ -1,9 +1,41 @@
-import { useEffect, useState, useMemo } from 'react'
-import { Document, pdf } from '@react-pdf/renderer'
+import { useEffect, useState, useMemo, createElement } from 'react'
+import { Document, Page, Text, View, pdf } from '@react-pdf/renderer'
 import { useAtomValue } from 'jotai'
 import { cvDataAtom, activeTemplateKeyAtom, activeThemeAtom } from '../state/atoms'
 import { getTemplate } from '../templates/registry'
-import { createElement } from 'react'
+
+// Minimal test document to verify pdf() works at all
+function createTestDoc() {
+  return createElement(
+    Document,
+    {},
+    createElement(
+      Page,
+      { size: 'A4' },
+      createElement(
+        View,
+        { style: { padding: 40 } },
+        createElement(Text, {}, 'Bewerbungsmappe - PDF Test')
+      )
+    )
+  )
+}
+
+function createFullDoc(
+  data: ReturnType<typeof useAtomValue<typeof cvDataAtom>>,
+  template: NonNullable<ReturnType<typeof getTemplate>>,
+  theme: object
+) {
+  const pages = []
+  if (data.coverPage) {
+    pages.push(createElement(template.coverPage, { data, theme, key: 'cp' }))
+  }
+  if (data.coverLetter) {
+    pages.push(createElement(template.coverLetter, { data, theme, key: 'cl' }))
+  }
+  pages.push(createElement(template.cv, { data, theme, key: 'cv' }))
+  return createElement(Document, {}, ...pages)
+}
 
 export function Preview() {
   const data = useAtomValue(cvDataAtom)
@@ -15,33 +47,25 @@ export function Preview() {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
 
-  // Build document element outside of React's reconciler
   const documentElement = useMemo(() => {
-    if (!template) return null
-
-    const pages = []
-    if (data.coverPage) {
-      pages.push(createElement(template.coverPage, { data, theme, key: 'cp' }))
+    if (!template) return createTestDoc()
+    try {
+      return createFullDoc(data, template, theme)
+    } catch {
+      // If template construction fails, fall back to test doc
+      return createTestDoc()
     }
-    if (data.coverLetter) {
-      pages.push(createElement(template.coverLetter, { data, theme, key: 'cl' }))
-    }
-    pages.push(createElement(template.cv, { data, theme, key: 'cv' }))
-
-    return createElement(Document, {}, ...pages)
   }, [data, template, theme])
 
   useEffect(() => {
-    if (!documentElement) {
-      setLoading(false)
-      return
-    }
-
     let cancelled = false
     setLoading(true)
     setError(null)
 
-    pdf(documentElement)
+    // Create a fresh pdf instance each time
+    const instance = pdf()
+    instance.updateContainer(documentElement)
+    instance
       .toBlob()
       .then((blob) => {
         if (cancelled) return
@@ -62,17 +86,6 @@ export function Preview() {
       cancelled = true
     }
   }, [documentElement])
-
-  // Clean up URL on unmount
-  useEffect(() => {
-    return () => {
-      if (url) URL.revokeObjectURL(url)
-    }
-  }, [])
-
-  if (!template) {
-    return <div className="p-4 text-gray-500">Kein Template ausgewählt</div>
-  }
 
   if (error) {
     return <div className="p-4 text-red-500">Fehler: {error}</div>
