@@ -31,9 +31,21 @@
   "directoryMap": {},
   "hotPaths": [
     {
+      "path": "src/components/Preview.tsx",
+      "accessCount": 15,
+      "lastAccessed": 1773179398197,
+      "type": "file"
+    },
+    {
       "path": "src/templates/classic/ClassicTemplate.tsx",
-      "accessCount": 11,
-      "lastAccessed": 1773177318026,
+      "accessCount": 14,
+      "lastAccessed": 1773178236915,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/modern/ModernTemplate.tsx",
+      "accessCount": 10,
+      "lastAccessed": 1773178232256,
       "type": "file"
     },
     {
@@ -43,33 +55,27 @@
       "type": "file"
     },
     {
-      "path": "src/components/Preview.tsx",
-      "accessCount": 8,
-      "lastAccessed": 1773177442135,
-      "type": "file"
-    },
-    {
       "path": "src/state/atoms.ts",
-      "accessCount": 6,
-      "lastAccessed": 1773175502655,
+      "accessCount": 8,
+      "lastAccessed": 1773178038842,
       "type": "file"
     },
     {
-      "path": "src/templates/modern/ModernTemplate.tsx",
+      "path": "src/types/cv.ts",
+      "accessCount": 7,
+      "lastAccessed": 1773178033462,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/SectionsEditor.tsx",
       "accessCount": 6,
-      "lastAccessed": 1773177253701,
+      "lastAccessed": 1773178648828,
       "type": "file"
     },
     {
       "path": "src/templates/registry.ts",
       "accessCount": 5,
       "lastAccessed": 1773175505025,
-      "type": "file"
-    },
-    {
-      "path": "src/types/cv.ts",
-      "accessCount": 5,
-      "lastAccessed": 1773175505436,
       "type": "file"
     },
     {
@@ -115,6 +121,12 @@
       "type": "directory"
     },
     {
+      "path": "src/components/editor/EditorPanel.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773178060610,
+      "type": "file"
+    },
+    {
       "path": "project-brief.md",
       "accessCount": 2,
       "lastAccessed": 1773171691340,
@@ -142,6 +154,24 @@
       "path": "package.json",
       "accessCount": 2,
       "lastAccessed": 1773175746361,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/ExperienceSection.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773178021820,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/EducationSection.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773178022256,
+      "type": "file"
+    },
+    {
+      "path": "src/components/shared/CollapsiblePanel.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773178966260,
       "type": "file"
     },
     {
@@ -181,12 +211,6 @@
       "type": "file"
     },
     {
-      "path": "src/components/shared/CollapsiblePanel.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1773175187599,
-      "type": "file"
-    },
-    {
       "path": "src/components/shared/PhotoUpload.tsx",
       "accessCount": 1,
       "lastAccessed": 1773175191834,
@@ -205,18 +229,6 @@
       "type": "file"
     },
     {
-      "path": "src/components/editor/ExperienceSection.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1773175212791,
-      "type": "file"
-    },
-    {
-      "path": "src/components/editor/EducationSection.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1773175217329,
-      "type": "file"
-    },
-    {
       "path": "src/components/editor/SkillsSection.tsx",
       "accessCount": 1,
       "lastAccessed": 1773175225334,
@@ -232,12 +244,6 @@
       "path": "src/components/editor/CoverPageSection.tsx",
       "accessCount": 1,
       "lastAccessed": 1773175237242,
-      "type": "file"
-    },
-    {
-      "path": "src/components/editor/EditorPanel.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1773175418761,
       "type": "file"
     },
     {

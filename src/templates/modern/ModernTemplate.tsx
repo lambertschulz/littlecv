@@ -116,7 +116,8 @@ interface Props {
 
 export function ModernTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
-  const { profile, experience, education, skills } = data
+  const { profile, skills } = data
+  const sections = data.sections ?? []
 
   const contactParts: string[] = []
   if (profile.email) contactParts.push(profile.email)
@@ -144,44 +145,26 @@ export function ModernTemplate({ data, theme }: Props) {
 
         <View style={styles.divider} />
 
-        {/* Experience */}
-        {experience.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Berufserfahrung</Text>
-            <View style={styles.sectionDivider} />
-            {experience.map((exp) => (
-              <View key={exp.id}>
-                <View style={styles.entryRow}>
-                  <Text style={styles.entryTitle}>{exp.role}</Text>
-                  <Text style={styles.entryPeriod}>{exp.period}</Text>
+        {/* Sections */}
+        {sections.map((section) =>
+          section.entries.length > 0 ? (
+            <View key={section.id} style={styles.section}>
+              <Text style={styles.sectionTitle}>{section.name}</Text>
+              <View style={styles.sectionDivider} />
+              {section.entries.map((entry) => (
+                <View key={entry.id}>
+                  <View style={styles.entryRow}>
+                    <Text style={styles.entryTitle}>{entry.title}</Text>
+                    <Text style={styles.entryPeriod}>{entry.period}</Text>
+                  </View>
+                  <Text style={styles.entrySubtitle}>{entry.subtitle}</Text>
+                  {entry.description ? (
+                    <Text style={styles.entryDescription}>{entry.description}</Text>
+                  ) : null}
                 </View>
-                <Text style={styles.entrySubtitle}>{exp.company}</Text>
-                {exp.description ? (
-                  <Text style={styles.entryDescription}>{exp.description}</Text>
-                ) : null}
-              </View>
-            ))}
-          </View>
-        )}
-
-        {/* Education */}
-        {education.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Ausbildung</Text>
-            <View style={styles.sectionDivider} />
-            {education.map((edu) => (
-              <View key={edu.id}>
-                <View style={styles.entryRow}>
-                  <Text style={styles.entryTitle}>{edu.degree}</Text>
-                  <Text style={styles.entryPeriod}>{edu.period}</Text>
-                </View>
-                <Text style={styles.entrySubtitle}>{edu.institution}</Text>
-                {edu.description ? (
-                  <Text style={styles.entryDescription}>{edu.description}</Text>
-                ) : null}
-              </View>
-            ))}
-          </View>
+              ))}
+            </View>
+          ) : null
         )}
 
         {/* Skills */}

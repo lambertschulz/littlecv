@@ -8,20 +8,18 @@ export interface Profile {
   photo?: string // base64-encoded image
 }
 
-export interface Experience {
+export interface SectionEntry {
   id: string
-  company: string
-  role: string
-  period: string
-  description: string
-}
-
-export interface Education {
-  id: string
-  institution: string
-  degree: string
+  title: string
+  subtitle: string
   period: string
   description?: string
+}
+
+export interface Section {
+  id: string
+  name: string
+  entries: SectionEntry[]
 }
 
 export interface Skill {
@@ -46,8 +44,7 @@ export interface CoverPage {
 
 export interface CvData {
   profile: Profile
-  experience: Experience[]
-  education: Education[]
+  sections: Section[]
   skills: Skill[]
   coverLetter?: CoverLetter
   coverPage?: CoverPage

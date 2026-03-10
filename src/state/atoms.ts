@@ -10,8 +10,7 @@ const defaultCvData: CvData = {
     email: '',
     phone: '',
   },
-  experience: [],
-  education: [],
+  sections: [],
   skills: [],
 }
 

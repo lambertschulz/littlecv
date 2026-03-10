@@ -109,7 +109,8 @@ interface Props {
 
 export function ClassicTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
-  const { profile, experience, education, skills } = data
+  const { profile, skills } = data
+  const sections = data.sections ?? []
   const isBlock = theme.headerStyle === 'block'
 
   const sectionTitleStyle = isBlock ? styles.sectionTitleBlock : styles.sectionTitleUnderline
@@ -136,42 +137,25 @@ export function ClassicTemplate({ data, theme }: Props) {
         </View>
       </View>
 
-      {/* Experience */}
-      {experience.length > 0 && (
-        <View style={styles.section}>
-          <Text style={sectionTitleStyle}>Berufserfahrung</Text>
-          {experience.map((exp) => (
-            <View key={exp.id}>
-              <View style={styles.entryRow}>
-                <Text style={styles.entryTitle}>{exp.role}</Text>
-                <Text style={styles.entryPeriod}>{exp.period}</Text>
+      {/* Sections */}
+      {sections.map((section) =>
+        section.entries.length > 0 ? (
+          <View key={section.id} style={styles.section}>
+            <Text style={sectionTitleStyle}>{section.name}</Text>
+            {section.entries.map((entry) => (
+              <View key={entry.id}>
+                <View style={styles.entryRow}>
+                  <Text style={styles.entryTitle}>{entry.title}</Text>
+                  <Text style={styles.entryPeriod}>{entry.period}</Text>
+                </View>
+                <Text style={styles.entrySubtitle}>{entry.subtitle}</Text>
+                {entry.description ? (
+                  <Text style={styles.entryDescription}>{entry.description}</Text>
+                ) : null}
               </View>
-              <Text style={styles.entrySubtitle}>{exp.company}</Text>
-              {exp.description ? (
-                <Text style={styles.entryDescription}>{exp.description}</Text>
-              ) : null}
-            </View>
-          ))}
-        </View>
-      )}
-
-      {/* Education */}
-      {education.length > 0 && (
-        <View style={styles.section}>
-          <Text style={sectionTitleStyle}>Ausbildung</Text>
-          {education.map((edu) => (
-            <View key={edu.id}>
-              <View style={styles.entryRow}>
-                <Text style={styles.entryTitle}>{edu.degree}</Text>
-                <Text style={styles.entryPeriod}>{edu.period}</Text>
-              </View>
-              <Text style={styles.entrySubtitle}>{edu.institution}</Text>
-              {edu.description ? (
-                <Text style={styles.entryDescription}>{edu.description}</Text>
-              ) : null}
-            </View>
-          ))}
-        </View>
+            ))}
+          </View>
+        ) : null
       )}
 
       {/* Skills */}

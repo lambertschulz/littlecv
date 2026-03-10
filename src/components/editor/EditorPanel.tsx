@@ -1,6 +1,5 @@
 import { ProfileSection } from './ProfileSection'
-import { ExperienceSection } from './ExperienceSection'
-import { EducationSection } from './EducationSection'
+import { SectionsEditor } from './SectionsEditor'
 import { SkillsSection } from './SkillsSection'
 import { CoverLetterSection } from './CoverLetterSection'
 import { CoverPageSection } from './CoverPageSection'
@@ -9,8 +8,7 @@ export function EditorPanel() {
   return (
     <div>
       <ProfileSection />
-      <ExperienceSection />
-      <EducationSection />
+      <SectionsEditor />
       <SkillsSection />
       <CoverLetterSection />
       <CoverPageSection />
