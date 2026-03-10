@@ -6,7 +6,6 @@ const fontSizeMap = { sm: 9, md: 10, lg: 11 }
 
 function makeStyles(theme: ClassicTheme) {
   const fs = fontSizeMap[theme.fontSize]
-  const isBlock = theme.headerStyle === 'block'
   return StyleSheet.create({
     page: {
       fontFamily: theme.fontFamily,
@@ -100,8 +99,6 @@ function makeStyles(theme: ClassicTheme) {
       color: '#374151',
       lineHeight: 1.6,
     },
-    // Needed for conditional style selection
-    _isBlock: isBlock,
   })
 }
 
