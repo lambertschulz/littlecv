@@ -1,5 +1,6 @@
 import { SplitPane } from './components/SplitPane'
 import { Preview } from './components/Preview'
+import { EditorPanel } from './components/editor/EditorPanel'
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
         <h1 className="text-lg font-bold">Bewerbungsmappe</h1>
       </header>
       <SplitPane
-        editor={<div className="p-4">Editor coming soon...</div>}
+        editor={<EditorPanel />}
         preview={<Preview />}
       />
     </div>
