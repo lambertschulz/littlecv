@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Document, PDFViewer } from '@react-pdf/renderer'
+import { Document, usePDF } from '@react-pdf/renderer'
 import { useAtomValue } from 'jotai'
 import { cvDataAtom, activeTemplateKeyAtom, activeThemeAtom } from '../state/atoms'
 import { getTemplate } from '../templates/registry'
@@ -26,13 +26,29 @@ export function Preview() {
     )
   }, [data, template, theme])
 
+  const [instance] = usePDF({ document: pdfDocument })
+
   if (!pdfDocument) {
     return <div className="p-4 text-gray-500">Kein Template ausgewählt</div>
   }
 
+  if (instance.loading) {
+    return <div className="p-4 text-gray-500">PDF wird erstellt...</div>
+  }
+
+  if (instance.error) {
+    return <div className="p-4 text-red-500">Fehler: {instance.error}</div>
+  }
+
+  if (!instance.url) {
+    return <div className="p-4 text-gray-500">PDF wird erstellt...</div>
+  }
+
   return (
-    <PDFViewer className="w-full h-full" showToolbar={false}>
-      {pdfDocument}
-    </PDFViewer>
+    <iframe
+      src={instance.url}
+      className="w-full h-full border-0"
+      title="PDF Vorschau"
+    />
   )
 }
