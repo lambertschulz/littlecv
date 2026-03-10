@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1773170931531,
+  "projectRoot": "/Users/adrian/repos/littlecv",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {},
+  "hotPaths": [
+    {
+      "path": "project-brief.md",
+      "accessCount": 2,
+      "lastAccessed": 1773171691340,
+      "type": "file"
+    },
+    {
+      "path": "CLAUDE.md",
+      "accessCount": 2,
+      "lastAccessed": 1773172241102,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

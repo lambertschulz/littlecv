@@ -1,0 +1,7 @@
+{
+  "tool_name": "Read",
+  "tool_input_preview": "{\"file_path\":\"/Users/adrian/.claude/projects/-Users-adrian-repos-littlecv/memory/MEMORY.md\"}",
+  "error": "File does not exist. Note: your current working directory is /Users/adrian/repos/littlecv.",
+  "timestamp": "2026-03-10T19:31:39.470Z",
+  "retry_count": 1
+}

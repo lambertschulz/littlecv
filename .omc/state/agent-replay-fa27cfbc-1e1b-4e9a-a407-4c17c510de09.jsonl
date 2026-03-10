@@ -1,0 +1,3 @@
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"superpowers:writing-plans"}
+{"t":0,"agent":"ac0a4ba","agent_type":"critic","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"ac0a4ba","agent_type":"critic","event":"agent_stop","success":true,"duration_ms":95693}
