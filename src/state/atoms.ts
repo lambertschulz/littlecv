@@ -1,6 +1,7 @@
 import { atom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 import type { CvData, ActiveView } from '../types/cv'
+import { templateRegistry } from '../templates/registry'
 
 const defaultCvData: CvData = {
   profile: {
@@ -21,9 +22,14 @@ export const activeTemplateKeyAtom = atomWithStorage<string>(
   'modern'
 )
 
+const defaultThemes: Record<string, object> = {}
+for (const t of templateRegistry) {
+  defaultThemes[t.key] = t.defaultTheme
+}
+
 export const templateThemesAtom = atomWithStorage<Record<string, object>>(
   'template-themes',
-  {}
+  defaultThemes
 )
 
 export const activeThemeAtom = atom(
