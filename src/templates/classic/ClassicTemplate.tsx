@@ -1,4 +1,4 @@
-import { Page, View, Text, Image, StyleSheet, Document } from '@react-pdf/renderer'
+import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
 import type { CvData } from '../../types/cv'
 import type { ClassicTheme } from './theme'
 
@@ -121,70 +121,68 @@ export function ClassicTemplate({ data, theme }: Props) {
   if (profile.website) contactParts.push(profile.website)
 
   return (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        {/* Centered header */}
-        <View style={styles.header}>
-          {profile.photo ? (
-            <Image style={styles.photo} src={profile.photo} />
-          ) : null}
-          <Text style={styles.name}>{profile.name}</Text>
-          <Text style={styles.titleText}>{profile.title}</Text>
-          <View style={styles.contactRow}>
-            {contactParts.map((part, i) => (
-              <Text key={i} style={styles.contactItem}>{part}</Text>
-            ))}
-          </View>
+    <Page size="A4" style={styles.page}>
+      {/* Centered header */}
+      <View style={styles.header}>
+        {profile.photo ? (
+          <Image style={styles.photo} src={profile.photo} />
+        ) : null}
+        <Text style={styles.name}>{profile.name}</Text>
+        <Text style={styles.titleText}>{profile.title}</Text>
+        <View style={styles.contactRow}>
+          {contactParts.map((part, i) => (
+            <Text key={i} style={styles.contactItem}>{part}</Text>
+          ))}
         </View>
+      </View>
 
-        {/* Experience */}
-        {experience.length > 0 && (
-          <View style={styles.section}>
-            <Text style={sectionTitleStyle}>Berufserfahrung</Text>
-            {experience.map((exp) => (
-              <View key={exp.id}>
-                <View style={styles.entryRow}>
-                  <Text style={styles.entryTitle}>{exp.role}</Text>
-                  <Text style={styles.entryPeriod}>{exp.period}</Text>
-                </View>
-                <Text style={styles.entrySubtitle}>{exp.company}</Text>
-                {exp.description ? (
-                  <Text style={styles.entryDescription}>{exp.description}</Text>
-                ) : null}
+      {/* Experience */}
+      {experience.length > 0 && (
+        <View style={styles.section}>
+          <Text style={sectionTitleStyle}>Berufserfahrung</Text>
+          {experience.map((exp) => (
+            <View key={exp.id}>
+              <View style={styles.entryRow}>
+                <Text style={styles.entryTitle}>{exp.role}</Text>
+                <Text style={styles.entryPeriod}>{exp.period}</Text>
               </View>
-            ))}
-          </View>
-        )}
+              <Text style={styles.entrySubtitle}>{exp.company}</Text>
+              {exp.description ? (
+                <Text style={styles.entryDescription}>{exp.description}</Text>
+              ) : null}
+            </View>
+          ))}
+        </View>
+      )}
 
-        {/* Education */}
-        {education.length > 0 && (
-          <View style={styles.section}>
-            <Text style={sectionTitleStyle}>Ausbildung</Text>
-            {education.map((edu) => (
-              <View key={edu.id}>
-                <View style={styles.entryRow}>
-                  <Text style={styles.entryTitle}>{edu.degree}</Text>
-                  <Text style={styles.entryPeriod}>{edu.period}</Text>
-                </View>
-                <Text style={styles.entrySubtitle}>{edu.institution}</Text>
-                {edu.description ? (
-                  <Text style={styles.entryDescription}>{edu.description}</Text>
-                ) : null}
+      {/* Education */}
+      {education.length > 0 && (
+        <View style={styles.section}>
+          <Text style={sectionTitleStyle}>Ausbildung</Text>
+          {education.map((edu) => (
+            <View key={edu.id}>
+              <View style={styles.entryRow}>
+                <Text style={styles.entryTitle}>{edu.degree}</Text>
+                <Text style={styles.entryPeriod}>{edu.period}</Text>
               </View>
-            ))}
-          </View>
-        )}
+              <Text style={styles.entrySubtitle}>{edu.institution}</Text>
+              {edu.description ? (
+                <Text style={styles.entryDescription}>{edu.description}</Text>
+              ) : null}
+            </View>
+          ))}
+        </View>
+      )}
 
-        {/* Skills */}
-        {skills.length > 0 && (
-          <View style={styles.section}>
-            <Text style={sectionTitleStyle}>Kenntnisse</Text>
-            <Text style={styles.skillsText}>
-              {skills.map((s) => s.label).join(' · ')}
-            </Text>
-          </View>
-        )}
-      </Page>
-    </Document>
+      {/* Skills */}
+      {skills.length > 0 && (
+        <View style={styles.section}>
+          <Text style={sectionTitleStyle}>Kenntnisse</Text>
+          <Text style={styles.skillsText}>
+            {skills.map((s) => s.label).join(' · ')}
+          </Text>
+        </View>
+      )}
+    </Page>
   )
 }

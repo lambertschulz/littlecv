@@ -1,4 +1,4 @@
-import { Page, View, Text, StyleSheet, Document } from '@react-pdf/renderer'
+import { Page, View, Text, StyleSheet } from '@react-pdf/renderer'
 import type { CvData } from '../../types/cv'
 import type { ModernTheme } from './theme'
 
@@ -73,33 +73,31 @@ export function ModernCoverLetter({ data, theme }: Props) {
   const { recipient, recipientAddress, subject, body, date } = data.coverLetter
 
   return (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        {/* Sender */}
-        <View style={styles.senderBlock}>
-          <Text style={styles.senderName}>{profile.name}</Text>
-          {profile.address ? <Text style={styles.senderDetail}>{profile.address}</Text> : null}
-          {profile.email ? <Text style={styles.senderDetail}>{profile.email}</Text> : null}
-          {profile.phone ? <Text style={styles.senderDetail}>{profile.phone}</Text> : null}
-        </View>
+    <Page size="A4" style={styles.page}>
+      {/* Sender */}
+      <View style={styles.senderBlock}>
+        <Text style={styles.senderName}>{profile.name}</Text>
+        {profile.address ? <Text style={styles.senderDetail}>{profile.address}</Text> : null}
+        {profile.email ? <Text style={styles.senderDetail}>{profile.email}</Text> : null}
+        {profile.phone ? <Text style={styles.senderDetail}>{profile.phone}</Text> : null}
+      </View>
 
-        {/* Date */}
-        <Text style={styles.date}>{date}</Text>
+      {/* Date */}
+      <Text style={styles.date}>{date}</Text>
 
-        {/* Recipient */}
-        <View style={styles.recipientBlock}>
-          <Text style={styles.recipientName}>{recipient}</Text>
-          {recipientAddress ? (
-            <Text style={styles.recipientAddress}>{recipientAddress}</Text>
-          ) : null}
-        </View>
+      {/* Recipient */}
+      <View style={styles.recipientBlock}>
+        <Text style={styles.recipientName}>{recipient}</Text>
+        {recipientAddress ? (
+          <Text style={styles.recipientAddress}>{recipientAddress}</Text>
+        ) : null}
+      </View>
 
-        {/* Subject */}
-        {subject ? <Text style={styles.subject}>{subject}</Text> : null}
+      {/* Subject */}
+      {subject ? <Text style={styles.subject}>{subject}</Text> : null}
 
-        {/* Body */}
-        <Text style={styles.body}>{body}</Text>
-      </Page>
-    </Document>
+      {/* Body */}
+      <Text style={styles.body}>{body}</Text>
+    </Page>
   )
 }

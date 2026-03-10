@@ -8,10 +8,64 @@
       "status": "completed",
       "completed_at": "2026-03-10T19:43:01.752Z",
       "duration_ms": 95693
+    },
+    {
+      "agent_id": "a4997ab144e6de42a",
+      "agent_type": "oh-my-claudecode:executor",
+      "started_at": "2026-03-10T20:05:56.472Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-03-10T20:13:29.708Z",
+      "duration_ms": 453236
+    },
+    {
+      "agent_id": "a72b1bcb07b32e794",
+      "agent_type": "oh-my-claudecode:executor",
+      "started_at": "2026-03-10T20:27:17.836Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-03-10T20:36:49.990Z",
+      "duration_ms": 572154
+    },
+    {
+      "agent_id": "a7b2ae885638e9197",
+      "agent_type": "oh-my-claudecode:executor",
+      "started_at": "2026-03-10T20:38:58.978Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-03-10T20:40:21.613Z",
+      "duration_ms": 82635
+    },
+    {
+      "agent_id": "a63c2b88519682114",
+      "agent_type": "oh-my-claudecode:executor",
+      "started_at": "2026-03-10T20:39:31.070Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-03-10T20:43:22.551Z",
+      "duration_ms": 231481
+    },
+    {
+      "agent_id": "a8a2d3db694038980",
+      "agent_type": "oh-my-claudecode:executor",
+      "started_at": "2026-03-10T20:44:57.958Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-03-10T20:46:47.843Z",
+      "duration_ms": 109885
+    },
+    {
+      "agent_id": "a8d7285e5bd31cf9b",
+      "agent_type": "oh-my-claudecode:executor",
+      "started_at": "2026-03-10T21:14:47.497Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-03-10T21:15:39.100Z",
+      "duration_ms": 51603
     }
   ],
-  "total_spawned": 1,
-  "total_completed": 1,
+  "total_spawned": 7,
+  "total_completed": 7,
   "total_failed": 0,
-  "last_updated": "2026-03-10T19:43:01.855Z"
+  "last_updated": "2026-03-10T21:17:07.872Z"
 }

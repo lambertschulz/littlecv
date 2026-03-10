@@ -1,4 +1,4 @@
-import { Page, View, Text, Image, StyleSheet, Document } from '@react-pdf/renderer'
+import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
 import type { CvData } from '../../types/cv'
 import type { ModernTheme } from './theme'
 
@@ -125,8 +125,7 @@ export function ModernTemplate({ data, theme }: Props) {
   if (profile.website) contactParts.push(profile.website)
 
   return (
-    <Document>
-      <Page size="A4" style={styles.page}>
+    <Page size="A4" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
           {profile.photo ? (
@@ -199,7 +198,6 @@ export function ModernTemplate({ data, theme }: Props) {
             </View>
           </View>
         )}
-      </Page>
-    </Document>
+    </Page>
   )
 }

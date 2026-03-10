@@ -1,4 +1,4 @@
-import { Page, View, Text, Image, StyleSheet, Document } from '@react-pdf/renderer'
+import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
 import type { CvData } from '../../types/cv'
 import type { ClassicTheme } from './theme'
 
@@ -87,37 +87,35 @@ export function ClassicCoverPage({ data, theme }: Props) {
   const { company, position, date } = data.coverPage
 
   return (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        <View style={styles.container}>
-          {profile.photo ? (
-            <Image style={styles.photo} src={profile.photo} />
-          ) : null}
-          <Text style={styles.name}>{profile.name}</Text>
-          {profile.title ? <Text style={styles.titleText}>{profile.title}</Text> : null}
+    <Page size="A4" style={styles.page}>
+      <View style={styles.container}>
+        {profile.photo ? (
+          <Image style={styles.photo} src={profile.photo} />
+        ) : null}
+        <Text style={styles.name}>{profile.name}</Text>
+        {profile.title ? <Text style={styles.titleText}>{profile.title}</Text> : null}
 
-          <View style={styles.rule} />
+        <View style={styles.rule} />
 
-          <View style={styles.infoBlock}>
-            <Text style={styles.infoLabel}>Bewerbung als</Text>
-            <Text style={styles.infoValue}>{position}</Text>
-          </View>
-
-          <View style={styles.ruleSmall} />
-
-          <View style={styles.infoBlock}>
-            <Text style={styles.infoLabel}>Bei</Text>
-            <Text style={styles.infoValue}>{company}</Text>
-          </View>
-
-          <View style={styles.ruleSmall} />
-
-          <View style={styles.infoBlock}>
-            <Text style={styles.infoLabel}>Datum</Text>
-            <Text style={styles.infoValue}>{date}</Text>
-          </View>
+        <View style={styles.infoBlock}>
+          <Text style={styles.infoLabel}>Bewerbung als</Text>
+          <Text style={styles.infoValue}>{position}</Text>
         </View>
-      </Page>
-    </Document>
+
+        <View style={styles.ruleSmall} />
+
+        <View style={styles.infoBlock}>
+          <Text style={styles.infoLabel}>Bei</Text>
+          <Text style={styles.infoValue}>{company}</Text>
+        </View>
+
+        <View style={styles.ruleSmall} />
+
+        <View style={styles.infoBlock}>
+          <Text style={styles.infoLabel}>Datum</Text>
+          <Text style={styles.infoValue}>{date}</Text>
+        </View>
+      </View>
+    </Page>
   )
 }

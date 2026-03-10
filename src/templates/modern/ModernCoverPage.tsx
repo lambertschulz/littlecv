@@ -1,4 +1,4 @@
-import { Page, View, Text, Image, StyleSheet, Document } from '@react-pdf/renderer'
+import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
 import type { CvData } from '../../types/cv'
 import type { ModernTheme } from './theme'
 
@@ -77,33 +77,31 @@ export function ModernCoverPage({ data, theme }: Props) {
   const { company, position, date } = data.coverPage
 
   return (
-    <Document>
-      <Page size="A4" style={styles.page}>
-        {/* Color bar with photo */}
-        <View style={styles.colorBar}>
-          {profile.photo ? (
-            <Image style={styles.photo} src={profile.photo} />
-          ) : null}
-          <Text style={styles.name}>{profile.name}</Text>
-          {profile.title ? <Text style={styles.titleText}>{profile.title}</Text> : null}
-        </View>
+    <Page size="A4" style={styles.page}>
+      {/* Color bar with photo */}
+      <View style={styles.colorBar}>
+        {profile.photo ? (
+          <Image style={styles.photo} src={profile.photo} />
+        ) : null}
+        <Text style={styles.name}>{profile.name}</Text>
+        {profile.title ? <Text style={styles.titleText}>{profile.title}</Text> : null}
+      </View>
 
-        {/* Info content */}
-        <View style={styles.content}>
-          <View style={styles.infoBlock}>
-            <Text style={styles.infoLabel}>Bewerbung als</Text>
-            <Text style={styles.infoValue}>{position}</Text>
-          </View>
-          <View style={styles.infoBlock}>
-            <Text style={styles.infoLabel}>Bei</Text>
-            <Text style={styles.infoValue}>{company}</Text>
-          </View>
-          <View style={styles.infoBlock}>
-            <Text style={styles.infoLabel}>Datum</Text>
-            <Text style={styles.infoValue}>{date}</Text>
-          </View>
+      {/* Info content */}
+      <View style={styles.content}>
+        <View style={styles.infoBlock}>
+          <Text style={styles.infoLabel}>Bewerbung als</Text>
+          <Text style={styles.infoValue}>{position}</Text>
         </View>
-      </Page>
-    </Document>
+        <View style={styles.infoBlock}>
+          <Text style={styles.infoLabel}>Bei</Text>
+          <Text style={styles.infoValue}>{company}</Text>
+        </View>
+        <View style={styles.infoBlock}>
+          <Text style={styles.infoLabel}>Datum</Text>
+          <Text style={styles.infoValue}>{date}</Text>
+        </View>
+      </View>
+    </Page>
   )
 }
