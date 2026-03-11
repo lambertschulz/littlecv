@@ -31,6 +31,126 @@
   "directoryMap": {},
   "hotPaths": [
     {
+      "path": "src/components/Preview.tsx",
+      "accessCount": 16,
+      "lastAccessed": 1773179498983,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/classic/ClassicTemplate.tsx",
+      "accessCount": 15,
+      "lastAccessed": 1773214931246,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/modern/ModernTemplate.tsx",
+      "accessCount": 11,
+      "lastAccessed": 1773214926142,
+      "type": "file"
+    },
+    {
+      "path": "src/App.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1773175561636,
+      "type": "file"
+    },
+    {
+      "path": "src/state/atoms.ts",
+      "accessCount": 8,
+      "lastAccessed": 1773178038842,
+      "type": "file"
+    },
+    {
+      "path": "src/types/cv.ts",
+      "accessCount": 8,
+      "lastAccessed": 1773179510076,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/SectionsEditor.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1773178648828,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/registry.ts",
+      "accessCount": 5,
+      "lastAccessed": 1773175505025,
+      "type": "file"
+    },
+    {
+      "path": "src/main.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1773176178041,
+      "type": "file"
+    },
+    {
+      "path": "src/fonts/register.ts",
+      "accessCount": 5,
+      "lastAccessed": 1773177051442,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/modern/ModernCoverLetter.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1773177301453,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/modern/ModernCoverPage.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1773177306850,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/classic/ClassicCoverLetter.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1773177323281,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/classic/ClassicCoverPage.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1773177328393,
+      "type": "file"
+    },
+    {
+      "path": "src/templates",
+      "accessCount": 3,
+      "lastAccessed": 1773177221978,
+      "type": "directory"
+    },
+    {
+      "path": "src/components/editor/EditorPanel.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773178060610,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/SkillsSection.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773179516350,
+      "type": "file"
+    },
+    {
+      "path": "src/components/shared/PhotoUpload.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773214761142,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/ProfileSection.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773214914273,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/CoverLetterSection.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773214943885,
+      "type": "file"
+    },
+    {
       "path": "project-brief.md",
       "accessCount": 2,
       "lastAccessed": 1773171691340,
@@ -40,6 +160,120 @@
       "path": "CLAUDE.md",
       "accessCount": 2,
       "lastAccessed": 1773172241102,
+      "type": "file"
+    },
+    {
+      "path": "vite.config.ts",
+      "accessCount": 2,
+      "lastAccessed": 1773173042775,
+      "type": "file"
+    },
+    {
+      "path": "src/index.css",
+      "accessCount": 2,
+      "lastAccessed": 1773173043651,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 2,
+      "lastAccessed": 1773175746361,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/ExperienceSection.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773178021820,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/EducationSection.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773178022256,
+      "type": "file"
+    },
+    {
+      "path": "src/components/shared/CollapsiblePanel.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773178966260,
+      "type": "file"
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "accessCount": 1,
+      "lastAccessed": 1773173887707,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/modern/theme.ts",
+      "accessCount": 1,
+      "lastAccessed": 1773174457656,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/classic/theme.ts",
+      "accessCount": 1,
+      "lastAccessed": 1773174460550,
+      "type": "file"
+    },
+    {
+      "path": "public/thumbnails/modern.svg",
+      "accessCount": 1,
+      "lastAccessed": 1773174557945,
+      "type": "file"
+    },
+    {
+      "path": "public/thumbnails/classic.svg",
+      "accessCount": 1,
+      "lastAccessed": 1773174566797,
+      "type": "file"
+    },
+    {
+      "path": "src/components/SplitPane.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1773175152632,
+      "type": "file"
+    },
+    {
+      "path": "src/components/shared/SortableList.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1773175198153,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/CoverPageSection.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1773175237242,
+      "type": "file"
+    },
+    {
+      "path": "src/components/Toolbar.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1773175524616,
+      "type": "file"
+    },
+    {
+      "path": "src/components/theme/ThemeEditor.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1773175536388,
+      "type": "file"
+    },
+    {
+      "path": "src/components/theme/FontManager.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1773175543862,
+      "type": "file"
+    },
+    {
+      "path": "src/services/export-pdf.ts",
+      "accessCount": 1,
+      "lastAccessed": 1773175548830,
+      "type": "file"
+    },
+    {
+      "path": "src/services/export-json.ts",
+      "accessCount": 1,
+      "lastAccessed": 1773175552378,
       "type": "file"
     }
   ],

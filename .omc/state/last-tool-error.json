@@ -1,7 +1,7 @@
 {
-  "tool_name": "Read",
-  "tool_input_preview": "{\"file_path\":\"/Users/adrian/.claude/projects/-Users-adrian-repos-littlecv/memory/MEMORY.md\"}",
-  "error": "File does not exist. Note: your current working directory is /Users/adrian/repos/littlecv.",
-  "timestamp": "2026-03-10T19:31:39.470Z",
-  "retry_count": 1
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"rm -f /Users/adrian/repos/littlecv/src/fonts/files/*.ttf /Users/adrian/repos/littlecv/src/fonts/files/*.woff 2>/dev/null; cd /Users/adrian/repos/littlecv/src/fonts/files && cp ../../node_m...",
+  "error": "Exit code 1\n(eval):1: no matches found: /Users/adrian/repos/littlecv/src/fonts/files/*.ttf\ncp: ../../node_modules/@fontsource/inter/files/inter-latin-400-normal.woff: No such file or directory",
+  "timestamp": "2026-03-10T21:03:20.709Z",
+  "retry_count": 2
 }
