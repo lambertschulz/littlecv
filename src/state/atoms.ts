@@ -45,6 +45,8 @@ export const activeThemeAtom = atom(
 
 export const activeViewAtom = atom<ActiveView>('editor')
 
+export const favoriteTemplatesAtom = atomWithStorage<string[]>('favorite-templates', [])
+
 export const customFontsAtom = atomWithStorage<
   { family: string; url: string }[]
 >('custom-fonts', [])
