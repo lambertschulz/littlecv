@@ -16,7 +16,7 @@ export function MainLayout() {
   return (
     <div className="flex-1 overflow-hidden">
       {/* Desktop: side-by-side with tabs on left */}
-      <div className="hidden md:flex flex-1 overflow-hidden">
+      <div className="hidden md:flex h-full overflow-hidden">
         <div className="w-1/2 overflow-y-auto border-r flex flex-col">
           <Tabs defaultValue="editor" className="flex flex-col flex-1">
             <TabsList className="shrink-0 w-full justify-start rounded-none border-b px-4">

@@ -68,7 +68,7 @@ export function TemplateCarousel() {
                 >
                   {/* Thumbnail */}
                   <img
-                    src={t.thumbnail}
+                    src={`${import.meta.env.BASE_URL}${t.thumbnail.replace(/^\//, '')}`}
                     alt={t.label}
                     className="w-full h-36 object-cover object-top bg-muted"
                   />
