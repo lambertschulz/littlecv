@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+  <rect width="300" height="400" fill="#ffffff"/>
+
+  <!-- Name placeholder -->
+  <rect x="60" y="40" width="120" height="12" rx="1" fill="#111827"/>
+
+  <!-- Title placeholder -->
+  <rect x="60" y="58" width="80" height="7" rx="1" fill="#9ca3af"/>
+
+  <!-- Contact line (dots) -->
+  <rect x="60" y="72" width="30" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="96" y="72" width="4" height="5" rx="1" fill="#d1d5db"/>
+  <rect x="106" y="72" width="40" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="152" y="72" width="4" height="5" rx="1" fill="#d1d5db"/>
+  <rect x="162" y="72" width="50" height="5" rx="1" fill="#9ca3af"/>
+
+  <!-- Thin divider after header -->
+  <rect x="60" y="86" width="180" height="0.5" fill="#e5e7eb"/>
+
+  <!-- Section 1: uppercase label -->
+  <rect x="60" y="98" width="50" height="5" rx="1" fill="#111827"/>
+  <rect x="60" y="108" width="180" height="0.5" fill="#e5e7eb"/>
+
+  <!-- Entry 1 -->
+  <rect x="60" y="116" width="90" height="6" rx="1" fill="#374151"/>
+  <rect x="210" y="116" width="30" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="60" y="126" width="70" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="60" y="134" width="160" height="4" rx="1" fill="#d1d5db"/>
+
+  <!-- Entry 2 -->
+  <rect x="60" y="146" width="85" height="6" rx="1" fill="#374151"/>
+  <rect x="210" y="146" width="30" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="60" y="156" width="65" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="60" y="164" width="155" height="4" rx="1" fill="#d1d5db"/>
+
+  <!-- Section 2: uppercase label -->
+  <rect x="60" y="180" width="60" height="5" rx="1" fill="#111827"/>
+  <rect x="60" y="190" width="180" height="0.5" fill="#e5e7eb"/>
+
+  <!-- Entry 3 -->
+  <rect x="60" y="198" width="80" height="6" rx="1" fill="#374151"/>
+  <rect x="210" y="198" width="30" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="60" y="208" width="60" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="60" y="216" width="150" height="4" rx="1" fill="#d1d5db"/>
+
+  <!-- Entry 4 -->
+  <rect x="60" y="228" width="75" height="6" rx="1" fill="#374151"/>
+  <rect x="210" y="228" width="30" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="60" y="238" width="55" height="5" rx="1" fill="#9ca3af"/>
+
+  <!-- Section 3: uppercase label -->
+  <rect x="60" y="258" width="45" height="5" rx="1" fill="#111827"/>
+  <rect x="60" y="268" width="180" height="0.5" fill="#e5e7eb"/>
+
+  <!-- Entry 5 -->
+  <rect x="60" y="276" width="88" height="6" rx="1" fill="#374151"/>
+  <rect x="210" y="276" width="30" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="60" y="286" width="68" height="5" rx="1" fill="#9ca3af"/>
+
+  <!-- Skills section label -->
+  <rect x="60" y="306" width="40" height="5" rx="1" fill="#111827"/>
+  <rect x="60" y="316" width="180" height="0.5" fill="#e5e7eb"/>
+
+  <!-- Skills: comma-separated text line -->
+  <rect x="60" y="324" width="180" height="5" rx="1" fill="#9ca3af"/>
+</svg>

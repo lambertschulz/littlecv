@@ -1,7 +1,7 @@
 {
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"npm run build 2>&1\",\"description\":\"Run production build\"}",
-  "error": "Exit code 2\n\n> littlecv@0.0.0 build\n> tsc -b && vite build\n\nsrc/components/editor/SectionsEditor.tsx(35,7): error TS2322: Type '{ children: Element[]; title: string; actions: Element; }' is not assignable to type 'IntrinsicAttributes & CollapsiblePanelProps'.\n  Property 'actions' does not exist on type 'IntrinsicAttributes & CollapsiblePanelProps'.",
-  "timestamp": "2026-03-11T08:21:12.949Z",
+  "tool_name": "Read",
+  "tool_input_preview": "{\"file_path\":\"/Users/adrian/repos/littlecv/src/templates/index.ts\"}",
+  "error": "File does not exist. Note: your current working directory is /Users/adrian/repos/littlecv.",
+  "timestamp": "2026-03-11T08:59:23.096Z",
   "retry_count": 1
 }
