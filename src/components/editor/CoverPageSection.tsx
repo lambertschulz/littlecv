@@ -1,14 +1,13 @@
 import { useAtom } from 'jotai'
 import { cvDataAtom } from '../../state/atoms'
 import { CollapsiblePanel } from '../shared/CollapsiblePanel'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 import type { CoverPage } from '../../types/cv'
 
 export function CoverPageSection() {
   const [data, setData] = useAtom(cvDataAtom)
   const { coverPage } = data
-
-  const inputClass =
-    'w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500'
 
   const activate = () => {
     const defaultCoverPage: CoverPage = {
@@ -33,38 +32,29 @@ export function CoverPageSection() {
   return (
     <CollapsiblePanel title="Deckblatt">
       {!coverPage ? (
-        <button
-          className="text-sm text-blue-600 hover:underline"
-          onClick={activate}
-        >
+        <Button variant="link" className="px-0 text-sm" onClick={activate}>
           Deckblatt aktivieren
-        </button>
+        </Button>
       ) : (
         <div className="space-y-3">
-          <input
-            className={inputClass}
+          <Input
             placeholder="Unternehmen"
             value={coverPage.company}
             onChange={(e) => update('company', e.target.value)}
           />
-          <input
-            className={inputClass}
+          <Input
             placeholder="Position"
             value={coverPage.position}
             onChange={(e) => update('position', e.target.value)}
           />
-          <input
-            className={inputClass}
+          <Input
             placeholder="Datum"
             value={coverPage.date}
             onChange={(e) => update('date', e.target.value)}
           />
-          <button
-            className="text-sm text-red-500 hover:underline"
-            onClick={deactivate}
-          >
+          <Button variant="link" className="px-0 text-sm text-destructive" onClick={deactivate}>
             Deaktivieren
-          </button>
+          </Button>
         </div>
       )}
     </CollapsiblePanel>

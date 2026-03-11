@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { Button } from '@/components/ui/button'
 
 interface SortableListProps<T> {
   items: T[]
@@ -32,36 +33,43 @@ export function SortableList<T extends { id: string }>({
       {items.map((item, i) => (
         <div key={item.id} className="relative border border-gray-200 rounded-lg p-3">
           <div className="absolute top-2 right-2 flex gap-1">
-            <button
-              className="text-gray-400 hover:text-gray-600 text-xs px-1"
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-6 w-6 text-gray-400 hover:text-gray-600"
               onClick={() => move(i, -1)}
               disabled={i === 0}
             >
               &#8593;
-            </button>
-            <button
-              className="text-gray-400 hover:text-gray-600 text-xs px-1"
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-6 w-6 text-gray-400 hover:text-gray-600"
               onClick={() => move(i, 1)}
               disabled={i === items.length - 1}
             >
               &#8595;
-            </button>
-            <button
-              className="text-red-400 hover:text-red-600 text-xs px-1"
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-6 w-6 text-red-400 hover:text-red-600"
               onClick={() => remove(i)}
             >
               &#10005;
-            </button>
+            </Button>
           </div>
           {renderItem(item, i)}
         </div>
       ))}
-      <button
-        className="text-sm text-blue-600 hover:underline"
+      <Button
+        variant="link"
+        className="px-0 text-sm"
         onClick={() => onChange([...items, createItem()])}
       >
         + {addLabel}
-      </button>
+      </Button>
     </div>
   )
 }

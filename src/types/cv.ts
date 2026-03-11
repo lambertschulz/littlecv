@@ -52,4 +52,4 @@ export interface CvData {
 
 export type ExportScope = 'all' | 'cv' | 'coverLetter' | 'coverPage'
 
-export type ActiveView = 'editor' | 'preview'
+export type ActiveView = 'editor' | 'style' | 'preview'

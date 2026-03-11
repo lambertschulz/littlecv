@@ -2,10 +2,10 @@ import { useAtom } from 'jotai'
 import { cvDataAtom } from '../../state/atoms'
 import { CollapsiblePanel } from '../shared/CollapsiblePanel'
 import { SortableList } from '../shared/SortableList'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Button } from '@/components/ui/button'
 import type { Section, SectionEntry } from '../../types/cv'
-
-const inputClass =
-  'w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500'
 
 function SectionPanel({
   section,
@@ -33,21 +33,22 @@ function SectionPanel({
     <CollapsiblePanel
       title={section.name || 'Neue Kategorie'}
       actions={
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="sm"
           onClick={(e) => {
             e.stopPropagation()
             onRemove()
           }}
-          className="text-red-400 hover:text-red-600 text-xs px-2"
+          className="text-red-400 hover:text-red-600 text-xs"
         >
           Entfernen
-        </button>
+        </Button>
       }
     >
       <div className="mb-3">
-        <input
-          className={inputClass}
+        <Input
           placeholder="Kategorie-Name (z.B. Berufserfahrung, Ausbildung, Projekte)"
           value={section.name}
           onChange={(e) => onUpdate({ ...section, name: e.target.value })}
@@ -60,26 +61,22 @@ function SectionPanel({
         addLabel="Eintrag hinzufügen"
         renderItem={(item, i) => (
           <div className="space-y-2 pr-16">
-            <input
-              className={inputClass}
+            <Input
               placeholder="Titel (z.B. Position, Abschluss)"
               value={item.title}
               onChange={(e) => updateEntry(i, 'title', e.target.value)}
             />
-            <input
-              className={inputClass}
+            <Input
               placeholder="Untertitel (z.B. Unternehmen, Institution)"
               value={item.subtitle}
               onChange={(e) => updateEntry(i, 'subtitle', e.target.value)}
             />
-            <input
-              className={inputClass}
+            <Input
               placeholder="Zeitraum"
               value={item.period}
               onChange={(e) => updateEntry(i, 'period', e.target.value)}
             />
-            <textarea
-              className={inputClass}
+            <Textarea
               placeholder="Beschreibung (optional)"
               value={item.description ?? ''}
               rows={3}
@@ -130,13 +127,14 @@ export function SectionsEditor() {
           onRemove={() => removeSection(i)}
         />
       ))}
-      <button
+      <Button
         type="button"
+        variant="outline"
         onClick={addSection}
-        className="w-full py-2 border-2 border-dashed border-gray-300 rounded text-sm text-gray-500 hover:border-blue-400 hover:text-blue-500 transition-colors"
+        className="w-full border-dashed text-muted-foreground hover:text-foreground"
       >
         + Kategorie hinzufügen
-      </button>
+      </Button>
     </div>
   )
 }

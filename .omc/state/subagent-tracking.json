@@ -1,71 +1,89 @@
 {
   "agents": [
     {
-      "agent_id": "a5ad36698031d812d",
+      "agent_id": "a2d841a4ab5b6496f",
       "agent_type": "Explore",
-      "started_at": "2026-03-11T08:53:27.998Z",
+      "started_at": "2026-03-11T10:54:32.351Z",
       "parent_mode": "none",
       "status": "completed",
-      "completed_at": "2026-03-11T08:53:52.616Z",
-      "duration_ms": 24618
+      "completed_at": "2026-03-11T10:55:34.424Z",
+      "duration_ms": 62073
     },
     {
-      "agent_id": "a0b1527abdd41813e",
+      "agent_id": "a00936e0aade5a3ec",
+      "agent_type": "oh-my-claudecode:code-reviewer",
+      "started_at": "2026-03-11T11:16:50.004Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-03-11T11:18:17.402Z",
+      "duration_ms": 87398
+    },
+    {
+      "agent_id": "acc6e3a61dcffa96d",
       "agent_type": "Explore",
-      "started_at": "2026-03-11T08:57:25.327Z",
+      "started_at": "2026-03-11T11:21:51.926Z",
       "parent_mode": "none",
       "status": "completed",
-      "completed_at": "2026-03-11T08:57:44.094Z",
-      "duration_ms": 18767
+      "completed_at": "2026-03-11T11:37:57.805Z",
+      "duration_ms": 965879
     },
     {
-      "agent_id": "a00737ec1e29f2d91",
-      "agent_type": "oh-my-claudecode:executor",
-      "started_at": "2026-03-11T08:58:22.734Z",
+      "agent_id": "a316121a5c4f376a4",
+      "agent_type": "oh-my-claudecode:code-reviewer",
+      "started_at": "2026-03-11T11:40:07.673Z",
       "parent_mode": "none",
       "status": "completed",
-      "completed_at": "2026-03-11T09:01:08.144Z",
-      "duration_ms": 165410
+      "completed_at": "2026-03-11T11:41:57.163Z",
+      "duration_ms": 109490
     },
     {
-      "agent_id": "af1f04988db1f9761",
+      "agent_id": "a34a4fad351603324",
       "agent_type": "oh-my-claudecode:executor",
-      "started_at": "2026-03-11T08:58:41.078Z",
+      "started_at": "2026-03-11T12:36:06.424Z",
       "parent_mode": "none",
       "status": "completed",
-      "completed_at": "2026-03-11T09:01:08.767Z",
-      "duration_ms": 147689
+      "completed_at": "2026-03-11T12:52:41.023Z",
+      "duration_ms": 994599
     },
     {
-      "agent_id": "a87b61bbee6bf992a",
+      "agent_id": "a85e141b7b930e8fd",
       "agent_type": "oh-my-claudecode:executor",
-      "started_at": "2026-03-11T08:58:56.260Z",
+      "started_at": "2026-03-11T12:56:16.488Z",
       "parent_mode": "none",
       "status": "completed",
-      "completed_at": "2026-03-11T09:01:12.329Z",
-      "duration_ms": 136069
+      "completed_at": "2026-03-11T13:01:31.927Z",
+      "duration_ms": 315439
     },
     {
-      "agent_id": "a044210350b182496",
+      "agent_id": "a39629812980714b6",
       "agent_type": "oh-my-claudecode:executor",
-      "started_at": "2026-03-11T08:59:13.177Z",
+      "started_at": "2026-03-11T13:13:42.196Z",
       "parent_mode": "none",
       "status": "completed",
-      "completed_at": "2026-03-11T09:00:48.159Z",
-      "duration_ms": 94982
+      "completed_at": "2026-03-11T13:18:08.789Z",
+      "duration_ms": 266593
     },
     {
-      "agent_id": "a0a7e4ef9470f11ef",
+      "agent_id": "aeeb3209f50b15681",
       "agent_type": "oh-my-claudecode:executor",
-      "started_at": "2026-03-11T08:59:32.459Z",
+      "started_at": "2026-03-11T13:20:59.626Z",
       "parent_mode": "none",
       "status": "completed",
-      "completed_at": "2026-03-11T09:03:03.840Z",
-      "duration_ms": 211381
+      "completed_at": "2026-03-11T13:22:13.584Z",
+      "duration_ms": 73958
+    },
+    {
+      "agent_id": "af8629affe2a6bd2e",
+      "agent_type": "oh-my-claudecode:debugger",
+      "started_at": "2026-03-11T14:21:53.150Z",
+      "parent_mode": "none",
+      "status": "completed",
+      "completed_at": "2026-03-11T14:23:07.459Z",
+      "duration_ms": 74309
     }
   ],
-  "total_spawned": 7,
-  "total_completed": 7,
+  "total_spawned": 9,
+  "total_completed": 9,
   "total_failed": 0,
-  "last_updated": "2026-03-11T09:03:03.942Z"
+  "last_updated": "2026-03-11T14:23:07.562Z"
 }

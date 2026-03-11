@@ -2,13 +2,11 @@ import { useAtom } from 'jotai'
 import { cvDataAtom } from '../../state/atoms'
 import { CollapsiblePanel } from '../shared/CollapsiblePanel'
 import { SortableList } from '../shared/SortableList'
+import { Input } from '@/components/ui/input'
 import type { Skill } from '../../types/cv'
 
 export function SkillsSection() {
   const [data, setData] = useAtom(cvDataAtom)
-
-  const inputClass =
-    'w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500'
 
   const updateItem = (index: number, field: string, value: string) => {
     setData((prev) => {
@@ -32,14 +30,12 @@ export function SkillsSection() {
         addLabel="Kenntnis hinzufügen"
         renderItem={(item, i) => (
           <div className="space-y-2 pr-16">
-            <input
-              className={inputClass}
+            <Input
               placeholder="Bezeichnung"
               value={item.label}
               onChange={(e) => updateItem(i, 'label', e.target.value)}
             />
-            <input
-              className={inputClass}
+            <Input
               placeholder="Level (z.B. Fortgeschritten, 5 Jahre, C1)"
               value={item.level ?? ''}
               onChange={(e) => updateItem(i, 'level', e.target.value)}

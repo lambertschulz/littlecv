@@ -86,7 +86,7 @@ export function Preview() {
 
   return (
     <iframe
-      src={url}
+      src={`${url}#toolbar=0`}
       className="w-full h-full border-0"
       title="PDF Vorschau"
     />

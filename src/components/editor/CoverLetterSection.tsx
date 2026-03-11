@@ -1,14 +1,14 @@
 import { useAtom } from 'jotai'
 import { cvDataAtom } from '../../state/atoms'
 import { CollapsiblePanel } from '../shared/CollapsiblePanel'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
+import { Button } from '@/components/ui/button'
 import type { CoverLetter } from '../../types/cv'
 
 export function CoverLetterSection() {
   const [data, setData] = useAtom(cvDataAtom)
   const { coverLetter } = data
-
-  const inputClass =
-    'w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500'
 
   const activate = () => {
     const defaultCoverLetter: CoverLetter = {
@@ -33,52 +33,41 @@ export function CoverLetterSection() {
   return (
     <CollapsiblePanel title="Anschreiben">
       {!coverLetter ? (
-        <button
-          className="text-sm text-blue-600 hover:underline"
-          onClick={activate}
-        >
+        <Button variant="link" className="px-0 text-sm" onClick={activate}>
           Anschreiben aktivieren
-        </button>
+        </Button>
       ) : (
         <div className="space-y-3">
-          <input
-            className={inputClass}
+          <Input
             placeholder="Empfänger"
             value={coverLetter.recipient}
             onChange={(e) => update('recipient', e.target.value)}
           />
-          <textarea
-            className={inputClass}
+          <Textarea
             placeholder="Empfängeradresse (optional, mehrzeilig)"
             rows={2}
             value={coverLetter.recipientAddress ?? ''}
             onChange={(e) => update('recipientAddress', e.target.value)}
           />
-          <input
-            className={inputClass}
+          <Input
             placeholder="Betreff (optional)"
             value={coverLetter.subject ?? ''}
             onChange={(e) => update('subject', e.target.value)}
           />
-          <input
-            className={inputClass}
+          <Input
             placeholder="Datum"
             value={coverLetter.date}
             onChange={(e) => update('date', e.target.value)}
           />
-          <textarea
-            className={inputClass}
+          <Textarea
             placeholder="Anschreiben-Text"
             value={coverLetter.body}
             rows={10}
             onChange={(e) => update('body', e.target.value)}
           />
-          <button
-            className="text-sm text-red-500 hover:underline"
-            onClick={deactivate}
-          >
+          <Button variant="link" className="px-0 text-sm text-destructive" onClick={deactivate}>
             Deaktivieren
-          </button>
+          </Button>
         </div>
       )}
     </CollapsiblePanel>
