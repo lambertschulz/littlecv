@@ -133,6 +133,12 @@
       "type": "file"
     },
     {
+      "path": "src/components/shared/PhotoUpload.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773214761142,
+      "type": "file"
+    },
+    {
       "path": "project-brief.md",
       "accessCount": 2,
       "lastAccessed": 1773171691340,
@@ -214,12 +220,6 @@
       "path": "src/components/SplitPane.tsx",
       "accessCount": 1,
       "lastAccessed": 1773175152632,
-      "type": "file"
-    },
-    {
-      "path": "src/components/shared/PhotoUpload.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1773175191834,
       "type": "file"
     },
     {
