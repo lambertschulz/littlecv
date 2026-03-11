@@ -1,6 +1,14 @@
 import { useAtom, useAtomValue } from 'jotai'
-import { activeTemplateKeyAtom, activeThemeAtom } from '../../state/atoms'
-import { getTemplate } from '../../templates/registry'
+import { activeTemplateKeyAtom, activeThemeAtom } from '@/state/atoms'
+import { getTemplate } from '@/templates/registry'
+import { Label } from '@/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 export function ThemeEditor() {
   const templateKey = useAtomValue(activeTemplateKeyAtom)
@@ -14,30 +22,35 @@ export function ThemeEditor() {
   }
 
   return (
-    <div className="border-b border-gray-200 bg-gray-50 px-4 py-3">
+    <div>
+      <p className="text-xs font-medium text-muted-foreground mb-3">Design</p>
       <div className="flex flex-wrap gap-4 items-end">
         {template.themeSchema.map((field) => (
-          <div key={field.key} className="flex flex-col gap-1">
-            <label className="text-xs font-medium text-gray-600">
-              {field.label}
-            </label>
+          <div key={field.key} className="flex flex-col gap-1.5">
+            <Label className="text-xs">{field.label}</Label>
             {field.type === 'color' ? (
               <input
                 type="color"
                 value={(theme as Record<string, string>)[field.key] ?? '#000000'}
                 onChange={(e) => updateField(field.key, e.target.value)}
-                className="w-10 h-8 rounded border border-gray-300 cursor-pointer"
+                className="w-10 h-8 rounded border border-input cursor-pointer"
               />
             ) : (
-              <select
+              <Select
                 value={(theme as Record<string, string>)[field.key] ?? ''}
-                onChange={(e) => updateField(field.key, e.target.value)}
-                className="border border-gray-300 rounded px-2 py-1 text-sm"
+                onValueChange={(value) => value && updateField(field.key, value)}
               >
-                {field.options?.map((opt) => (
-                  <option key={opt} value={opt}>{opt}</option>
-                ))}
-              </select>
+                <SelectTrigger className="min-w-28 text-sm">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {field.options?.map((opt) => (
+                    <SelectItem key={opt} value={opt}>
+                      {opt}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             )}
           </div>
         ))}

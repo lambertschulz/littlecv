@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { useAtom } from 'jotai'
-import { customFontsAtom } from '../../state/atoms'
-import { registerGoogleFont } from '../../fonts/register'
+import { customFontsAtom } from '@/state/atoms'
+import { registerGoogleFont } from '@/fonts/register'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 
 export function FontManager() {
   const [fonts, setFonts] = useAtom(customFontsAtom)
@@ -29,31 +31,41 @@ export function FontManager() {
   }
 
   return (
-    <div className="border-b border-gray-200 bg-gray-50 px-4 py-3">
-      <p className="text-xs font-medium text-gray-600 mb-2">Google Fonts hinzufügen</p>
+    <div>
+      <p className="text-xs font-medium text-muted-foreground mb-3">Google Fonts hinzufügen</p>
       <div className="flex gap-2 items-center">
-        <input
-          className="border border-gray-300 rounded px-2 py-1 text-sm flex-1"
+        <Input
+          className="flex-1 text-sm h-8"
           placeholder="Font-Name (z.B. Lato)"
           value={family}
           onChange={(e) => setFamily(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
         />
-        <button
-          className="text-sm px-3 py-1 border rounded hover:bg-gray-50 disabled:opacity-50"
+        <Button
+          variant="outline"
+          size="sm"
           onClick={handleAdd}
           disabled={loading}
         >
           {loading ? '...' : 'Hinzufügen'}
-        </button>
+        </Button>
       </div>
-      {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
+      {error && <p className="text-xs text-destructive mt-1">{error}</p>}
       {fonts.length > 0 && (
         <div className="flex flex-wrap gap-2 mt-2">
           {fonts.map((f, i) => (
-            <span key={f.family} className="text-xs bg-white border rounded px-2 py-1 flex items-center gap-1">
+            <span
+              key={f.family}
+              className="text-xs bg-muted border rounded px-2 py-1 flex items-center gap-1"
+            >
               {f.family}
-              <button className="text-red-400 hover:text-red-600" onClick={() => handleRemove(i)}>×</button>
+              <button
+                className="text-muted-foreground hover:text-destructive"
+                onClick={() => handleRemove(i)}
+                aria-label={`${f.family} entfernen`}
+              >
+                ×
+              </button>
             </span>
           ))}
         </div>

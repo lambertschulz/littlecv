@@ -2,6 +2,7 @@ import { useAtomValue } from 'jotai'
 import { activeViewAtom } from '@/state/atoms'
 import { EditorPanel } from '@/components/editor/EditorPanel'
 import { Preview } from '@/components/Preview'
+import { StylePanel } from '@/components/style/StylePanel'
 import {
   Tabs,
   TabsContent,
@@ -26,7 +27,7 @@ export function MainLayout() {
               <EditorPanel />
             </TabsContent>
             <TabsContent value="style" className="flex-1 overflow-y-auto m-0">
-              <div className="p-4 text-muted-foreground">Style panel coming soon</div>
+              <StylePanel />
             </TabsContent>
           </Tabs>
         </div>
@@ -38,9 +39,7 @@ export function MainLayout() {
       {/* Mobile: single panel driven by activeViewAtom */}
       <div className="flex md:hidden flex-1 overflow-y-auto pb-14">
         {activeView === 'editor' && <EditorPanel />}
-        {activeView === 'style' && (
-          <div className="p-4 text-muted-foreground">Style panel coming soon</div>
-        )}
+        {activeView === 'style' && <StylePanel />}
         {activeView === 'preview' && <Preview />}
       </div>
     </div>
