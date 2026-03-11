@@ -114,8 +114,8 @@ interface Props {
 
 export function ExecutiveTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
-  const { profile, skills } = data
-  const sections = data.sections ?? []
+  const { profile, skillSections } = data
+  const timeline = data.timeline ?? []
 
   const contactParts: string[] = []
   if (profile.email) contactParts.push(profile.email)
@@ -140,8 +140,8 @@ export function ExecutiveTemplate({ data, theme }: Props) {
         </View>
       </View>
 
-      {/* Sections */}
-      {sections.map((section) =>
+      {/* Timeline Sections */}
+      {timeline.map((section) =>
         section.entries.length > 0 ? (
           <View key={section.id} style={styles.section}>
             <View style={styles.sectionHeader}>
@@ -166,19 +166,21 @@ export function ExecutiveTemplate({ data, theme }: Props) {
         ) : null
       )}
 
-      {/* Skills */}
-      {skills.length > 0 && (
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Kenntnisse</Text>
-            <View style={styles.sectionRule} />
+      {/* Skill Sections */}
+      {(skillSections ?? []).map((skillSection) =>
+        skillSection.skills.length > 0 ? (
+          <View key={skillSection.id} style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionTitle}>{skillSection.name}</Text>
+              <View style={styles.sectionRule} />
+            </View>
+            {skillSection.skills.map((skill) => (
+              <Text key={skill.id} style={styles.skillLine}>
+                {skill.label}{skill.level ? ` — ${skill.level}` : ''}
+              </Text>
+            ))}
           </View>
-          {skills.map((skill) => (
-            <Text key={skill.id} style={styles.skillLine}>
-              {skill.label}{skill.level ? ` — ${skill.level}` : ''}
-            </Text>
-          ))}
-        </View>
+        ) : null
       )}
     </Page>
   )

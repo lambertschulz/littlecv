@@ -10,8 +10,8 @@ const defaultCvData: CvData = {
     email: '',
     phone: '',
   },
-  sections: [],
-  skills: [],
+  timeline: [],
+  skillSections: [],
 }
 
 export const cvDataAtom = atomWithStorage<CvData>('cv-data', defaultCvData)

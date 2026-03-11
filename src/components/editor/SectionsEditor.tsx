@@ -5,15 +5,15 @@ import { SortableList } from '../shared/SortableList'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
-import type { Section, SectionEntry } from '../../types/cv'
+import type { TimelineSection, SectionEntry } from '../../types/cv'
 
 function SectionPanel({
   section,
   onUpdate,
   onRemove,
 }: {
-  section: Section
-  onUpdate: (s: Section) => void
+  section: TimelineSection
+  onUpdate: (s: TimelineSection) => void
   onRemove: () => void
 }) {
   const updateEntry = (index: number, field: string, value: string) => {
@@ -91,35 +91,35 @@ function SectionPanel({
 
 export function SectionsEditor() {
   const [data, setData] = useAtom(cvDataAtom)
-  const sections = data.sections ?? []
+  const timeline = data.timeline ?? []
 
   const addSection = () => {
-    const newSection: Section = {
+    const newSection: TimelineSection = {
       id: crypto.randomUUID(),
       name: '',
       entries: [],
     }
-    setData((prev) => ({ ...prev, sections: [...(prev.sections ?? []), newSection] }))
+    setData((prev) => ({ ...prev, timeline: [...(prev.timeline ?? []), newSection] }))
   }
 
-  const updateSection = (index: number, section: Section) => {
+  const updateSection = (index: number, section: TimelineSection) => {
     setData((prev) => {
-      const next = [...(prev.sections ?? [])]
+      const next = [...(prev.timeline ?? [])]
       next[index] = section
-      return { ...prev, sections: next }
+      return { ...prev, timeline: next }
     })
   }
 
   const removeSection = (index: number) => {
     setData((prev) => ({
       ...prev,
-      sections: (prev.sections ?? []).filter((_, i) => i !== index),
+      timeline: (prev.timeline ?? []).filter((_, i) => i !== index),
     }))
   }
 
   return (
     <div>
-      {sections.map((section, i) => (
+      {timeline.map((section, i) => (
         <SectionPanel
           key={section.id}
           section={section}

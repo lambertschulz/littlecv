@@ -116,8 +116,8 @@ interface Props {
 
 export function ModernTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
-  const { profile, skills } = data
-  const sections = data.sections ?? []
+  const { profile, skillSections } = data
+  const timeline = data.timeline ?? []
 
   const contactParts: string[] = []
   if (profile.email) contactParts.push(profile.email)
@@ -145,8 +145,8 @@ export function ModernTemplate({ data, theme }: Props) {
 
         <View style={styles.divider} />
 
-        {/* Sections */}
-        {sections.map((section) =>
+        {/* Timeline Sections */}
+        {timeline.map((section) =>
           section.entries.length > 0 ? (
             <View key={section.id} style={styles.section}>
               <Text style={styles.sectionTitle}>{section.name}</Text>
@@ -167,19 +167,21 @@ export function ModernTemplate({ data, theme }: Props) {
           ) : null
         )}
 
-        {/* Skills */}
-        {skills.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Kenntnisse</Text>
-            <View style={styles.sectionDivider} />
-            <View style={styles.skillsRow}>
-              {skills.map((skill) => (
-                <Text key={skill.id} style={styles.skillPill}>
-                  {skill.label}{skill.level ? ` · ${skill.level}` : ''}
-                </Text>
-              ))}
+        {/* Skill Sections */}
+        {(skillSections ?? []).map((skillSection) =>
+          skillSection.skills.length > 0 ? (
+            <View key={skillSection.id} style={styles.section}>
+              <Text style={styles.sectionTitle}>{skillSection.name}</Text>
+              <View style={styles.sectionDivider} />
+              <View style={styles.skillsRow}>
+                {skillSection.skills.map((skill) => (
+                  <Text key={skill.id} style={styles.skillPill}>
+                    {skill.label}{skill.level ? ` · ${skill.level}` : ''}
+                  </Text>
+                ))}
+              </View>
             </View>
-          </View>
+          ) : null
         )}
     </Page>
   )

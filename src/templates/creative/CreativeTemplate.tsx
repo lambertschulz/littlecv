@@ -131,8 +131,8 @@ interface Props {
 
 export function CreativeTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
-  const { profile, skills } = data
-  const sections = data.sections ?? []
+  const { profile, skillSections } = data
+  const timeline = data.timeline ?? []
 
   return (
     <Page size="A4" style={styles.page}>
@@ -160,26 +160,28 @@ export function CreativeTemplate({ data, theme }: Props) {
         ) : null}
         {profile.website ? <Text style={styles.contactItem}>{profile.website}</Text> : null}
 
-        {/* Skills */}
-        {skills.length > 0 ? (
-          <>
-            <View style={styles.accentDivider} />
-            <Text style={styles.sidebarSectionLabel}>Kenntnisse</Text>
-            {skills.map((skill) => (
-              <Text key={skill.id} style={styles.skillLabel}>
-                {skill.label}
-                {skill.level ? (
-                  <Text style={styles.skillLevel}> · {skill.level}</Text>
-                ) : null}
-              </Text>
-            ))}
-          </>
-        ) : null}
+        {/* Skill Sections */}
+        {(skillSections ?? []).map((skillSection) =>
+          skillSection.skills.length > 0 ? (
+            <View key={skillSection.id}>
+              <View style={styles.accentDivider} />
+              <Text style={styles.sidebarSectionLabel}>{skillSection.name}</Text>
+              {skillSection.skills.map((skill) => (
+                <Text key={skill.id} style={styles.skillLabel}>
+                  {skill.label}
+                  {skill.level ? (
+                    <Text style={styles.skillLevel}> · {skill.level}</Text>
+                  ) : null}
+                </Text>
+              ))}
+            </View>
+          ) : null
+        )}
       </View>
 
       {/* Main area */}
       <View style={styles.main}>
-        {sections.map((section) =>
+        {timeline.map((section) =>
           section.entries.length > 0 ? (
             <View key={section.id} style={styles.section}>
               <Text style={styles.sectionTitle}>{section.name}</Text>

@@ -126,8 +126,8 @@ interface Props {
 
 export function ElegantTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
-  const { profile, skills } = data
-  const sections = data.sections ?? []
+  const { profile, skillSections } = data
+  const timeline = data.timeline ?? []
 
   const contactParts: string[] = []
   if (profile.email) contactParts.push(profile.email)
@@ -161,8 +161,8 @@ export function ElegantTemplate({ data, theme }: Props) {
         <View style={styles.lineBottom} />
       </View>
 
-      {/* Sections */}
-      {sections.map((section) =>
+      {/* Timeline Sections */}
+      {timeline.map((section) =>
         section.entries.length > 0 ? (
           <View key={section.id} style={styles.section}>
             <Text style={styles.sectionTitle}>{section.name}</Text>
@@ -184,18 +184,20 @@ export function ElegantTemplate({ data, theme }: Props) {
         ) : null
       )}
 
-      {/* Skills as outlined pills */}
-      {skills.length > 0 && (
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Kenntnisse</Text>
-          <View style={styles.skillsRow}>
-            {skills.map((s, i) => (
-              <View key={i} style={styles.skillPill}>
-                <Text style={styles.skillPillText}>{s.label}</Text>
-              </View>
-            ))}
+      {/* Skill Sections as outlined pills */}
+      {(skillSections ?? []).map((skillSection) =>
+        skillSection.skills.length > 0 ? (
+          <View key={skillSection.id} style={styles.section}>
+            <Text style={styles.sectionTitle}>{skillSection.name}</Text>
+            <View style={styles.skillsRow}>
+              {skillSection.skills.map((s) => (
+                <View key={s.id} style={styles.skillPill}>
+                  <Text style={styles.skillPillText}>{s.label}</Text>
+                </View>
+              ))}
+            </View>
           </View>
-        </View>
+        ) : null
       )}
     </Page>
   )

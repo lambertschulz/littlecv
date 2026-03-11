@@ -109,8 +109,8 @@ interface Props {
 
 export function ClassicTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
-  const { profile, skills } = data
-  const sections = data.sections ?? []
+  const { profile, skillSections } = data
+  const timeline = data.timeline ?? []
   const isBlock = theme.headerStyle === 'block'
 
   const sectionTitleStyle = isBlock ? styles.sectionTitleBlock : styles.sectionTitleUnderline
@@ -137,8 +137,8 @@ export function ClassicTemplate({ data, theme }: Props) {
         </View>
       </View>
 
-      {/* Sections */}
-      {sections.map((section) =>
+      {/* Timeline Sections */}
+      {timeline.map((section) =>
         section.entries.length > 0 ? (
           <View key={section.id} style={styles.section}>
             <Text style={sectionTitleStyle}>{section.name}</Text>
@@ -158,14 +158,16 @@ export function ClassicTemplate({ data, theme }: Props) {
         ) : null
       )}
 
-      {/* Skills */}
-      {skills.length > 0 && (
-        <View style={styles.section}>
-          <Text style={sectionTitleStyle}>Kenntnisse</Text>
-          <Text style={styles.skillsText}>
-            {skills.map((s) => s.label).join(' · ')}
-          </Text>
-        </View>
+      {/* Skill Sections */}
+      {(skillSections ?? []).map((skillSection) =>
+        skillSection.skills.length > 0 ? (
+          <View key={skillSection.id} style={styles.section}>
+            <Text style={sectionTitleStyle}>{skillSection.name}</Text>
+            <Text style={styles.skillsText}>
+              {skillSection.skills.map((s) => s.label).join(' · ')}
+            </Text>
+          </View>
+        ) : null
       )}
     </Page>
   )

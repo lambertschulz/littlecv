@@ -37,15 +37,15 @@
       "type": "file"
     },
     {
-      "path": "src/templates/classic/ClassicTemplate.tsx",
-      "accessCount": 21,
-      "lastAccessed": 1773219577828,
+      "path": "src/types/cv.ts",
+      "accessCount": 23,
+      "lastAccessed": 1773254019599,
       "type": "file"
     },
     {
-      "path": "src/types/cv.ts",
-      "accessCount": 21,
-      "lastAccessed": 1773233699097,
+      "path": "src/templates/classic/ClassicTemplate.tsx",
+      "accessCount": 23,
+      "lastAccessed": 1773254111544,
       "type": "file"
     },
     {
@@ -62,14 +62,20 @@
     },
     {
       "path": "src/templates/modern/ModernTemplate.tsx",
-      "accessCount": 17,
-      "lastAccessed": 1773228395621,
+      "accessCount": 19,
+      "lastAccessed": 1773254098030,
       "type": "file"
     },
     {
       "path": "src/state/atoms.ts",
-      "accessCount": 16,
-      "lastAccessed": 1773234825888,
+      "accessCount": 18,
+      "lastAccessed": 1773254024427,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/SectionsEditor.tsx",
+      "accessCount": 12,
+      "lastAccessed": 1773254041136,
       "type": "file"
     },
     {
@@ -103,16 +109,16 @@
       "type": "file"
     },
     {
-      "path": "src/components/editor/SectionsEditor.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1773232599189,
-      "type": "file"
-    },
-    {
       "path": "",
       "accessCount": 10,
       "lastAccessed": 1773235269205,
       "type": "directory"
+    },
+    {
+      "path": "src/components/editor/SkillsSection.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1773254066719,
+      "type": "file"
     },
     {
       "path": "src/fonts/register.ts",
@@ -148,12 +154,6 @@
       "path": "src/components/editor/ProfileSection.tsx",
       "accessCount": 7,
       "lastAccessed": 1773232586744,
-      "type": "file"
-    },
-    {
-      "path": "src/components/editor/SkillsSection.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1773232603461,
       "type": "file"
     },
     {
@@ -200,8 +200,8 @@
     },
     {
       "path": "src/components/editor/EditorPanel.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1773228117252,
+      "accessCount": 6,
+      "lastAccessed": 1773253995907,
       "type": "file"
     },
     {
@@ -238,6 +238,18 @@
       "path": "public/thumbnails/classic.svg",
       "accessCount": 3,
       "lastAccessed": 1773219449730,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/minimalist/MinimalistTemplate.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773254125275,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/creative/CreativeTemplate.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773254158423,
       "type": "file"
     },
     {
@@ -307,21 +319,9 @@
       "type": "file"
     },
     {
-      "path": "src/templates/minimalist/MinimalistTemplate.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1773219550278,
-      "type": "file"
-    },
-    {
       "path": "src/templates/minimalist/MinimalistCoverLetter.tsx",
       "accessCount": 1,
       "lastAccessed": 1773219556716,
-      "type": "file"
-    },
-    {
-      "path": "src/templates/creative/CreativeTemplate.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1773219561539,
       "type": "file"
     },
     {
