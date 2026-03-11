@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import Cropper from 'react-easy-crop'
 import type { Area } from 'react-easy-crop'
+import { Button } from '@/components/ui/button'
 
 interface PhotoUploadProps {
   value?: string
@@ -85,18 +86,12 @@ export function PhotoUpload({ value, onChange }: PhotoUploadProps) {
           />
         </div>
         <div className="flex gap-2">
-          <button
-            onClick={handleSave}
-            className="px-4 py-1.5 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
-          >
+          <Button onClick={handleSave}>
             Übernehmen
-          </button>
-          <button
-            onClick={handleCancel}
-            className="px-4 py-1.5 text-sm text-gray-600 border border-gray-300 rounded hover:bg-gray-50"
-          >
+          </Button>
+          <Button variant="outline" onClick={handleCancel}>
             Abbrechen
-          </button>
+          </Button>
         </div>
       </div>
     )
@@ -108,14 +103,15 @@ export function PhotoUpload({ value, onChange }: PhotoUploadProps) {
         <img src={value} alt="Foto" className="w-16 h-16 rounded-full object-cover" />
       )}
       <div className="flex gap-2">
-        <label className="cursor-pointer text-sm text-blue-600 hover:underline">
+        <label className="cursor-pointer text-sm text-primary hover:underline">
           {value ? 'Ändern' : 'Foto hochladen'}
           <input type="file" accept="image/*" className="hidden" onChange={handleFile} />
         </label>
         {value && (
           <>
-            <button
-              className="text-sm text-blue-600 hover:underline"
+            <Button
+              variant="link"
+              className="px-0 text-sm"
               onClick={() => {
                 setRawImage(value)
                 setCrop({ x: 0, y: 0 })
@@ -123,10 +119,14 @@ export function PhotoUpload({ value, onChange }: PhotoUploadProps) {
               }}
             >
               Zuschneiden
-            </button>
-            <button className="text-sm text-red-500 hover:underline" onClick={() => onChange(undefined)}>
+            </Button>
+            <Button
+              variant="link"
+              className="px-0 text-sm text-destructive"
+              onClick={() => onChange(undefined)}
+            >
               Entfernen
-            </button>
+            </Button>
           </>
         )}
       </div>
