@@ -38,17 +38,12 @@ export function SkillsSection() {
               value={item.label}
               onChange={(e) => updateItem(i, 'label', e.target.value)}
             />
-            <select
+            <input
               className={inputClass}
+              placeholder="Level (z.B. Fortgeschritten, 5 Jahre, C1)"
               value={item.level ?? ''}
               onChange={(e) => updateItem(i, 'level', e.target.value)}
-            >
-              <option value="">Kein Level</option>
-              <option value="beginner">Anfänger</option>
-              <option value="intermediate">Mittelstufe</option>
-              <option value="advanced">Fortgeschritten</option>
-              <option value="expert">Experte</option>
-            </select>
+            />
           </div>
         )}
       />

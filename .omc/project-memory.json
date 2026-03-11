@@ -32,8 +32,8 @@
   "hotPaths": [
     {
       "path": "src/components/Preview.tsx",
-      "accessCount": 15,
-      "lastAccessed": 1773179398197,
+      "accessCount": 16,
+      "lastAccessed": 1773179498983,
       "type": "file"
     },
     {
@@ -62,8 +62,8 @@
     },
     {
       "path": "src/types/cv.ts",
-      "accessCount": 7,
-      "lastAccessed": 1773178033462,
+      "accessCount": 8,
+      "lastAccessed": 1773179510076,
       "type": "file"
     },
     {
@@ -124,6 +124,12 @@
       "path": "src/components/editor/EditorPanel.tsx",
       "accessCount": 3,
       "lastAccessed": 1773178060610,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/SkillsSection.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773179516350,
       "type": "file"
     },
     {
@@ -226,12 +232,6 @@
       "path": "src/components/editor/ProfileSection.tsx",
       "accessCount": 1,
       "lastAccessed": 1773175206537,
-      "type": "file"
-    },
-    {
-      "path": "src/components/editor/SkillsSection.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1773175225334,
       "type": "file"
     },
     {

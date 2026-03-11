@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback, createElement } from 'react'
+import { useState, useEffect, useMemo, createElement } from 'react'
 import { Document, pdf } from '@react-pdf/renderer'
 import { useAtomValue } from 'jotai'
 import { cvDataAtom, activeTemplateKeyAtom, activeThemeAtom } from '../state/atoms'

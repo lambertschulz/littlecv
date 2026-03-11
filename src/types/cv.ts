@@ -25,7 +25,7 @@ export interface Section {
 export interface Skill {
   id: string
   label: string
-  level?: 'beginner' | 'intermediate' | 'advanced' | 'expert'
+  level?: string
 }
 
 export interface CoverLetter {
