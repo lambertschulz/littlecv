@@ -1,7 +1,7 @@
 {
   "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"rm -f /Users/adrian/repos/littlecv/src/fonts/files/*.ttf /Users/adrian/repos/littlecv/src/fonts/files/*.woff 2>/dev/null; cd /Users/adrian/repos/littlecv/src/fonts/files && cp ../../node_m...",
-  "error": "Exit code 1\n(eval):1: no matches found: /Users/adrian/repos/littlecv/src/fonts/files/*.ttf\ncp: ../../node_modules/@fontsource/inter/files/inter-latin-400-normal.woff: No such file or directory",
-  "timestamp": "2026-03-10T21:03:20.709Z",
-  "retry_count": 2
+  "tool_input_preview": "{\"command\":\"npm run build 2>&1\",\"description\":\"Run production build\"}",
+  "error": "Exit code 2\n\n> littlecv@0.0.0 build\n> tsc -b && vite build\n\nsrc/components/editor/SectionsEditor.tsx(35,7): error TS2322: Type '{ children: Element[]; title: string; actions: Element; }' is not assignable to type 'IntrinsicAttributes & CollapsiblePanelProps'.\n  Property 'actions' does not exist on type 'IntrinsicAttributes & CollapsiblePanelProps'.",
+  "timestamp": "2026-03-11T08:21:12.949Z",
+  "retry_count": 1
 }

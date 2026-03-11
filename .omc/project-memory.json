@@ -115,6 +115,12 @@
       "type": "file"
     },
     {
+      "path": "src/components/shared/CollapsiblePanel.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1773217289753,
+      "type": "file"
+    },
+    {
       "path": "src/templates",
       "accessCount": 3,
       "lastAccessed": 1773177221978,
@@ -190,12 +196,6 @@
       "path": "src/components/editor/EducationSection.tsx",
       "accessCount": 2,
       "lastAccessed": 1773178022256,
-      "type": "file"
-    },
-    {
-      "path": "src/components/shared/CollapsiblePanel.tsx",
-      "accessCount": 2,
-      "lastAccessed": 1773178966260,
       "type": "file"
     },
     {
