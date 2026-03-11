@@ -22,9 +22,9 @@ export function ThemeEditor() {
   }
 
   return (
-    <div>
+    <div className="w-full overflow-hidden">
       <p className="text-xs font-medium text-muted-foreground mb-3">Design</p>
-      <div className="flex flex-wrap gap-4 items-end">
+      <div className="flex flex-wrap gap-4 items-end w-full">
         {template.themeSchema.map((field) => (
           <div key={field.key} className="flex flex-col gap-1.5">
             <Label className="text-xs">{field.label}</Label>

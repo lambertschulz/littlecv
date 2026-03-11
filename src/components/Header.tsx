@@ -16,7 +16,10 @@ interface HeaderProps {
 export function Header({ onExportPdf, onExportJson, onImportJson }: HeaderProps) {
   return (
     <header className="h-14 border-b flex items-center px-4 shrink-0 justify-between bg-background">
-      <h1 className="text-lg font-bold">Bewerbungsmappe</h1>
+      <h1 className="text-lg font-bold">
+        <span className="hidden sm:inline">Bewerbungsmappe</span>
+        <span className="sm:hidden">Bewerbung</span>
+      </h1>
 
       <DropdownMenu>
         <DropdownMenuTrigger

@@ -43,7 +43,7 @@ export function BottomTabBar() {
   const [activeView, setActiveView] = useAtom(activeViewAtom)
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 h-14 border-t bg-background flex md:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 border-t bg-background flex md:hidden z-50 pb-[env(safe-area-inset-bottom)]">
       {tabs.map(({ view, label, icon }) => (
         <Button
           key={view}
