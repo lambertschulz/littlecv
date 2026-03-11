@@ -44,8 +44,8 @@
     },
     {
       "path": "src/types/cv.ts",
-      "accessCount": 19,
-      "lastAccessed": 1773229215884,
+      "accessCount": 21,
+      "lastAccessed": 1773233699097,
       "type": "file"
     },
     {
@@ -61,15 +61,15 @@
       "type": "file"
     },
     {
-      "path": "src/App.tsx",
-      "accessCount": 12,
-      "lastAccessed": 1773229215050,
+      "path": "src/state/atoms.ts",
+      "accessCount": 15,
+      "lastAccessed": 1773233782708,
       "type": "file"
     },
     {
-      "path": "src/state/atoms.ts",
-      "accessCount": 12,
-      "lastAccessed": 1773229215455,
+      "path": "src/App.tsx",
+      "accessCount": 14,
+      "lastAccessed": 1773233827017,
       "type": "file"
     },
     {
@@ -97,15 +97,15 @@
       "type": "file"
     },
     {
-      "path": "src/fonts/register.ts",
-      "accessCount": 8,
-      "lastAccessed": 1773228393037,
+      "path": "src/components/editor/SectionsEditor.tsx",
+      "accessCount": 10,
+      "lastAccessed": 1773232599189,
       "type": "file"
     },
     {
-      "path": "src/components/editor/SectionsEditor.tsx",
+      "path": "src/fonts/register.ts",
       "accessCount": 8,
-      "lastAccessed": 1773228395399,
+      "lastAccessed": 1773228393037,
       "type": "file"
     },
     {
@@ -115,9 +115,39 @@
       "type": "directory"
     },
     {
+      "path": "src/components/shared/CollapsiblePanel.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1773232624332,
+      "type": "file"
+    },
+    {
+      "path": "src/components/shared/PhotoUpload.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1773232744347,
+      "type": "file"
+    },
+    {
       "path": "src/main.tsx",
       "accessCount": 7,
       "lastAccessed": 1773228114627,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/ProfileSection.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1773232586744,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/SkillsSection.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1773232603461,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/CoverLetterSection.tsx",
+      "accessCount": 7,
+      "lastAccessed": 1773232610488,
       "type": "file"
     },
     {
@@ -133,12 +163,6 @@
       "type": "file"
     },
     {
-      "path": "src/components/shared/CollapsiblePanel.tsx",
-      "accessCount": 6,
-      "lastAccessed": 1773228117406,
-      "type": "file"
-    },
-    {
       "path": "src/templates/modern/theme.ts",
       "accessCount": 6,
       "lastAccessed": 1773228398340,
@@ -151,51 +175,39 @@
       "type": "file"
     },
     {
+      "path": "src/components/Toolbar.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1773233779936,
+      "type": "file"
+    },
+    {
+      "path": "src/components/SplitPane.tsx",
+      "accessCount": 6,
+      "lastAccessed": 1773233783482,
+      "type": "file"
+    },
+    {
       "path": "src/components/editor/EditorPanel.tsx",
       "accessCount": 5,
       "lastAccessed": 1773228117252,
       "type": "file"
     },
     {
-      "path": "src/components/editor/ProfileSection.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1773228395268,
-      "type": "file"
-    },
-    {
-      "path": "src/components/editor/SkillsSection.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1773228400682,
-      "type": "file"
-    },
-    {
-      "path": "src/components/editor/CoverLetterSection.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1773228400838,
-      "type": "file"
-    },
-    {
-      "path": "src/components/shared/PhotoUpload.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1773228403676,
-      "type": "file"
-    },
-    {
-      "path": "src/components/Toolbar.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1773229220294,
-      "type": "file"
-    },
-    {
-      "path": "src/components/SplitPane.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1773229220822,
-      "type": "file"
-    },
-    {
       "path": "src/components/theme/ThemeEditor.tsx",
       "accessCount": 5,
       "lastAccessed": 1773229221349,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/CoverPageSection.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1773232614725,
+      "type": "file"
+    },
+    {
+      "path": "src/components/shared/SortableList.tsx",
+      "accessCount": 5,
+      "lastAccessed": 1773232631282,
       "type": "file"
     },
     {
@@ -226,18 +238,6 @@
       "path": "public/thumbnails/classic.svg",
       "accessCount": 3,
       "lastAccessed": 1773219449730,
-      "type": "file"
-    },
-    {
-      "path": "src/components/shared/SortableList.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1773228401057,
-      "type": "file"
-    },
-    {
-      "path": "src/components/editor/CoverPageSection.tsx",
-      "accessCount": 3,
-      "lastAccessed": 1773228403503,
       "type": "file"
     },
     {
