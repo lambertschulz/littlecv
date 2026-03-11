@@ -25,7 +25,7 @@ export function ProfileSection() {
         <input className={inputClass} placeholder="Titel / Berufsbezeichnung" value={profile.title} onChange={(e) => update('title', e.target.value)} />
         <input className={inputClass} placeholder="E-Mail" type="email" value={profile.email} onChange={(e) => update('email', e.target.value)} />
         <input className={inputClass} placeholder="Telefon" value={profile.phone} onChange={(e) => update('phone', e.target.value)} />
-        <input className={inputClass} placeholder="Adresse (optional)" value={profile.address ?? ''} onChange={(e) => update('address', e.target.value)} />
+        <textarea className={inputClass} placeholder="Adresse (optional, mehrzeilig)" rows={2} value={profile.address ?? ''} onChange={(e) => update('address', e.target.value)} />
         <input className={inputClass} placeholder="Website (optional)" value={profile.website ?? ''} onChange={(e) => update('website', e.target.value)} />
       </div>
     </CollapsiblePanel>

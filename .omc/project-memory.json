@@ -38,14 +38,14 @@
     },
     {
       "path": "src/templates/classic/ClassicTemplate.tsx",
-      "accessCount": 14,
-      "lastAccessed": 1773178236915,
+      "accessCount": 15,
+      "lastAccessed": 1773214931246,
       "type": "file"
     },
     {
       "path": "src/templates/modern/ModernTemplate.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1773178232256,
+      "accessCount": 11,
+      "lastAccessed": 1773214926142,
       "type": "file"
     },
     {
@@ -139,6 +139,18 @@
       "type": "file"
     },
     {
+      "path": "src/components/editor/ProfileSection.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773214914273,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/CoverLetterSection.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773214943885,
+      "type": "file"
+    },
+    {
       "path": "project-brief.md",
       "accessCount": 2,
       "lastAccessed": 1773171691340,
@@ -226,18 +238,6 @@
       "path": "src/components/shared/SortableList.tsx",
       "accessCount": 1,
       "lastAccessed": 1773175198153,
-      "type": "file"
-    },
-    {
-      "path": "src/components/editor/ProfileSection.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1773175206537,
-      "type": "file"
-    },
-    {
-      "path": "src/components/editor/CoverLetterSection.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1773175232684,
       "type": "file"
     },
     {

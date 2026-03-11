@@ -47,9 +47,10 @@ export function CoverLetterSection() {
             value={coverLetter.recipient}
             onChange={(e) => update('recipient', e.target.value)}
           />
-          <input
+          <textarea
             className={inputClass}
-            placeholder="Empfängeradresse (optional)"
+            placeholder="Empfängeradresse (optional, mehrzeilig)"
+            rows={2}
             value={coverLetter.recipientAddress ?? ''}
             onChange={(e) => update('recipientAddress', e.target.value)}
           />

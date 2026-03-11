@@ -122,7 +122,7 @@ export function ModernTemplate({ data, theme }: Props) {
   const contactParts: string[] = []
   if (profile.email) contactParts.push(profile.email)
   if (profile.phone) contactParts.push(profile.phone)
-  if (profile.address) contactParts.push(profile.address)
+  if (profile.address) contactParts.push(profile.address.replace(/\n/g, ', '))
   if (profile.website) contactParts.push(profile.website)
 
   return (
