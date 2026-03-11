@@ -1,5 +1,4 @@
 import { useAtom, useAtomValue } from 'jotai'
-import { useState } from 'react'
 import {
   cvDataAtom,
   activeTemplateKeyAtom,
@@ -7,12 +6,9 @@ import {
   templateThemesAtom,
 } from './state/atoms'
 import { getTemplate } from './templates/registry'
-import { SplitPane } from './components/SplitPane'
-import { Toolbar } from './components/Toolbar'
-import { EditorPanel } from './components/editor/EditorPanel'
-import { Preview } from './components/Preview'
-import { ThemeEditor } from './components/theme/ThemeEditor'
-import { FontManager } from './components/theme/FontManager'
+import { Header } from './components/Header'
+import { MainLayout } from './components/MainLayout'
+import { BottomTabBar } from './components/BottomTabBar'
 import { exportPdf } from './services/export-pdf'
 import { exportJson, importJson } from './services/export-json'
 import type { ExportScope } from './types/cv'
@@ -22,7 +18,6 @@ function App() {
   const [templateKey, setTemplateKey] = useAtom(activeTemplateKeyAtom)
   const theme = useAtomValue(activeThemeAtom)
   const [themes, setThemes] = useAtom(templateThemesAtom)
-  const [showTheme, setShowTheme] = useState(false)
 
   const handleExportPdf = async (scope: ExportScope) => {
     const template = getTemplate(templateKey)
@@ -52,22 +47,13 @@ function App() {
 
   return (
     <div className="flex flex-col h-screen">
-      <Toolbar
+      <Header
         onExportPdf={handleExportPdf}
         onExportJson={handleExportJson}
         onImportJson={handleImportJson}
-        onToggleTheme={() => setShowTheme((v) => !v)}
       />
-      {showTheme && (
-        <>
-          <ThemeEditor />
-          <FontManager />
-        </>
-      )}
-      <SplitPane
-        editor={<EditorPanel />}
-        preview={<Preview />}
-      />
+      <MainLayout />
+      <BottomTabBar />
     </div>
   )
 }

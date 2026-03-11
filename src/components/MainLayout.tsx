@@ -1,0 +1,48 @@
+import { useAtomValue } from 'jotai'
+import { activeViewAtom } from '@/state/atoms'
+import { EditorPanel } from '@/components/editor/EditorPanel'
+import { Preview } from '@/components/Preview'
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs'
+
+export function MainLayout() {
+  const activeView = useAtomValue(activeViewAtom)
+
+  return (
+    <div className="flex flex-1 overflow-hidden">
+      {/* Desktop: side-by-side with tabs on left */}
+      <div className="hidden md:flex flex-1 overflow-hidden">
+        <div className="w-1/2 overflow-y-auto border-r flex flex-col">
+          <Tabs defaultValue="editor" className="flex flex-col flex-1">
+            <TabsList className="shrink-0 w-full justify-start rounded-none border-b px-4">
+              <TabsTrigger value="editor">Editor</TabsTrigger>
+              <TabsTrigger value="style">Style</TabsTrigger>
+            </TabsList>
+            <TabsContent value="editor" className="flex-1 overflow-y-auto m-0">
+              <EditorPanel />
+            </TabsContent>
+            <TabsContent value="style" className="flex-1 overflow-y-auto m-0">
+              <div className="p-4 text-muted-foreground">Style panel coming soon</div>
+            </TabsContent>
+          </Tabs>
+        </div>
+        <div className="w-1/2 overflow-y-auto bg-muted">
+          <Preview />
+        </div>
+      </div>
+
+      {/* Mobile: single panel driven by activeViewAtom */}
+      <div className="flex md:hidden flex-1 overflow-y-auto pb-14">
+        {activeView === 'editor' && <EditorPanel />}
+        {activeView === 'style' && (
+          <div className="p-4 text-muted-foreground">Style panel coming soon</div>
+        )}
+        {activeView === 'preview' && <Preview />}
+      </div>
+    </div>
+  )
+}
