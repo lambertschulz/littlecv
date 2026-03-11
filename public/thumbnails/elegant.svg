@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+  <rect width="300" height="400" fill="#ffffff"/>
+
+  <!-- Header: name (left-aligned) -->
+  <rect x="32" y="32" width="130" height="13" rx="1" fill="#7c3aed"/>
+
+  <!-- Title in accentColor -->
+  <rect x="32" y="50" width="85" height="8" rx="1" fill="#a78bfa"/>
+
+  <!-- Contact row -->
+  <rect x="32" y="64" width="38" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="74" y="64" width="3" height="5" rx="1" fill="#d1d5db"/>
+  <rect x="81" y="64" width="45" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="130" y="64" width="3" height="5" rx="1" fill="#d1d5db"/>
+  <rect x="137" y="64" width="50" height="5" rx="1" fill="#9ca3af"/>
+
+  <!-- Photo circle (top-right, accentColor border) -->
+  <circle cx="245" cy="54" r="22" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+  <circle cx="245" cy="54" r="20" fill="#f3e8ff"/>
+
+  <!-- Double-line accent: primaryColor 2px + accentColor 1px -->
+  <rect x="32" y="84" width="236" height="2" fill="#7c3aed"/>
+  <rect x="32" y="87" width="236" height="1" fill="#a78bfa"/>
+
+  <!-- Section 1 title with left accent border -->
+  <rect x="32" y="100" width="3" height="10" fill="#a78bfa"/>
+  <rect x="39" y="102" width="55" height="6" rx="1" fill="#7c3aed"/>
+
+  <!-- Entry 1 -->
+  <rect x="32" y="118" width="95" height="6" rx="1" fill="#111827"/>
+  <rect x="210" y="119" width="38" height="5" rx="1" fill="#a78bfa"/>
+  <rect x="32" y="128" width="70" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="32" y="136" width="165" height="4" rx="1" fill="#d1d5db"/>
+
+  <!-- Entry 2 -->
+  <rect x="32" y="148" width="88" height="6" rx="1" fill="#111827"/>
+  <rect x="210" y="149" width="38" height="5" rx="1" fill="#a78bfa"/>
+  <rect x="32" y="158" width="62" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="32" y="166" width="158" height="4" rx="1" fill="#d1d5db"/>
+
+  <!-- Section 2 title with left accent border -->
+  <rect x="32" y="182" width="3" height="10" fill="#a78bfa"/>
+  <rect x="39" y="184" width="62" height="6" rx="1" fill="#7c3aed"/>
+
+  <!-- Entry 3 -->
+  <rect x="32" y="200" width="82" height="6" rx="1" fill="#111827"/>
+  <rect x="210" y="201" width="38" height="5" rx="1" fill="#a78bfa"/>
+  <rect x="32" y="210" width="58" height="5" rx="1" fill="#9ca3af"/>
+  <rect x="32" y="218" width="150" height="4" rx="1" fill="#d1d5db"/>
+
+  <!-- Entry 4 -->
+  <rect x="32" y="230" width="78" height="6" rx="1" fill="#111827"/>
+  <rect x="210" y="231" width="38" height="5" rx="1" fill="#a78bfa"/>
+  <rect x="32" y="240" width="52" height="5" rx="1" fill="#9ca3af"/>
+
+  <!-- Section 3 title with left accent border -->
+  <rect x="32" y="260" width="3" height="10" fill="#a78bfa"/>
+  <rect x="39" y="262" width="48" height="6" rx="1" fill="#7c3aed"/>
+
+  <!-- Entry 5 -->
+  <rect x="32" y="278" width="90" height="6" rx="1" fill="#111827"/>
+  <rect x="210" y="279" width="38" height="5" rx="1" fill="#a78bfa"/>
+  <rect x="32" y="288" width="65" height="5" rx="1" fill="#9ca3af"/>
+
+  <!-- Skills section title with left accent border -->
+  <rect x="32" y="308" width="3" height="10" fill="#a78bfa"/>
+  <rect x="39" y="310" width="44" height="6" rx="1" fill="#7c3aed"/>
+
+  <!-- Skill pills: outlined, no fill, accentColor border -->
+  <rect x="32" y="324" width="42" height="14" rx="7" fill="none" stroke="#a78bfa" stroke-width="1"/>
+  <rect x="32" y="327" width="42" height="8" rx="1" fill="#a78bfa" opacity="0.15"/>
+  <rect x="82" y="324" width="50" height="14" rx="7" fill="none" stroke="#a78bfa" stroke-width="1"/>
+  <rect x="82" y="327" width="50" height="8" rx="1" fill="#a78bfa" opacity="0.15"/>
+  <rect x="140" y="324" width="46" height="14" rx="7" fill="none" stroke="#a78bfa" stroke-width="1"/>
+  <rect x="140" y="327" width="46" height="8" rx="1" fill="#a78bfa" opacity="0.15"/>
+  <rect x="194" y="324" width="52" height="14" rx="7" fill="none" stroke="#a78bfa" stroke-width="1"/>
+  <rect x="194" y="327" width="52" height="8" rx="1" fill="#a78bfa" opacity="0.15"/>
+</svg>

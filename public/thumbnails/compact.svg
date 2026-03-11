@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+  <!-- Page background -->
+  <rect width="300" height="400" fill="#ffffff" rx="3"/>
+  <!-- Page border -->
+  <rect width="300" height="400" fill="none" stroke="#e5e7eb" stroke-width="1" rx="3"/>
+
+  <!-- Header area -->
+  <!-- Photo circle -->
+  <circle cx="36" cy="34" r="16" fill="#d1fae5"/>
+
+  <!-- Name -->
+  <rect x="60" y="22" width="100" height="7" fill="#059669" rx="1"/>
+  <!-- Title -->
+  <rect x="60" y="33" width="72" height="5" fill="#d1d5db" rx="1"/>
+  <!-- Contact items -->
+  <rect x="60" y="42" width="48" height="4" fill="#e5e7eb" rx="1"/>
+  <rect x="113" y="42" width="40" height="4" fill="#e5e7eb" rx="1"/>
+  <rect x="158" y="42" width="52" height="4" fill="#e5e7eb" rx="1"/>
+
+  <!-- Divider -->
+  <rect x="20" y="58" width="260" height="1" fill="#059669"/>
+
+  <!-- Left column (60%) -->
+  <!-- Section title -->
+  <rect x="20" y="66" width="68" height="5" fill="#059669" rx="1" opacity="0.85"/>
+  <rect x="20" y="71" width="148" height="1" fill="#059669" opacity="0.4"/>
+
+  <!-- Entry 1 -->
+  <rect x="20" y="76" width="90" height="5" fill="#374151" rx="1"/>
+  <rect x="118" y="76" width="30" height="5" fill="#d1d5db" rx="1"/>
+  <rect x="20" y="84" width="70" height="4" fill="#9ca3af" rx="1"/>
+  <rect x="20" y="91" width="148" height="3" fill="#e5e7eb" rx="1"/>
+  <rect x="20" y="97" width="130" height="3" fill="#e5e7eb" rx="1"/>
+
+  <!-- Entry 2 -->
+  <rect x="20" y="105" width="85" height="5" fill="#374151" rx="1"/>
+  <rect x="118" y="105" width="30" height="5" fill="#d1d5db" rx="1"/>
+  <rect x="20" y="113" width="65" height="4" fill="#9ca3af" rx="1"/>
+  <rect x="20" y="120" width="148" height="3" fill="#e5e7eb" rx="1"/>
+  <rect x="20" y="126" width="110" height="3" fill="#e5e7eb" rx="1"/>
+
+  <!-- Entry 3 -->
+  <rect x="20" y="134" width="88" height="5" fill="#374151" rx="1"/>
+  <rect x="118" y="134" width="30" height="5" fill="#d1d5db" rx="1"/>
+  <rect x="20" y="142" width="72" height="4" fill="#9ca3af" rx="1"/>
+  <rect x="20" y="149" width="148" height="3" fill="#e5e7eb" rx="1"/>
+  <rect x="20" y="155" width="100" height="3" fill="#e5e7eb" rx="1"/>
+
+  <!-- Entry 4 -->
+  <rect x="20" y="163" width="80" height="5" fill="#374151" rx="1"/>
+  <rect x="118" y="163" width="30" height="5" fill="#d1d5db" rx="1"/>
+  <rect x="20" y="171" width="60" height="4" fill="#9ca3af" rx="1"/>
+  <rect x="20" y="178" width="148" height="3" fill="#e5e7eb" rx="1"/>
+  <rect x="20" y="184" width="120" height="3" fill="#e5e7eb" rx="1"/>
+
+  <!-- Entry 5 -->
+  <rect x="20" y="192" width="92" height="5" fill="#374151" rx="1"/>
+  <rect x="118" y="192" width="30" height="5" fill="#d1d5db" rx="1"/>
+  <rect x="20" y="200" width="68" height="4" fill="#9ca3af" rx="1"/>
+  <rect x="20" y="207" width="148" height="3" fill="#e5e7eb" rx="1"/>
+  <rect x="20" y="213" width="90" height="3" fill="#e5e7eb" rx="1"/>
+
+  <!-- Right column (40%) -->
+  <!-- Section title 1 -->
+  <rect x="180" y="66" width="52" height="5" fill="#059669" rx="1" opacity="0.85"/>
+  <rect x="180" y="71" width="100" height="1" fill="#059669" opacity="0.4"/>
+
+  <!-- Education entry 1 -->
+  <rect x="180" y="76" width="75" height="5" fill="#374151" rx="1"/>
+  <rect x="180" y="84" width="55" height="4" fill="#9ca3af" rx="1"/>
+  <rect x="180" y="91" width="95" height="3" fill="#e5e7eb" rx="1"/>
+
+  <!-- Education entry 2 -->
+  <rect x="180" y="98" width="70" height="5" fill="#374151" rx="1"/>
+  <rect x="180" y="106" width="50" height="4" fill="#9ca3af" rx="1"/>
+  <rect x="180" y="113" width="88" height="3" fill="#e5e7eb" rx="1"/>
+
+  <!-- Education entry 3 -->
+  <rect x="180" y="120" width="78" height="5" fill="#374151" rx="1"/>
+  <rect x="180" y="128" width="60" height="4" fill="#9ca3af" rx="1"/>
+  <rect x="180" y="135" width="80" height="3" fill="#e5e7eb" rx="1"/>
+
+  <!-- Section title 2 (Skills) -->
+  <rect x="180" y="148" width="48" height="5" fill="#059669" rx="1" opacity="0.85"/>
+  <rect x="180" y="153" width="100" height="1" fill="#059669" opacity="0.4"/>
+
+  <!-- Skill pills row 1 -->
+  <rect x="180" y="158" width="30" height="9" fill="none" stroke="#059669" stroke-width="1" rx="3"/>
+  <rect x="183" y="161" width="24" height="3" fill="#059669" rx="1" opacity="0.6"/>
+  <rect x="214" y="158" width="34" height="9" fill="none" stroke="#059669" stroke-width="1" rx="3"/>
+  <rect x="217" y="161" width="28" height="3" fill="#059669" rx="1" opacity="0.6"/>
+  <rect x="252" y="158" width="28" height="9" fill="none" stroke="#059669" stroke-width="1" rx="3"/>
+  <rect x="255" y="161" width="22" height="3" fill="#059669" rx="1" opacity="0.6"/>
+
+  <!-- Skill pills row 2 -->
+  <rect x="180" y="171" width="36" height="9" fill="none" stroke="#059669" stroke-width="1" rx="3"/>
+  <rect x="183" y="174" width="30" height="3" fill="#059669" rx="1" opacity="0.6"/>
+  <rect x="220" y="171" width="28" height="9" fill="none" stroke="#059669" stroke-width="1" rx="3"/>
+  <rect x="223" y="174" width="22" height="3" fill="#059669" rx="1" opacity="0.6"/>
+  <rect x="252" y="171" width="28" height="9" fill="none" stroke="#059669" stroke-width="1" rx="3"/>
+  <rect x="255" y="174" width="22" height="3" fill="#059669" rx="1" opacity="0.6"/>
+
+  <!-- Skill pills row 3 -->
+  <rect x="180" y="184" width="32" height="9" fill="none" stroke="#059669" stroke-width="1" rx="3"/>
+  <rect x="183" y="187" width="26" height="3" fill="#059669" rx="1" opacity="0.6"/>
+  <rect x="216" y="184" width="38" height="9" fill="none" stroke="#059669" stroke-width="1" rx="3"/>
+  <rect x="219" y="187" width="32" height="3" fill="#059669" rx="1" opacity="0.6"/>
+
+  <!-- Section title 3 -->
+  <rect x="180" y="202" width="60" height="5" fill="#059669" rx="1" opacity="0.85"/>
+  <rect x="180" y="207" width="100" height="1" fill="#059669" opacity="0.4"/>
+
+  <!-- Section 3 entries -->
+  <rect x="180" y="212" width="72" height="4" fill="#374151" rx="1"/>
+  <rect x="180" y="219" width="55" height="3" fill="#9ca3af" rx="1"/>
+  <rect x="180" y="225" width="68" height="4" fill="#374151" rx="1"/>
+  <rect x="180" y="232" width="50" height="3" fill="#9ca3af" rx="1"/>
+</svg>
