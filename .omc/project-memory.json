@@ -55,21 +55,21 @@
       "type": "file"
     },
     {
-      "path": "src/components/Preview.tsx",
-      "accessCount": 20,
-      "lastAccessed": 1773236117215,
-      "type": "file"
-    },
-    {
       "path": "src/App.tsx",
-      "accessCount": 19,
-      "lastAccessed": 1773242718001,
+      "accessCount": 23,
+      "lastAccessed": 1773308832585,
       "type": "file"
     },
     {
       "path": "src/state/atoms.ts",
-      "accessCount": 18,
-      "lastAccessed": 1773254024427,
+      "accessCount": 21,
+      "lastAccessed": 1773307597144,
+      "type": "file"
+    },
+    {
+      "path": "src/components/Preview.tsx",
+      "accessCount": 21,
+      "lastAccessed": 1773308038229,
       "type": "file"
     },
     {
@@ -217,6 +217,18 @@
       "type": "file"
     },
     {
+      "path": "src/services/export-json.ts",
+      "accessCount": 6,
+      "lastAccessed": 1773308141003,
+      "type": "file"
+    },
+    {
+      "path": "src/services/export-pdf.ts",
+      "accessCount": 6,
+      "lastAccessed": 1773308836596,
+      "type": "file"
+    },
+    {
       "path": "src/components/editor/CoverPageSection.tsx",
       "accessCount": 5,
       "lastAccessed": 1773232614725,
@@ -286,18 +298,6 @@
       "path": "public/thumbnails/minimalist.svg",
       "accessCount": 2,
       "lastAccessed": 1773219582620,
-      "type": "file"
-    },
-    {
-      "path": "src/services/export-pdf.ts",
-      "accessCount": 2,
-      "lastAccessed": 1773228392645,
-      "type": "file"
-    },
-    {
-      "path": "src/services/export-json.ts",
-      "accessCount": 2,
-      "lastAccessed": 1773228393018,
       "type": "file"
     },
     {

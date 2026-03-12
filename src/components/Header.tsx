@@ -28,23 +28,23 @@ export function Header({ onExportPdf, onExportJson, onImportJson }: HeaderProps)
           Exportieren ▾
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onSelect={() => onExportPdf('all')}>
+          <DropdownMenuItem onClick={() => onExportPdf('all')}>
             PDF – Alles
           </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => onExportPdf('cv')}>
+          <DropdownMenuItem onClick={() => onExportPdf('cv')}>
             PDF – Nur Lebenslauf
           </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => onExportPdf('coverLetter')}>
+          <DropdownMenuItem onClick={() => onExportPdf('coverLetter')}>
             PDF – Nur Anschreiben
           </DropdownMenuItem>
-          <DropdownMenuItem onSelect={() => onExportPdf('coverPage')}>
+          <DropdownMenuItem onClick={() => onExportPdf('coverPage')}>
             PDF – Nur Deckblatt
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onSelect={onExportJson}>
+          <DropdownMenuItem onClick={onExportJson}>
             JSON Speichern
           </DropdownMenuItem>
-          <DropdownMenuItem onSelect={onImportJson}>
+          <DropdownMenuItem onClick={onImportJson}>
             JSON Laden
           </DropdownMenuItem>
         </DropdownMenuContent>

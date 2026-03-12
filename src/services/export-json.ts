@@ -1,9 +1,31 @@
-import type { CvData } from '../types/cv'
+import type { CvData, SkillSection } from '../types/cv'
 
 interface SaveData {
   cvData: CvData
   activeTemplate: string
   templateThemes: Record<string, object>
+}
+
+function migrateCvData(raw: Record<string, unknown>): CvData {
+  if ('sections' in raw && !('timeline' in raw)) {
+    raw.timeline = raw.sections
+    delete raw.sections
+  }
+  if ('skills' in raw && !('skillSections' in raw)) {
+    const skills = raw.skills as { id: string; label: string; level?: string }[]
+    if (Array.isArray(skills) && skills.length > 0) {
+      const section: SkillSection = {
+        id: crypto.randomUUID(),
+        name: 'Kenntnisse',
+        skills,
+      }
+      raw.skillSections = [section]
+    } else {
+      raw.skillSections = []
+    }
+    delete raw.skills
+  }
+  return raw as unknown as CvData
 }
 
 export function exportJson(data: SaveData): void {
@@ -13,8 +35,10 @@ export function exportJson(data: SaveData): void {
   const a = document.createElement('a')
   a.href = url
   a.download = 'bewerbung-daten.json'
+  document.body.appendChild(a)
   a.click()
-  URL.revokeObjectURL(url)
+  document.body.removeChild(a)
+  setTimeout(() => URL.revokeObjectURL(url), 1000)
 }
 
 export function importJson(): Promise<SaveData> {
@@ -29,6 +53,9 @@ export function importJson(): Promise<SaveData> {
       reader.onload = () => {
         try {
           const data = JSON.parse(reader.result as string) as SaveData
+          if (data.cvData) {
+            data.cvData = migrateCvData(data.cvData as unknown as Record<string, unknown>)
+          }
           resolve(data)
         } catch {
           reject(new Error('Invalid JSON file'))
