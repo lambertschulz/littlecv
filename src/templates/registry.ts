@@ -28,6 +28,10 @@ import { ElegantTemplate } from './elegant/ElegantTemplate'
 import { ElegantCoverLetter } from './elegant/ElegantCoverLetter'
 import { ElegantCoverPage } from './elegant/ElegantCoverPage'
 import { elegantDefaultTheme, elegantThemeSchema } from './elegant/theme'
+import { LisaTemplate } from './lisa/LisaTemplate'
+import { LisaCoverLetter } from './lisa/LisaCoverLetter'
+import { LisaCoverPage } from './lisa/LisaCoverPage'
+import { lisaDefaultTheme, lisaThemeSchema } from './lisa/theme'
 
 export type CvTemplate<T extends object = object> = FC<{
   data: CvData
@@ -132,6 +136,16 @@ export const templateRegistry: TemplateConfig[] = [
     coverPage: ElegantCoverPage as CoverPageTemplate,
     defaultTheme: elegantDefaultTheme,
     themeSchema: elegantThemeSchema,
+  },
+  {
+    key: 'lisa',
+    label: 'Lisa',
+    thumbnail: '/thumbnails/lisa.svg',
+    cv: LisaTemplate as CvTemplate,
+    coverLetter: LisaCoverLetter as CoverLetterTemplate,
+    coverPage: LisaCoverPage as CoverPageTemplate,
+    defaultTheme: lisaDefaultTheme,
+    themeSchema: lisaThemeSchema,
   },
 ]
 
