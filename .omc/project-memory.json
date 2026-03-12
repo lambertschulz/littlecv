@@ -32,20 +32,26 @@
   "hotPaths": [
     {
       "path": "src/templates/registry.ts",
-      "accessCount": 36,
-      "lastAccessed": 1773234825447,
+      "accessCount": 37,
+      "lastAccessed": 1773254742973,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/classic/ClassicTemplate.tsx",
+      "accessCount": 28,
+      "lastAccessed": 1773301382943,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/modern/ModernTemplate.tsx",
+      "accessCount": 24,
+      "lastAccessed": 1773301380362,
       "type": "file"
     },
     {
       "path": "src/types/cv.ts",
       "accessCount": 23,
       "lastAccessed": 1773254019599,
-      "type": "file"
-    },
-    {
-      "path": "src/templates/classic/ClassicTemplate.tsx",
-      "accessCount": 23,
-      "lastAccessed": 1773254111544,
       "type": "file"
     },
     {
@@ -61,15 +67,21 @@
       "type": "file"
     },
     {
-      "path": "src/templates/modern/ModernTemplate.tsx",
-      "accessCount": 19,
-      "lastAccessed": 1773254098030,
-      "type": "file"
-    },
-    {
       "path": "src/state/atoms.ts",
       "accessCount": 18,
       "lastAccessed": 1773254024427,
+      "type": "file"
+    },
+    {
+      "path": "src/components/theme/ThemeEditor.tsx",
+      "accessCount": 15,
+      "lastAccessed": 1773301350410,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/classic/ClassicCoverPage.tsx",
+      "accessCount": 13,
+      "lastAccessed": 1773301628804,
       "type": "file"
     },
     {
@@ -79,21 +91,15 @@
       "type": "file"
     },
     {
+      "path": "src/templates/modern/ModernCoverPage.tsx",
+      "accessCount": 12,
+      "lastAccessed": 1773301594948,
+      "type": "file"
+    },
+    {
       "path": "src/templates/classic/ClassicCoverLetter.tsx",
       "accessCount": 11,
       "lastAccessed": 1773219578654,
-      "type": "file"
-    },
-    {
-      "path": "src/templates/classic/ClassicCoverPage.tsx",
-      "accessCount": 11,
-      "lastAccessed": 1773219579064,
-      "type": "file"
-    },
-    {
-      "path": "src/components/theme/ThemeEditor.tsx",
-      "accessCount": 11,
-      "lastAccessed": 1773239121011,
       "type": "file"
     },
     {
@@ -103,16 +109,16 @@
       "type": "file"
     },
     {
-      "path": "src/templates/modern/ModernCoverPage.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1773219533558,
-      "type": "file"
-    },
-    {
       "path": "",
       "accessCount": 10,
       "lastAccessed": 1773235269205,
       "type": "directory"
+    },
+    {
+      "path": "src/components/shared/PhotoUpload.tsx",
+      "accessCount": 10,
+      "lastAccessed": 1773254801778,
+      "type": "file"
     },
     {
       "path": "src/components/editor/SkillsSection.tsx",
@@ -133,15 +139,33 @@
       "type": "file"
     },
     {
-      "path": "src/components/shared/PhotoUpload.tsx",
-      "accessCount": 8,
-      "lastAccessed": 1773232744347,
-      "type": "file"
-    },
-    {
       "path": "src/components/theme/FontManager.tsx",
       "accessCount": 8,
       "lastAccessed": 1773238919581,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/ProfileSection.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1773254742077,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/modern/theme.ts",
+      "accessCount": 8,
+      "lastAccessed": 1773254819765,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/classic/theme.ts",
+      "accessCount": 8,
+      "lastAccessed": 1773254823486,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/creative/CreativeTemplate.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1773301386050,
       "type": "file"
     },
     {
@@ -151,33 +175,21 @@
       "type": "file"
     },
     {
-      "path": "src/components/editor/ProfileSection.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1773232586744,
-      "type": "file"
-    },
-    {
       "path": "src/components/editor/CoverLetterSection.tsx",
       "accessCount": 7,
       "lastAccessed": 1773232610488,
       "type": "file"
     },
     {
-      "path": "src/templates/classic/theme.ts",
-      "accessCount": 6,
-      "lastAccessed": 1773219579115,
-      "type": "file"
+      "path": "src/templates",
+      "accessCount": 7,
+      "lastAccessed": 1773301552143,
+      "type": "directory"
     },
     {
       "path": "package.json",
       "accessCount": 6,
       "lastAccessed": 1773228114729,
-      "type": "file"
-    },
-    {
-      "path": "src/templates/modern/theme.ts",
-      "accessCount": 6,
-      "lastAccessed": 1773228398340,
       "type": "file"
     },
     {
@@ -229,12 +241,6 @@
       "type": "file"
     },
     {
-      "path": "src/templates",
-      "accessCount": 3,
-      "lastAccessed": 1773177221978,
-      "type": "directory"
-    },
-    {
       "path": "public/thumbnails/classic.svg",
       "accessCount": 3,
       "lastAccessed": 1773219449730,
@@ -247,9 +253,9 @@
       "type": "file"
     },
     {
-      "path": "src/templates/creative/CreativeTemplate.tsx",
+      "path": "src/templates/creative/theme.ts",
       "accessCount": 3,
-      "lastAccessed": 1773254158423,
+      "lastAccessed": 1773254827047,
       "type": "file"
     },
     {
@@ -301,21 +307,15 @@
       "type": "file"
     },
     {
-      "path": "src/templates/minimalist/theme.ts",
-      "accessCount": 1,
-      "lastAccessed": 1773219516352,
-      "type": "file"
-    },
-    {
-      "path": "src/templates/creative/theme.ts",
-      "accessCount": 1,
-      "lastAccessed": 1773219539342,
-      "type": "file"
-    },
-    {
       "path": "src/templates/executive/theme.ts",
-      "accessCount": 1,
-      "lastAccessed": 1773219548639,
+      "accessCount": 2,
+      "lastAccessed": 1773254758907,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/minimalist/theme.ts",
+      "accessCount": 2,
+      "lastAccessed": 1773254759361,
       "type": "file"
     },
     {

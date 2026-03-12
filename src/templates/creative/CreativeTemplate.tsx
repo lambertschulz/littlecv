@@ -1,6 +1,7 @@
 import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
 import type { CvData } from '../../types/cv'
 import type { CreativeTheme } from './theme'
+import { getPhotoDimensions, getPhotoBorderRadius } from '../photoUtils'
 
 const fontSizeMap = { sm: 9, md: 10, lg: 11 }
 
@@ -26,9 +27,8 @@ function makeStyles(theme: CreativeTheme) {
       marginBottom: 14,
     },
     photo: {
-      width: 64,
-      height: 64,
-      borderRadius: 32,
+      ...getPhotoDimensions(theme.photoSize ?? 'md'),
+      borderRadius: getPhotoBorderRadius(theme.photoShape ?? 'round', theme.photoSize ?? 'md'),
       objectFit: 'cover',
       borderWidth: 2,
       borderColor: '#ffffff',
@@ -133,15 +133,16 @@ export function CreativeTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
   const { profile, skillSections } = data
   const timeline = data.timeline ?? []
+  const photoSrc = (theme as unknown as Record<string, string>).croppedPhoto || profile.photo
 
   return (
     <Page size="A4" style={styles.page}>
       {/* Sidebar */}
       <View style={styles.sidebar}>
         {/* Photo */}
-        {profile.photo ? (
+        {photoSrc ? (
           <View style={styles.photoContainer}>
-            <Image style={styles.photo} src={profile.photo} />
+            <Image style={styles.photo} src={photoSrc} />
           </View>
         ) : null}
 

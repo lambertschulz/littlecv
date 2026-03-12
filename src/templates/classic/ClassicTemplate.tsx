@@ -1,6 +1,7 @@
 import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
 import type { CvData } from '../../types/cv'
 import type { ClassicTheme } from './theme'
+import { getPhotoDimensions, getPhotoBorderRadius } from '../photoUtils'
 
 const fontSizeMap = { sm: 9, md: 10, lg: 11 }
 
@@ -21,9 +22,8 @@ function makeStyles(theme: ClassicTheme) {
       marginBottom: 24,
     },
     photo: {
-      width: 72,
-      height: 72,
-      borderRadius: 36,
+      ...getPhotoDimensions(theme.photoSize ?? 'md'),
+      borderRadius: getPhotoBorderRadius(theme.photoShape ?? 'round', theme.photoSize ?? 'md'),
       objectFit: 'cover',
       marginBottom: 10,
     },
@@ -111,6 +111,7 @@ export function ClassicTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
   const { profile, skillSections } = data
   const timeline = data.timeline ?? []
+  const photoSrc = (theme as unknown as Record<string, string>).croppedPhoto || profile.photo
   const isBlock = theme.headerStyle === 'block'
 
   const sectionTitleStyle = isBlock ? styles.sectionTitleBlock : styles.sectionTitleUnderline
@@ -125,8 +126,8 @@ export function ClassicTemplate({ data, theme }: Props) {
     <Page size="A4" style={styles.page}>
       {/* Centered header */}
       <View style={styles.header}>
-        {profile.photo ? (
-          <Image style={styles.photo} src={profile.photo} />
+        {photoSrc ? (
+          <Image style={styles.photo} src={photoSrc} />
         ) : null}
         <Text style={styles.name}>{profile.name}</Text>
         <Text style={styles.titleText}>{profile.title}</Text>
