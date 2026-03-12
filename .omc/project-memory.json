@@ -133,6 +133,18 @@
       "type": "file"
     },
     {
+      "path": "src/services/export-pdf.ts",
+      "accessCount": 9,
+      "lastAccessed": 1773309706049,
+      "type": "file"
+    },
+    {
+      "path": "src/services/export-json.ts",
+      "accessCount": 9,
+      "lastAccessed": 1773309739865,
+      "type": "file"
+    },
+    {
       "path": "src/fonts/register.ts",
       "accessCount": 8,
       "lastAccessed": 1773228393037,
@@ -214,18 +226,6 @@
       "path": "src/components/editor/EditorPanel.tsx",
       "accessCount": 6,
       "lastAccessed": 1773253995907,
-      "type": "file"
-    },
-    {
-      "path": "src/services/export-json.ts",
-      "accessCount": 6,
-      "lastAccessed": 1773308141003,
-      "type": "file"
-    },
-    {
-      "path": "src/services/export-pdf.ts",
-      "accessCount": 6,
-      "lastAccessed": 1773308836596,
       "type": "file"
     },
     {

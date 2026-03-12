@@ -1,4 +1,5 @@
 import type { CvData, SkillSection } from '../types/cv'
+import { saveBlob } from './save-blob'
 
 interface SaveData {
   cvData: CvData
@@ -28,17 +29,10 @@ function migrateCvData(raw: Record<string, unknown>): CvData {
   return raw as unknown as CvData
 }
 
-export function exportJson(data: SaveData): void {
+export async function exportJson(data: SaveData): Promise<void> {
   const json = JSON.stringify(data, null, 2)
   const blob = new Blob([json], { type: 'application/json' })
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = 'bewerbung-daten.json'
-  document.body.appendChild(a)
-  a.click()
-  document.body.removeChild(a)
-  setTimeout(() => URL.revokeObjectURL(url), 1000)
+  await saveBlob(blob, 'bewerbung-daten.json', 'application/json', 'JSON')
 }
 
 export function importJson(): Promise<SaveData> {

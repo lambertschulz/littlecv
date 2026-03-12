@@ -2,6 +2,7 @@ import { pdf, Document } from '@react-pdf/renderer'
 import type { CvData, ExportScope } from '../types/cv'
 import type { TemplateConfig } from '../templates/registry'
 import { createElement } from 'react'
+import { saveBlob } from './save-blob'
 
 export async function exportPdf(
   data: CvData,
@@ -28,12 +29,5 @@ export async function exportPdf(
   const doc = createElement(Document, {}, ...pages)
   const blob = await pdf(doc).toBlob()
 
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = `bewerbung-${scope}.pdf`
-  document.body.appendChild(a)
-  a.click()
-  document.body.removeChild(a)
-  setTimeout(() => URL.revokeObjectURL(url), 1000)
+  await saveBlob(blob, `bewerbung-${scope}.pdf`, 'application/pdf', 'PDF')
 }
