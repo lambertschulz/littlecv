@@ -105,6 +105,7 @@ export function ExecutiveCoverPage({ data, theme }: Props) {
   const styles = makeStyles(theme)
   const { profile } = data
   const { company, position, date } = data.coverPage
+  const photoSrc = (theme as unknown as Record<string, string>).croppedPhoto || profile.photo
 
   return (
     <Page size="A4" style={styles.page}>
@@ -113,8 +114,8 @@ export function ExecutiveCoverPage({ data, theme }: Props) {
         <View style={styles.topDoubleRuleOuter} />
         <View style={styles.topDoubleRuleInner} />
 
-        {profile.photo ? (
-          <Image style={styles.photo} src={profile.photo} />
+        {photoSrc ? (
+          <Image style={styles.photo} src={photoSrc} />
         ) : null}
 
         <Text style={styles.name}>{profile.name}</Text>

@@ -16,7 +16,7 @@ export interface SectionEntry {
   description?: string
 }
 
-export interface Section {
+export interface TimelineSection {
   id: string
   name: string
   entries: SectionEntry[]
@@ -26,6 +26,12 @@ export interface Skill {
   id: string
   label: string
   level?: string
+}
+
+export interface SkillSection {
+  id: string
+  name: string
+  skills: Skill[]
 }
 
 export interface CoverLetter {
@@ -44,8 +50,8 @@ export interface CoverPage {
 
 export interface CvData {
   profile: Profile
-  sections: Section[]
-  skills: Skill[]
+  timeline: TimelineSection[]
+  skillSections: SkillSection[]
   coverLetter?: CoverLetter
   coverPage?: CoverPage
 }

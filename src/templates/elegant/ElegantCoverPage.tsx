@@ -91,12 +91,13 @@ export function ElegantCoverPage({ data, theme }: Props) {
   const styles = makeStyles(theme)
   const { profile } = data
   const { company, position, date } = data.coverPage
+  const photoSrc = (theme as unknown as Record<string, string>).croppedPhoto || profile.photo
 
   return (
     <Page size="A4" style={styles.page}>
       <View style={styles.container}>
-        {profile.photo ? (
-          <Image style={styles.photo} src={profile.photo} />
+        {photoSrc ? (
+          <Image style={styles.photo} src={photoSrc} />
         ) : null}
         <Text style={styles.name}>{profile.name}</Text>
         {profile.title ? <Text style={styles.titleText}>{profile.title}</Text> : null}

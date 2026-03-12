@@ -32,62 +32,74 @@
   "hotPaths": [
     {
       "path": "src/templates/registry.ts",
-      "accessCount": 36,
-      "lastAccessed": 1773234825447,
+      "accessCount": 39,
+      "lastAccessed": 1773302290956,
       "type": "file"
     },
     {
       "path": "src/templates/classic/ClassicTemplate.tsx",
-      "accessCount": 21,
-      "lastAccessed": 1773219577828,
-      "type": "file"
-    },
-    {
-      "path": "src/types/cv.ts",
-      "accessCount": 21,
-      "lastAccessed": 1773233699097,
-      "type": "file"
-    },
-    {
-      "path": "src/components/Preview.tsx",
-      "accessCount": 20,
-      "lastAccessed": 1773236117215,
-      "type": "file"
-    },
-    {
-      "path": "src/App.tsx",
-      "accessCount": 19,
-      "lastAccessed": 1773242718001,
+      "accessCount": 29,
+      "lastAccessed": 1773302169122,
       "type": "file"
     },
     {
       "path": "src/templates/modern/ModernTemplate.tsx",
-      "accessCount": 17,
-      "lastAccessed": 1773228395621,
+      "accessCount": 24,
+      "lastAccessed": 1773301380362,
+      "type": "file"
+    },
+    {
+      "path": "src/types/cv.ts",
+      "accessCount": 23,
+      "lastAccessed": 1773254019599,
+      "type": "file"
+    },
+    {
+      "path": "src/App.tsx",
+      "accessCount": 23,
+      "lastAccessed": 1773308832585,
       "type": "file"
     },
     {
       "path": "src/state/atoms.ts",
-      "accessCount": 16,
-      "lastAccessed": 1773234825888,
+      "accessCount": 21,
+      "lastAccessed": 1773307597144,
       "type": "file"
     },
     {
-      "path": "src/templates/classic/ClassicCoverLetter.tsx",
-      "accessCount": 11,
-      "lastAccessed": 1773219578654,
-      "type": "file"
-    },
-    {
-      "path": "src/templates/classic/ClassicCoverPage.tsx",
-      "accessCount": 11,
-      "lastAccessed": 1773219579064,
+      "path": "src/components/Preview.tsx",
+      "accessCount": 21,
+      "lastAccessed": 1773308038229,
       "type": "file"
     },
     {
       "path": "src/components/theme/ThemeEditor.tsx",
-      "accessCount": 11,
-      "lastAccessed": 1773239121011,
+      "accessCount": 15,
+      "lastAccessed": 1773301350410,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/classic/ClassicCoverPage.tsx",
+      "accessCount": 14,
+      "lastAccessed": 1773302170288,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/SectionsEditor.tsx",
+      "accessCount": 12,
+      "lastAccessed": 1773254041136,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/modern/ModernCoverPage.tsx",
+      "accessCount": 12,
+      "lastAccessed": 1773301594948,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/classic/ClassicCoverLetter.tsx",
+      "accessCount": 12,
+      "lastAccessed": 1773302169626,
       "type": "file"
     },
     {
@@ -97,22 +109,28 @@
       "type": "file"
     },
     {
-      "path": "src/templates/modern/ModernCoverPage.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1773219533558,
-      "type": "file"
-    },
-    {
-      "path": "src/components/editor/SectionsEditor.tsx",
-      "accessCount": 10,
-      "lastAccessed": 1773232599189,
-      "type": "file"
-    },
-    {
       "path": "",
       "accessCount": 10,
       "lastAccessed": 1773235269205,
       "type": "directory"
+    },
+    {
+      "path": "src/components/shared/PhotoUpload.tsx",
+      "accessCount": 10,
+      "lastAccessed": 1773254801778,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/SkillsSection.tsx",
+      "accessCount": 9,
+      "lastAccessed": 1773254066719,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/classic/theme.ts",
+      "accessCount": 9,
+      "lastAccessed": 1773302170523,
+      "type": "file"
     },
     {
       "path": "src/fonts/register.ts",
@@ -127,15 +145,27 @@
       "type": "file"
     },
     {
-      "path": "src/components/shared/PhotoUpload.tsx",
-      "accessCount": 8,
-      "lastAccessed": 1773232744347,
-      "type": "file"
-    },
-    {
       "path": "src/components/theme/FontManager.tsx",
       "accessCount": 8,
       "lastAccessed": 1773238919581,
+      "type": "file"
+    },
+    {
+      "path": "src/components/editor/ProfileSection.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1773254742077,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/modern/theme.ts",
+      "accessCount": 8,
+      "lastAccessed": 1773254819765,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/creative/CreativeTemplate.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1773301386050,
       "type": "file"
     },
     {
@@ -145,39 +175,21 @@
       "type": "file"
     },
     {
-      "path": "src/components/editor/ProfileSection.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1773232586744,
-      "type": "file"
-    },
-    {
-      "path": "src/components/editor/SkillsSection.tsx",
-      "accessCount": 7,
-      "lastAccessed": 1773232603461,
-      "type": "file"
-    },
-    {
       "path": "src/components/editor/CoverLetterSection.tsx",
       "accessCount": 7,
       "lastAccessed": 1773232610488,
       "type": "file"
     },
     {
-      "path": "src/templates/classic/theme.ts",
-      "accessCount": 6,
-      "lastAccessed": 1773219579115,
-      "type": "file"
+      "path": "src/templates",
+      "accessCount": 7,
+      "lastAccessed": 1773301552143,
+      "type": "directory"
     },
     {
       "path": "package.json",
       "accessCount": 6,
       "lastAccessed": 1773228114729,
-      "type": "file"
-    },
-    {
-      "path": "src/templates/modern/theme.ts",
-      "accessCount": 6,
-      "lastAccessed": 1773228398340,
       "type": "file"
     },
     {
@@ -200,8 +212,20 @@
     },
     {
       "path": "src/components/editor/EditorPanel.tsx",
-      "accessCount": 5,
-      "lastAccessed": 1773228117252,
+      "accessCount": 6,
+      "lastAccessed": 1773253995907,
+      "type": "file"
+    },
+    {
+      "path": "src/services/export-json.ts",
+      "accessCount": 6,
+      "lastAccessed": 1773308141003,
+      "type": "file"
+    },
+    {
+      "path": "src/services/export-pdf.ts",
+      "accessCount": 6,
+      "lastAccessed": 1773308836596,
       "type": "file"
     },
     {
@@ -229,15 +253,21 @@
       "type": "file"
     },
     {
-      "path": "src/templates",
-      "accessCount": 3,
-      "lastAccessed": 1773177221978,
-      "type": "directory"
+      "path": "public/thumbnails/classic.svg",
+      "accessCount": 4,
+      "lastAccessed": 1773302185743,
+      "type": "file"
     },
     {
-      "path": "public/thumbnails/classic.svg",
+      "path": "src/templates/minimalist/MinimalistTemplate.tsx",
       "accessCount": 3,
-      "lastAccessed": 1773219449730,
+      "lastAccessed": 1773254125275,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/creative/theme.ts",
+      "accessCount": 3,
+      "lastAccessed": 1773254827047,
       "type": "file"
     },
     {
@@ -271,57 +301,27 @@
       "type": "file"
     },
     {
-      "path": "src/services/export-pdf.ts",
-      "accessCount": 2,
-      "lastAccessed": 1773228392645,
-      "type": "file"
-    },
-    {
-      "path": "src/services/export-json.ts",
-      "accessCount": 2,
-      "lastAccessed": 1773228393018,
-      "type": "file"
-    },
-    {
       "path": "src/vite-env.d.ts",
       "accessCount": 2,
       "lastAccessed": 1773228398488,
       "type": "file"
     },
     {
-      "path": "src/templates/minimalist/theme.ts",
-      "accessCount": 1,
-      "lastAccessed": 1773219516352,
-      "type": "file"
-    },
-    {
-      "path": "src/templates/creative/theme.ts",
-      "accessCount": 1,
-      "lastAccessed": 1773219539342,
-      "type": "file"
-    },
-    {
       "path": "src/templates/executive/theme.ts",
-      "accessCount": 1,
-      "lastAccessed": 1773219548639,
+      "accessCount": 2,
+      "lastAccessed": 1773254758907,
       "type": "file"
     },
     {
-      "path": "src/templates/minimalist/MinimalistTemplate.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1773219550278,
+      "path": "src/templates/minimalist/theme.ts",
+      "accessCount": 2,
+      "lastAccessed": 1773254759361,
       "type": "file"
     },
     {
       "path": "src/templates/minimalist/MinimalistCoverLetter.tsx",
       "accessCount": 1,
       "lastAccessed": 1773219556716,
-      "type": "file"
-    },
-    {
-      "path": "src/templates/creative/CreativeTemplate.tsx",
-      "accessCount": 1,
-      "lastAccessed": 1773219561539,
       "type": "file"
     },
     {

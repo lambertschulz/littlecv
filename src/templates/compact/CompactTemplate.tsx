@@ -1,6 +1,7 @@
 import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
 import type { CvData } from '../../types/cv'
 import type { CompactTheme } from './theme'
+import { getPhotoDimensions, getPhotoBorderRadius } from '../photoUtils'
 
 const fontSizeMap = { sm: 8, md: 9, lg: 10 }
 
@@ -23,9 +24,8 @@ function makeStyles(theme: CompactTheme) {
       gap: 10,
     },
     photo: {
-      width: 48,
-      height: 48,
-      borderRadius: 24,
+      ...getPhotoDimensions(theme.photoSize ?? 'md'),
+      borderRadius: getPhotoBorderRadius(theme.photoShape ?? 'round', theme.photoSize ?? 'md'),
       objectFit: 'cover',
     },
     headerText: {
@@ -127,11 +127,12 @@ interface Props {
 
 export function CompactTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
-  const { profile, skills } = data
-  const sections = data.sections ?? []
+  const { profile, skillSections } = data
+  const timeline = data.timeline ?? []
+  const photoSrc = (theme as unknown as Record<string, string>).croppedPhoto || profile.photo
 
-  const leftSections = sections.slice(0, 1)
-  const rightSections = sections.slice(1)
+  const leftSections = timeline.slice(0, 1)
+  const rightSections = timeline.slice(1)
 
   const contactParts: string[] = []
   if (profile.email) contactParts.push(profile.email)
@@ -143,8 +144,8 @@ export function CompactTemplate({ data, theme }: Props) {
     <Page size="A4" style={styles.page}>
       {/* Header */}
       <View style={styles.header}>
-        {profile.photo ? (
-          <Image style={styles.photo} src={profile.photo} />
+        {photoSrc ? (
+          <Image style={styles.photo} src={photoSrc} />
         ) : null}
         <View style={styles.headerText}>
           <Text style={styles.name}>{profile.name}</Text>
@@ -207,15 +208,17 @@ export function CompactTemplate({ data, theme }: Props) {
             ) : null
           )}
 
-          {skills.length > 0 && (
-            <View style={styles.section}>
-              <Text style={styles.sectionTitle}>Kenntnisse</Text>
-              <View style={styles.skillsRow}>
-                {skills.map((skill) => (
-                  <Text key={skill.id} style={styles.skillPill}>{skill.label}</Text>
-                ))}
+          {(skillSections ?? []).map((skillSection) =>
+            skillSection.skills.length > 0 ? (
+              <View key={skillSection.id} style={styles.section}>
+                <Text style={styles.sectionTitle}>{skillSection.name}</Text>
+                <View style={styles.skillsRow}>
+                  {skillSection.skills.map((skill) => (
+                    <Text key={skill.id} style={styles.skillPill}>{skill.label}</Text>
+                  ))}
+                </View>
               </View>
-            </View>
+            ) : null
           )}
         </View>
       </View>

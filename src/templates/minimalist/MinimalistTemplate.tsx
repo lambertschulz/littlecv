@@ -105,8 +105,8 @@ interface Props {
 
 export function MinimalistTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
-  const { profile, skills } = data
-  const sections = data.sections ?? []
+  const { profile, skillSections } = data
+  const timeline = data.timeline ?? []
 
   const contactParts: string[] = []
   if (profile.email) contactParts.push(profile.email)
@@ -134,8 +134,8 @@ export function MinimalistTemplate({ data, theme }: Props) {
 
       <View style={styles.divider} />
 
-      {/* Sections */}
-      {sections.map((section) =>
+      {/* Timeline Sections */}
+      {timeline.map((section) =>
         section.entries.length > 0 ? (
           <View key={section.id} style={styles.section}>
             <Text style={styles.sectionTitle}>{section.name}</Text>
@@ -158,16 +158,18 @@ export function MinimalistTemplate({ data, theme }: Props) {
         ) : null
       )}
 
-      {/* Skills */}
-      {skills.length > 0 ? (
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Kenntnisse</Text>
-          <View style={styles.sectionDivider} />
-          <Text style={styles.skillsText}>
-            {skills.map((s) => (s.level ? `${s.label} (${s.level})` : s.label)).join(', ')}
-          </Text>
-        </View>
-      ) : null}
+      {/* Skill Sections */}
+      {(skillSections ?? []).map((skillSection) =>
+        skillSection.skills.length > 0 ? (
+          <View key={skillSection.id} style={styles.section}>
+            <Text style={styles.sectionTitle}>{skillSection.name}</Text>
+            <View style={styles.sectionDivider} />
+            <Text style={styles.skillsText}>
+              {skillSection.skills.map((s) => (s.level ? `${s.label} (${s.level})` : s.label)).join(', ')}
+            </Text>
+          </View>
+        ) : null
+      )}
     </Page>
   )
 }

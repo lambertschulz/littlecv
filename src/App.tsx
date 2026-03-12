@@ -20,9 +20,13 @@ function App() {
   const [themes, setThemes] = useAtom(templateThemesAtom)
 
   const handleExportPdf = async (scope: ExportScope) => {
-    const template = getTemplate(templateKey)
-    if (template) {
-      await exportPdf(data, template, theme, scope)
+    try {
+      const template = getTemplate(templateKey)
+      if (template) {
+        await exportPdf(data, template, theme, scope)
+      }
+    } catch (e) {
+      console.error('PDF export failed:', e)
     }
   }
 

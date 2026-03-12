@@ -1,78 +1,88 @@
 import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
 import type { CvData } from '../../types/cv'
-import type { ElegantTheme } from './theme'
+import type { LisaTheme } from './theme'
 import { getPhotoDimensions, getPhotoBorderRadius } from '../photoUtils'
 
 const fontSizeMap = { sm: 9, md: 10, lg: 11 }
 
-function makeStyles(theme: ElegantTheme) {
+function makeStyles(theme: LisaTheme) {
   const fs = fontSizeMap[theme.fontSize]
   return StyleSheet.create({
     page: {
       fontFamily: theme.fontFamily,
       fontSize: fs,
       color: '#1f2937',
-      paddingTop: 44,
+      paddingTop: 48,
       paddingBottom: 48,
-      paddingHorizontal: 52,
+      paddingHorizontal: 56,
       backgroundColor: '#ffffff',
     },
     header: {
-      flexDirection: 'row',
-      marginBottom: 14,
-    },
-    headerText: {
-      flex: 1,
-    },
-    name: {
-      fontSize: fs + 14,
-      fontFamily: theme.fontFamily,
-      color: theme.primaryColor,
-      marginBottom: 4,
-    },
-    titleText: {
-      fontSize: fs + 2,
-      color: theme.accentColor,
-      marginBottom: 8,
-    },
-    contactRow: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      gap: 0,
-    },
-    contactItem: {
-      fontSize: fs - 1,
-      color: '#6b7280',
+      alignItems: 'center',
+      marginBottom: 16,
     },
     photo: {
       ...getPhotoDimensions(theme.photoSize ?? 'md'),
       borderRadius: getPhotoBorderRadius(theme.photoShape ?? 'round', theme.photoSize ?? 'md'),
       objectFit: 'cover',
-      borderWidth: 1.5,
-      borderColor: theme.accentColor,
+      marginBottom: 10,
     },
-    doubleLine: {
-      marginBottom: 16,
+    name: {
+      fontSize: fs + 12,
+      fontFamily: theme.fontFamily,
+      color: theme.primaryColor,
+      textTransform: 'uppercase',
+      letterSpacing: 3,
+      marginBottom: 4,
     },
-    lineTop: {
+    titleText: {
+      fontSize: fs + 2,
+      color: '#6b7280',
+      marginBottom: 8,
+    },
+    contactRow: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'center',
+      gap: 10,
+    },
+    contactItem: {
+      fontSize: fs - 1,
+      color: '#6b7280',
+    },
+    lebenslaufLabel: {
+      fontSize: fs + 4,
+      fontFamily: theme.fontFamily,
+      color: theme.primaryColor,
+      textTransform: 'uppercase',
+      letterSpacing: 4,
+      textAlign: 'center',
+      marginBottom: 4,
+    },
+    lebenslaufRule: {
       height: 2,
       backgroundColor: theme.primaryColor,
-      marginBottom: 1,
-    },
-    lineBottom: {
-      height: 1,
-      backgroundColor: theme.accentColor,
+      marginBottom: 16,
     },
     section: {
       marginBottom: 14,
     },
-    sectionTitle: {
-      fontSize: fs + 1,
+    sectionTitleUnderline: {
+      fontSize: fs + 2,
       fontFamily: theme.fontFamily,
       color: theme.primaryColor,
-      borderLeftWidth: 3,
-      borderLeftColor: theme.accentColor,
-      paddingLeft: 8,
+      paddingBottom: 3,
+      borderBottomWidth: 1,
+      borderBottomColor: theme.primaryColor,
+      marginBottom: 8,
+    },
+    sectionTitleBlock: {
+      fontSize: fs + 2,
+      fontFamily: theme.fontFamily,
+      color: '#ffffff',
+      backgroundColor: theme.primaryColor,
+      paddingHorizontal: 6,
+      paddingVertical: 3,
       marginBottom: 8,
     },
     entryRow: {
@@ -83,11 +93,10 @@ function makeStyles(theme: ElegantTheme) {
     entryTitle: {
       fontSize: fs,
       fontFamily: theme.fontFamily,
-      color: '#111827',
     },
     entryPeriod: {
       fontSize: fs - 1,
-      color: theme.accentColor,
+      color: '#9ca3af',
     },
     entrySubtitle: {
       fontSize: fs - 1,
@@ -98,37 +107,39 @@ function makeStyles(theme: ElegantTheme) {
       fontSize: fs - 1,
       color: '#374151',
       marginBottom: 6,
-      lineHeight: 1.5,
     },
-    skillsRow: {
+    skillRow: {
       flexDirection: 'row',
-      flexWrap: 'wrap',
-      gap: 6,
+      justifyContent: 'space-between',
+      paddingVertical: 3,
+      borderBottomWidth: 0.5,
+      borderBottomColor: '#e5e7eb',
     },
-    skillPill: {
-      borderWidth: 1,
-      borderColor: theme.accentColor,
-      borderRadius: 10,
-      paddingHorizontal: 8,
-      paddingVertical: 2,
+    skillLabel: {
+      fontSize: fs,
+      color: '#374151',
+      fontFamily: theme.fontFamily,
     },
-    skillPillText: {
+    skillLevel: {
       fontSize: fs - 1,
-      color: theme.accentColor,
+      color: '#6b7280',
     },
   })
 }
 
 interface Props {
   data: CvData
-  theme: ElegantTheme
+  theme: LisaTheme
 }
 
-export function ElegantTemplate({ data, theme }: Props) {
+export function LisaTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
   const { profile, skillSections } = data
   const timeline = data.timeline ?? []
   const photoSrc = (theme as unknown as Record<string, string>).croppedPhoto || profile.photo
+  const isBlock = theme.headerStyle === 'block'
+
+  const sectionTitleStyle = isBlock ? styles.sectionTitleBlock : styles.sectionTitleUnderline
 
   const contactParts: string[] = []
   if (profile.email) contactParts.push(profile.email)
@@ -138,44 +149,36 @@ export function ElegantTemplate({ data, theme }: Props) {
 
   return (
     <Page size="A4" style={styles.page}>
-      {/* Left-aligned header with optional photo on right */}
+      {/* Centered header */}
       <View style={styles.header}>
-        <View style={styles.headerText}>
-          <Text style={styles.name}>{profile.name}</Text>
-          <Text style={styles.titleText}>{profile.title}</Text>
-          <View style={styles.contactRow}>
-            {contactParts.map((part, i) => (
-              <Text key={i} style={styles.contactItem}>
-                {i > 0 ? ' · ' : ''}{part}
-              </Text>
-            ))}
-          </View>
-        </View>
         {photoSrc ? (
           <Image style={styles.photo} src={photoSrc} />
         ) : null}
+        <Text style={styles.name}>{profile.name}</Text>
+        <Text style={styles.titleText}>{profile.title}</Text>
+        <View style={styles.contactRow}>
+          {contactParts.map((part, i) => (
+            <Text key={i} style={styles.contactItem}>{part}</Text>
+          ))}
+        </View>
       </View>
 
-      {/* Double-line accent */}
-      <View style={styles.doubleLine}>
-        <View style={styles.lineTop} />
-        <View style={styles.lineBottom} />
-      </View>
+      {/* "Lebenslauf" heading between header and first section */}
+      <Text style={styles.lebenslaufLabel}>Lebenslauf</Text>
+      <View style={styles.lebenslaufRule} />
 
       {/* Timeline Sections */}
       {timeline.map((section) =>
         section.entries.length > 0 ? (
           <View key={section.id} style={styles.section}>
-            <Text style={styles.sectionTitle}>{section.name}</Text>
+            <Text style={sectionTitleStyle}>{section.name}</Text>
             {section.entries.map((entry) => (
               <View key={entry.id}>
                 <View style={styles.entryRow}>
                   <Text style={styles.entryTitle}>{entry.title}</Text>
                   <Text style={styles.entryPeriod}>{entry.period}</Text>
                 </View>
-                {entry.subtitle ? (
-                  <Text style={styles.entrySubtitle}>{entry.subtitle}</Text>
-                ) : null}
+                <Text style={styles.entrySubtitle}>{entry.subtitle}</Text>
                 {entry.description ? (
                   <Text style={styles.entryDescription}>{entry.description}</Text>
                 ) : null}
@@ -185,18 +188,17 @@ export function ElegantTemplate({ data, theme }: Props) {
         ) : null
       )}
 
-      {/* Skill Sections as outlined pills */}
+      {/* Skill Sections — label + level as table rows */}
       {(skillSections ?? []).map((skillSection) =>
         skillSection.skills.length > 0 ? (
           <View key={skillSection.id} style={styles.section}>
-            <Text style={styles.sectionTitle}>{skillSection.name}</Text>
-            <View style={styles.skillsRow}>
-              {skillSection.skills.map((s) => (
-                <View key={s.id} style={styles.skillPill}>
-                  <Text style={styles.skillPillText}>{s.label}</Text>
-                </View>
-              ))}
-            </View>
+            <Text style={sectionTitleStyle}>{skillSection.name}</Text>
+            {skillSection.skills.map((s) => (
+              <View key={s.id} style={styles.skillRow}>
+                <Text style={styles.skillLabel}>{s.label}</Text>
+                <Text style={styles.skillLevel}>{s.level ?? ''}</Text>
+              </View>
+            ))}
           </View>
         ) : null
       )}

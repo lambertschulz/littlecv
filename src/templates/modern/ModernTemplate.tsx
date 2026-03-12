@@ -1,6 +1,7 @@
 import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
 import type { CvData } from '../../types/cv'
 import type { ModernTheme } from './theme'
+import { getPhotoDimensions, getPhotoBorderRadius } from '../photoUtils'
 
 const fontSizeMap = { sm: 9, md: 10, lg: 11 }
 
@@ -22,9 +23,8 @@ function makeStyles(theme: ModernTheme) {
       gap: 16,
     },
     photo: {
-      width: 72,
-      height: 72,
-      borderRadius: 36,
+      ...getPhotoDimensions(theme.photoSize ?? 'md'),
+      borderRadius: getPhotoBorderRadius(theme.photoShape ?? 'round', theme.photoSize ?? 'md'),
       objectFit: 'cover',
     },
     headerText: {
@@ -116,8 +116,9 @@ interface Props {
 
 export function ModernTemplate({ data, theme }: Props) {
   const styles = makeStyles(theme)
-  const { profile, skills } = data
-  const sections = data.sections ?? []
+  const { profile, skillSections } = data
+  const timeline = data.timeline ?? []
+  const photoSrc = (theme as unknown as Record<string, string>).croppedPhoto || profile.photo
 
   const contactParts: string[] = []
   if (profile.email) contactParts.push(profile.email)
@@ -129,8 +130,8 @@ export function ModernTemplate({ data, theme }: Props) {
     <Page size="A4" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
-          {profile.photo ? (
-            <Image style={styles.photo} src={profile.photo} />
+          {photoSrc ? (
+            <Image style={styles.photo} src={photoSrc} />
           ) : null}
           <View style={styles.headerText}>
             <Text style={styles.name}>{profile.name}</Text>
@@ -145,8 +146,8 @@ export function ModernTemplate({ data, theme }: Props) {
 
         <View style={styles.divider} />
 
-        {/* Sections */}
-        {sections.map((section) =>
+        {/* Timeline Sections */}
+        {timeline.map((section) =>
           section.entries.length > 0 ? (
             <View key={section.id} style={styles.section}>
               <Text style={styles.sectionTitle}>{section.name}</Text>
@@ -167,19 +168,21 @@ export function ModernTemplate({ data, theme }: Props) {
           ) : null
         )}
 
-        {/* Skills */}
-        {skills.length > 0 && (
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Kenntnisse</Text>
-            <View style={styles.sectionDivider} />
-            <View style={styles.skillsRow}>
-              {skills.map((skill) => (
-                <Text key={skill.id} style={styles.skillPill}>
-                  {skill.label}{skill.level ? ` · ${skill.level}` : ''}
-                </Text>
-              ))}
+        {/* Skill Sections */}
+        {(skillSections ?? []).map((skillSection) =>
+          skillSection.skills.length > 0 ? (
+            <View key={skillSection.id} style={styles.section}>
+              <Text style={styles.sectionTitle}>{skillSection.name}</Text>
+              <View style={styles.sectionDivider} />
+              <View style={styles.skillsRow}>
+                {skillSection.skills.map((skill) => (
+                  <Text key={skill.id} style={styles.skillPill}>
+                    {skill.label}{skill.level ? ` · ${skill.level}` : ''}
+                  </Text>
+                ))}
+              </View>
             </View>
-          </View>
+          ) : null
         )}
     </Page>
   )

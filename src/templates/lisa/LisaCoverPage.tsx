@@ -1,10 +1,10 @@
 import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
 import type { CvData } from '../../types/cv'
-import type { ModernTheme } from './theme'
+import type { LisaTheme } from './theme'
 
 const fontSizeMap = { sm: 9, md: 10, lg: 11 }
 
-function makeStyles(theme: ModernTheme) {
+function makeStyles(theme: LisaTheme) {
   const fs = fontSizeMap[theme.fontSize]
   return StyleSheet.create({
     page: {
@@ -12,42 +12,51 @@ function makeStyles(theme: ModernTheme) {
       fontSize: fs,
       color: '#1f2937',
       backgroundColor: '#ffffff',
+      padding: 40,
     },
-    colorBar: {
-      backgroundColor: theme.primaryColor,
-      paddingTop: 48,
-      paddingBottom: 32,
-      alignItems: 'center',
-    },
-    photo: {
-      width: 96,
-      height: 96,
-      borderRadius: 48,
-      objectFit: 'cover',
-      marginBottom: 16,
-      borderWidth: 3,
-      borderColor: '#ffffff',
-    },
-    name: {
-      fontSize: fs + 16,
-      color: '#ffffff',
-      fontFamily: theme.fontFamily,
-      marginBottom: 4,
-    },
-    titleText: {
-      fontSize: fs + 4,
-      color: 'rgba(255,255,255,0.85)',
-    },
-    content: {
+    container: {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      paddingHorizontal: 60,
-      paddingTop: 48,
+      paddingHorizontal: 40,
+    },
+    topRule: {
+      width: 120,
+      height: 1,
+      backgroundColor: theme.primaryColor,
+      marginBottom: 20,
+    },
+    photo: {
+      width: 88,
+      height: 88,
+      borderRadius: 44,
+      objectFit: 'cover',
+      marginBottom: 16,
+    },
+    name: {
+      fontSize: fs + 14,
+      fontFamily: theme.fontFamily,
+      color: theme.primaryColor,
+      textTransform: 'uppercase',
+      letterSpacing: 3,
+      marginBottom: 6,
+      textAlign: 'center',
+    },
+    titleText: {
+      fontSize: fs + 2,
+      color: '#6b7280',
+      marginBottom: 16,
+      textAlign: 'center',
+    },
+    rule: {
+      width: 120,
+      height: 1,
+      backgroundColor: theme.primaryColor,
+      marginBottom: 24,
     },
     infoBlock: {
-      width: '100%',
-      marginBottom: 20,
+      alignItems: 'center',
+      marginBottom: 16,
     },
     infoLabel: {
       fontSize: fs - 1,
@@ -57,19 +66,26 @@ function makeStyles(theme: ModernTheme) {
       marginBottom: 2,
     },
     infoValue: {
-      fontSize: fs + 4,
+      fontSize: fs + 3,
       color: theme.primaryColor,
       fontFamily: theme.fontFamily,
+      textAlign: 'center',
+    },
+    ruleSmall: {
+      width: 60,
+      height: 1,
+      backgroundColor: '#d1d5db',
+      marginVertical: 12,
     },
   })
 }
 
 interface Props {
   data: CvData
-  theme: ModernTheme
+  theme: LisaTheme
 }
 
-export function ModernCoverPage({ data, theme }: Props) {
+export function LisaCoverPage({ data, theme }: Props) {
   if (!data.coverPage) return null
 
   const styles = makeStyles(theme)
@@ -79,25 +95,30 @@ export function ModernCoverPage({ data, theme }: Props) {
 
   return (
     <Page size="A4" style={styles.page}>
-      {/* Color bar with photo */}
-      <View style={styles.colorBar}>
+      <View style={styles.container}>
+        <View style={styles.topRule} />
         {photoSrc ? (
           <Image style={styles.photo} src={photoSrc} />
         ) : null}
         <Text style={styles.name}>{profile.name}</Text>
         {profile.title ? <Text style={styles.titleText}>{profile.title}</Text> : null}
-      </View>
 
-      {/* Info content */}
-      <View style={styles.content}>
+        <View style={styles.rule} />
+
         <View style={styles.infoBlock}>
           <Text style={styles.infoLabel}>Bewerbung als</Text>
           <Text style={styles.infoValue}>{position}</Text>
         </View>
+
+        <View style={styles.ruleSmall} />
+
         <View style={styles.infoBlock}>
           <Text style={styles.infoLabel}>Bei</Text>
           <Text style={styles.infoValue}>{company}</Text>
         </View>
+
+        <View style={styles.ruleSmall} />
+
         <View style={styles.infoBlock}>
           <Text style={styles.infoLabel}>Datum</Text>
           <Text style={styles.infoValue}>{date}</Text>
