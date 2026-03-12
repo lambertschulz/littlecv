@@ -2,9 +2,9 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { Button } from '@/components/ui/button'
 import type { ExportScope } from '@/types/cv'
 
 interface HeaderProps {
@@ -21,34 +21,35 @@ export function Header({ onExportPdf, onExportJson, onImportJson }: HeaderProps)
         <span className="sm:hidden">Bewerbung</span>
       </h1>
 
-      <DropdownMenu>
-        <DropdownMenuTrigger
-          className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium border border-input bg-background h-9 px-3 hover:bg-accent hover:text-accent-foreground"
-        >
-          Exportieren ▾
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={() => onExportPdf('all')}>
-            PDF – Alles
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => onExportPdf('cv')}>
-            PDF – Nur Lebenslauf
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => onExportPdf('coverLetter')}>
-            PDF – Nur Anschreiben
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => onExportPdf('coverPage')}>
-            PDF – Nur Deckblatt
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={onExportJson}>
-            JSON Speichern
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={onImportJson}>
-            JSON Laden
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <div className="flex items-center gap-2">
+        <Button variant="outline" size="sm" onClick={onExportJson}>
+          Speichern
+        </Button>
+        <Button variant="outline" size="sm" onClick={onImportJson}>
+          Laden
+        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="sm">
+              Exportieren ▾
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem onClick={() => onExportPdf('all')}>
+              PDF – Alles
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onExportPdf('cv')}>
+              PDF – Nur Lebenslauf
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onExportPdf('coverLetter')}>
+              PDF – Nur Anschreiben
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => onExportPdf('coverPage')}>
+              PDF – Nur Deckblatt
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
     </header>
   )
 }
