@@ -7,6 +7,7 @@ import { exportPdf } from "./services/export-pdf";
 import {
   activeTemplateKeyAtom,
   activeThemeAtom,
+  attachmentsAtom,
   cvDataAtom,
   templateThemesAtom,
 } from "./state/atoms";
@@ -18,12 +19,13 @@ function App() {
   const [templateKey, setTemplateKey] = useAtom(activeTemplateKeyAtom);
   const theme = useAtomValue(activeThemeAtom);
   const [themes, setThemes] = useAtom(templateThemesAtom);
+  const [attachments, setAttachments] = useAtom(attachmentsAtom);
 
   const handleExportPdf = async (scope: ExportScope) => {
     try {
       const template = getTemplate(templateKey);
       if (template) {
-        await exportPdf(data, template, theme, scope);
+        await exportPdf(data, template, theme, scope, attachments);
       }
     } catch (e) {
       console.error("PDF export failed:", e);
@@ -35,6 +37,7 @@ function App() {
       cvData: data,
       activeTemplate: templateKey,
       templateThemes: themes,
+      attachments,
     });
   };
 
@@ -44,6 +47,7 @@ function App() {
       setData(imported.cvData);
       setTemplateKey(imported.activeTemplate);
       setThemes(imported.templateThemes);
+      if (imported.attachments) setAttachments(imported.attachments);
     } catch (e) {
       console.error("Import failed:", e);
     }

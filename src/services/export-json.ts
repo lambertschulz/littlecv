@@ -1,10 +1,13 @@
 import type { CvData, SkillSection } from "../types/cv";
 import { saveBlob } from "./save-blob";
 
+import type { Attachment } from "../types/cv";
+
 interface SaveData {
   cvData: CvData;
   activeTemplate: string;
   templateThemes: Record<string, object>;
+  attachments?: Attachment[];
 }
 
 function migrateCvData(raw: Record<string, unknown>): CvData {

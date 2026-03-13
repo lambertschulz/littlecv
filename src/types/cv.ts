@@ -56,6 +56,13 @@ export interface CvData {
   coverPage?: CoverPage;
 }
 
+export interface Attachment {
+  id: string;
+  label: string;
+  dataUrl: string; // base64 data URL
+  mimeType: string; // "image/jpeg" | "image/png" | "application/pdf"
+}
+
 export type ExportScope = "all" | "cv" | "coverLetter" | "coverPage";
 
 export type ActiveView = "editor" | "style" | "preview";

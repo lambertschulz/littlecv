@@ -4,7 +4,7 @@ import { templateRegistry } from "../templates/registry";
 
 // Migrate old localStorage data (sections -> timeline, skills -> skillSections)
 // Runs once at module load before atoms are created
-import type { ActiveView, CvData, SkillSection } from "../types/cv";
+import type { ActiveView, Attachment, CvData, SkillSection } from "../types/cv";
 
 (function migrateLegacyStorage() {
   try {
@@ -95,3 +95,5 @@ export const favoriteTemplatesAtom = atomWithStorage<string[]>(
 export const customFontsAtom = atomWithStorage<
   { family: string; url: string }[]
 >("custom-fonts", []);
+
+export const attachmentsAtom = atomWithStorage<Attachment[]>("attachments", []);
