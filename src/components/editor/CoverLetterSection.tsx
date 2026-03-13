@@ -1,34 +1,36 @@
-import { useAtom } from 'jotai'
-import { cvDataAtom } from '../../state/atoms'
-import { CollapsiblePanel } from '../shared/CollapsiblePanel'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Button } from '@/components/ui/button'
-import type { CoverLetter } from '../../types/cv'
+import { useAtom } from "jotai";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { cvDataAtom } from "../../state/atoms";
+import type { CoverLetter } from "../../types/cv";
+import { CollapsiblePanel } from "../shared/CollapsiblePanel";
 
 export function CoverLetterSection() {
-  const [data, setData] = useAtom(cvDataAtom)
-  const { coverLetter } = data
+  const [data, setData] = useAtom(cvDataAtom);
+  const { coverLetter } = data;
 
   const activate = () => {
     const defaultCoverLetter: CoverLetter = {
-      recipient: '',
-      body: '',
-      date: new Date().toLocaleDateString('de-DE'),
-    }
-    setData((prev) => ({ ...prev, coverLetter: defaultCoverLetter }))
-  }
+      recipient: "",
+      body: "",
+      date: new Date().toLocaleDateString("de-DE"),
+    };
+    setData((prev) => ({ ...prev, coverLetter: defaultCoverLetter }));
+  };
 
   const deactivate = () => {
-    setData((prev) => ({ ...prev, coverLetter: undefined }))
-  }
+    setData((prev) => ({ ...prev, coverLetter: undefined }));
+  };
 
   const update = (field: string, value: string) => {
     setData((prev) => ({
       ...prev,
-      coverLetter: prev.coverLetter ? { ...prev.coverLetter, [field]: value } : prev.coverLetter,
-    }))
-  }
+      coverLetter: prev.coverLetter
+        ? { ...prev.coverLetter, [field]: value }
+        : prev.coverLetter,
+    }));
+  };
 
   return (
     <CollapsiblePanel title="Anschreiben">
@@ -41,35 +43,39 @@ export function CoverLetterSection() {
           <Input
             placeholder="Empfänger"
             value={coverLetter.recipient}
-            onChange={(e) => update('recipient', e.target.value)}
+            onChange={(e) => update("recipient", e.target.value)}
           />
           <Textarea
             placeholder="Empfängeradresse (optional, mehrzeilig)"
             rows={2}
-            value={coverLetter.recipientAddress ?? ''}
-            onChange={(e) => update('recipientAddress', e.target.value)}
+            value={coverLetter.recipientAddress ?? ""}
+            onChange={(e) => update("recipientAddress", e.target.value)}
           />
           <Input
             placeholder="Betreff (optional)"
-            value={coverLetter.subject ?? ''}
-            onChange={(e) => update('subject', e.target.value)}
+            value={coverLetter.subject ?? ""}
+            onChange={(e) => update("subject", e.target.value)}
           />
           <Input
             placeholder="Datum"
             value={coverLetter.date}
-            onChange={(e) => update('date', e.target.value)}
+            onChange={(e) => update("date", e.target.value)}
           />
           <Textarea
             placeholder="Anschreiben-Text"
             value={coverLetter.body}
             rows={10}
-            onChange={(e) => update('body', e.target.value)}
+            onChange={(e) => update("body", e.target.value)}
           />
-          <Button variant="link" className="px-0 text-sm text-destructive" onClick={deactivate}>
+          <Button
+            variant="link"
+            className="px-0 text-sm text-destructive"
+            onClick={deactivate}
+          >
             Deaktivieren
           </Button>
         </div>
       )}
     </CollapsiblePanel>
-  )
+  );
 }

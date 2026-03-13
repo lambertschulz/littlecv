@@ -1,13 +1,8 @@
-import { TemplateCarousel } from './TemplateCarousel'
-import { Preview } from '@/components/Preview'
-import { ThemeEditor } from '@/components/theme/ThemeEditor'
-import { FontManager } from '@/components/theme/FontManager'
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/components/ui/tabs'
+import { Preview } from "@/components/Preview";
+import { FontManager } from "@/components/theme/FontManager";
+import { ThemeEditor } from "@/components/theme/ThemeEditor";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { TemplateCarousel } from "./TemplateCarousel";
 
 export function StylePanel() {
   return (
@@ -17,15 +12,24 @@ export function StylePanel() {
         <div className="h-[40vh] border-b bg-muted shrink-0">
           <Preview />
         </div>
-        <Tabs defaultValue="templates" className="flex flex-col flex-1 min-h-0 w-full gap-0 overflow-hidden">
+        <Tabs
+          defaultValue="templates"
+          className="flex flex-col flex-1 min-h-0 w-full gap-0 overflow-hidden"
+        >
           <TabsList className="shrink-0 w-full justify-start rounded-none border-b px-4">
             <TabsTrigger value="templates">Vorlagen</TabsTrigger>
             <TabsTrigger value="design">Design</TabsTrigger>
           </TabsList>
-          <TabsContent value="templates" className="flex-1 overflow-y-auto overflow-x-hidden m-0 w-full">
+          <TabsContent
+            value="templates"
+            className="flex-1 overflow-y-auto overflow-x-hidden m-0 w-full"
+          >
             <TemplateCarousel />
           </TabsContent>
-          <TabsContent value="design" className="flex-1 overflow-y-auto overflow-x-hidden m-0 p-4 space-y-6 w-full">
+          <TabsContent
+            value="design"
+            className="flex-1 overflow-y-auto overflow-x-hidden m-0 p-4 space-y-6 w-full"
+          >
             <ThemeEditor />
             <FontManager />
           </TabsContent>
@@ -41,5 +45,5 @@ export function StylePanel() {
         </div>
       </div>
     </div>
-  )
+  );
 }

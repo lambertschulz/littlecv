@@ -1,24 +1,24 @@
-import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
-import type { CvData } from '../../types/cv'
-import type { ElegantTheme } from './theme'
-import { getPhotoDimensions, getPhotoBorderRadius } from '../photoUtils'
+import { Image, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import type { CvData } from "../../types/cv";
+import { getPhotoBorderRadius, getPhotoDimensions } from "../photoUtils";
+import type { ElegantTheme } from "./theme";
 
-const fontSizeMap = { sm: 9, md: 10, lg: 11 }
+const fontSizeMap = { sm: 9, md: 10, lg: 11 };
 
 function makeStyles(theme: ElegantTheme) {
-  const fs = fontSizeMap[theme.fontSize]
+  const fs = fontSizeMap[theme.fontSize];
   return StyleSheet.create({
     page: {
       fontFamily: theme.fontFamily,
       fontSize: fs,
-      color: '#1f2937',
+      color: "#1f2937",
       paddingTop: 44,
       paddingBottom: 48,
       paddingHorizontal: 52,
-      backgroundColor: '#ffffff',
+      backgroundColor: "#ffffff",
     },
     header: {
-      flexDirection: 'row',
+      flexDirection: "row",
       marginBottom: 14,
     },
     headerText: {
@@ -36,18 +36,21 @@ function makeStyles(theme: ElegantTheme) {
       marginBottom: 8,
     },
     contactRow: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
+      flexDirection: "row",
+      flexWrap: "wrap",
       gap: 0,
     },
     contactItem: {
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
     },
     photo: {
-      ...getPhotoDimensions(theme.photoSize ?? 'md'),
-      borderRadius: getPhotoBorderRadius(theme.photoShape ?? 'round', theme.photoSize ?? 'md'),
-      objectFit: 'cover',
+      ...getPhotoDimensions(theme.photoSize ?? "md"),
+      borderRadius: getPhotoBorderRadius(
+        theme.photoShape ?? "round",
+        theme.photoSize ?? "md",
+      ),
+      objectFit: "cover",
       borderWidth: 1.5,
       borderColor: theme.accentColor,
     },
@@ -76,14 +79,14 @@ function makeStyles(theme: ElegantTheme) {
       marginBottom: 8,
     },
     entryRow: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+      flexDirection: "row",
+      justifyContent: "space-between",
       marginBottom: 2,
     },
     entryTitle: {
       fontSize: fs,
       fontFamily: theme.fontFamily,
-      color: '#111827',
+      color: "#111827",
     },
     entryPeriod: {
       fontSize: fs - 1,
@@ -91,18 +94,18 @@ function makeStyles(theme: ElegantTheme) {
     },
     entrySubtitle: {
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
       marginBottom: 2,
     },
     entryDescription: {
       fontSize: fs - 1,
-      color: '#374151',
+      color: "#374151",
       marginBottom: 6,
       lineHeight: 1.5,
     },
     skillsRow: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
+      flexDirection: "row",
+      flexWrap: "wrap",
       gap: 6,
     },
     skillPill: {
@@ -116,25 +119,26 @@ function makeStyles(theme: ElegantTheme) {
       fontSize: fs - 1,
       color: theme.accentColor,
     },
-  })
+  });
 }
 
 interface Props {
-  data: CvData
-  theme: ElegantTheme
+  data: CvData;
+  theme: ElegantTheme;
 }
 
 export function ElegantTemplate({ data, theme }: Props) {
-  const styles = makeStyles(theme)
-  const { profile, skillSections } = data
-  const timeline = data.timeline ?? []
-  const photoSrc = (theme as unknown as Record<string, string>).croppedPhoto || profile.photo
+  const styles = makeStyles(theme);
+  const { profile, skillSections } = data;
+  const timeline = data.timeline ?? [];
+  const photoSrc =
+    (theme as unknown as Record<string, string>).croppedPhoto || profile.photo;
 
-  const contactParts: string[] = []
-  if (profile.email) contactParts.push(profile.email)
-  if (profile.phone) contactParts.push(profile.phone)
-  if (profile.address) contactParts.push(profile.address.replace(/\n/g, ', '))
-  if (profile.website) contactParts.push(profile.website)
+  const contactParts: string[] = [];
+  if (profile.email) contactParts.push(profile.email);
+  if (profile.phone) contactParts.push(profile.phone);
+  if (profile.address) contactParts.push(profile.address.replace(/\n/g, ", "));
+  if (profile.website) contactParts.push(profile.website);
 
   return (
     <Page size="A4" style={styles.page}>
@@ -145,15 +149,14 @@ export function ElegantTemplate({ data, theme }: Props) {
           <Text style={styles.titleText}>{profile.title}</Text>
           <View style={styles.contactRow}>
             {contactParts.map((part, i) => (
-              <Text key={i} style={styles.contactItem}>
-                {i > 0 ? ' · ' : ''}{part}
+              <Text key={part} style={styles.contactItem}>
+                {i > 0 ? " · " : ""}
+                {part}
               </Text>
             ))}
           </View>
         </View>
-        {photoSrc ? (
-          <Image style={styles.photo} src={photoSrc} />
-        ) : null}
+        {photoSrc ? <Image style={styles.photo} src={photoSrc} /> : null}
       </View>
 
       {/* Double-line accent */}
@@ -177,12 +180,14 @@ export function ElegantTemplate({ data, theme }: Props) {
                   <Text style={styles.entrySubtitle}>{entry.subtitle}</Text>
                 ) : null}
                 {entry.description ? (
-                  <Text style={styles.entryDescription}>{entry.description}</Text>
+                  <Text style={styles.entryDescription}>
+                    {entry.description}
+                  </Text>
                 ) : null}
               </View>
             ))}
           </View>
-        ) : null
+        ) : null,
       )}
 
       {/* Skill Sections as outlined pills */}
@@ -198,8 +203,8 @@ export function ElegantTemplate({ data, theme }: Props) {
               ))}
             </View>
           </View>
-        ) : null
+        ) : null,
       )}
     </Page>
-  )
+  );
 }

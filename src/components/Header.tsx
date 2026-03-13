@@ -1,19 +1,23 @@
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { Button } from '@/components/ui/button'
-import type { ExportScope } from '@/types/cv'
+} from "@/components/ui/dropdown-menu";
+import type { ExportScope } from "@/types/cv";
 
 interface HeaderProps {
-  onExportPdf: (scope: ExportScope) => void
-  onExportJson: () => void
-  onImportJson: () => void
+  onExportPdf: (scope: ExportScope) => void;
+  onExportJson: () => void;
+  onImportJson: () => void;
 }
 
-export function Header({ onExportPdf, onExportJson, onImportJson }: HeaderProps) {
+export function Header({
+  onExportPdf,
+  onExportJson,
+  onImportJson,
+}: HeaderProps) {
   return (
     <header className="h-14 border-b flex items-center px-4 shrink-0 justify-between bg-background">
       <h1 className="text-lg font-bold">
@@ -29,27 +33,25 @@ export function Header({ onExportPdf, onExportJson, onImportJson }: HeaderProps)
           Laden
         </Button>
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="sm">
-              Exportieren ▾
-            </Button>
+          <DropdownMenuTrigger className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground h-8 px-3 cursor-pointer">
+            Exportieren ▾
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem onClick={() => onExportPdf('all')}>
+            <DropdownMenuItem onClick={() => onExportPdf("all")}>
               PDF – Alles
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onExportPdf('cv')}>
+            <DropdownMenuItem onClick={() => onExportPdf("cv")}>
               PDF – Nur Lebenslauf
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onExportPdf('coverLetter')}>
+            <DropdownMenuItem onClick={() => onExportPdf("coverLetter")}>
               PDF – Nur Anschreiben
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onExportPdf('coverPage')}>
+            <DropdownMenuItem onClick={() => onExportPdf("coverPage")}>
               PDF – Nur Deckblatt
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
     </header>
-  )
+  );
 }

@@ -1,18 +1,18 @@
-import { Page, View, Text, StyleSheet } from '@react-pdf/renderer'
-import type { CvData } from '../../types/cv'
-import type { CreativeTheme } from './theme'
+import { Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import type { CvData } from "../../types/cv";
+import type { CreativeTheme } from "./theme";
 
-const fontSizeMap = { sm: 9, md: 10, lg: 11 }
+const fontSizeMap = { sm: 9, md: 10, lg: 11 };
 
 function makeStyles(theme: CreativeTheme) {
-  const fs = fontSizeMap[theme.fontSize]
+  const fs = fontSizeMap[theme.fontSize];
   return StyleSheet.create({
     page: {
       fontFamily: theme.fontFamily,
       fontSize: fs,
-      color: '#1f2937',
-      backgroundColor: '#ffffff',
-      flexDirection: 'row',
+      color: "#1f2937",
+      backgroundColor: "#ffffff",
+      flexDirection: "row",
     },
     accentBar: {
       width: 4,
@@ -35,12 +35,12 @@ function makeStyles(theme: CreativeTheme) {
     },
     senderDetail: {
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
     },
     date: {
-      textAlign: 'right',
+      textAlign: "right",
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
       marginBottom: 20,
     },
     recipientBlock: {
@@ -53,7 +53,7 @@ function makeStyles(theme: CreativeTheme) {
     },
     recipientAddress: {
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
     },
     subject: {
       fontSize: fs + 1,
@@ -62,23 +62,23 @@ function makeStyles(theme: CreativeTheme) {
     },
     body: {
       fontSize: fs,
-      color: '#374151',
+      color: "#374151",
       lineHeight: 1.6,
     },
-  })
+  });
 }
 
 interface Props {
-  data: CvData
-  theme: CreativeTheme
+  data: CvData;
+  theme: CreativeTheme;
 }
 
 export function CreativeCoverLetter({ data, theme }: Props) {
-  if (!data.coverLetter) return null
+  if (!data.coverLetter) return null;
 
-  const styles = makeStyles(theme)
-  const { profile } = data
-  const { recipient, recipientAddress, subject, body, date } = data.coverLetter
+  const styles = makeStyles(theme);
+  const { profile } = data;
+  const { recipient, recipientAddress, subject, body, date } = data.coverLetter;
 
   return (
     <Page size="A4" style={styles.page}>
@@ -89,9 +89,15 @@ export function CreativeCoverLetter({ data, theme }: Props) {
         {/* Sender */}
         <View style={styles.senderBlock}>
           <Text style={styles.senderName}>{profile.name}</Text>
-          {profile.address ? <Text style={styles.senderDetail}>{profile.address}</Text> : null}
-          {profile.email ? <Text style={styles.senderDetail}>{profile.email}</Text> : null}
-          {profile.phone ? <Text style={styles.senderDetail}>{profile.phone}</Text> : null}
+          {profile.address ? (
+            <Text style={styles.senderDetail}>{profile.address}</Text>
+          ) : null}
+          {profile.email ? (
+            <Text style={styles.senderDetail}>{profile.email}</Text>
+          ) : null}
+          {profile.phone ? (
+            <Text style={styles.senderDetail}>{profile.phone}</Text>
+          ) : null}
         </View>
 
         {/* Date */}
@@ -112,5 +118,5 @@ export function CreativeCoverLetter({ data, theme }: Props) {
         <Text style={styles.body}>{body}</Text>
       </View>
     </Page>
-  )
+  );
 }

@@ -1,45 +1,49 @@
-import { useState } from 'react'
-import { useAtom } from 'jotai'
-import { customFontsAtom } from '@/state/atoms'
-import { registerGoogleFont } from '@/fonts/register'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
+import { useAtom } from "jotai";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { registerGoogleFont } from "@/fonts/register";
+import { customFontsAtom } from "@/state/atoms";
 
 export function FontManager() {
-  const [fonts, setFonts] = useAtom(customFontsAtom)
-  const [family, setFamily] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [fonts, setFonts] = useAtom(customFontsAtom);
+  const [family, setFamily] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleAdd = async () => {
-    if (!family.trim()) return
-    setLoading(true)
-    setError('')
+    if (!family.trim()) return;
+    setLoading(true);
+    setError("");
     try {
-      await registerGoogleFont(family.trim())
-      setFonts((prev) => [...prev, { family: family.trim(), url: '' }])
-      setFamily('')
+      await registerGoogleFont(family.trim());
+      setFonts((prev) => [...prev, { family: family.trim(), url: "" }]);
+      setFamily("");
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Fehler beim Laden der Schriftart')
+      setError(
+        e instanceof Error ? e.message : "Fehler beim Laden der Schriftart",
+      );
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleRemove = (index: number) => {
-    setFonts((prev) => prev.filter((_, i) => i !== index))
-  }
+    setFonts((prev) => prev.filter((_, i) => i !== index));
+  };
 
   return (
     <div>
-      <p className="text-xs font-medium text-muted-foreground mb-3">Google Fonts hinzufügen</p>
+      <p className="text-xs font-medium text-muted-foreground mb-3">
+        Google Fonts hinzufügen
+      </p>
       <div className="flex gap-2 items-center">
         <Input
           className="flex-1 text-sm h-8"
           placeholder="Font-Name (z.B. Lato)"
           value={family}
           onChange={(e) => setFamily(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleAdd()}
+          onKeyDown={(e) => e.key === "Enter" && handleAdd()}
         />
         <Button
           variant="outline"
@@ -47,7 +51,7 @@ export function FontManager() {
           onClick={handleAdd}
           disabled={loading}
         >
-          {loading ? '...' : 'Hinzufügen'}
+          {loading ? "..." : "Hinzufügen"}
         </Button>
       </div>
       {error && <p className="text-xs text-destructive mt-1">{error}</p>}
@@ -60,6 +64,7 @@ export function FontManager() {
             >
               {f.family}
               <button
+                type="button"
                 className="text-muted-foreground hover:text-destructive"
                 onClick={() => handleRemove(i)}
                 aria-label={`${f.family} entfernen`}
@@ -71,5 +76,5 @@ export function FontManager() {
         </div>
       )}
     </div>
-  )
+  );
 }

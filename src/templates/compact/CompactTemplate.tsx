@@ -1,32 +1,35 @@
-import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
-import type { CvData } from '../../types/cv'
-import type { CompactTheme } from './theme'
-import { getPhotoDimensions, getPhotoBorderRadius } from '../photoUtils'
+import { Image, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import type { CvData } from "../../types/cv";
+import { getPhotoBorderRadius, getPhotoDimensions } from "../photoUtils";
+import type { CompactTheme } from "./theme";
 
-const fontSizeMap = { sm: 8, md: 9, lg: 10 }
+const fontSizeMap = { sm: 8, md: 9, lg: 10 };
 
 function makeStyles(theme: CompactTheme) {
-  const fs = fontSizeMap[theme.fontSize]
+  const fs = fontSizeMap[theme.fontSize];
   return StyleSheet.create({
     page: {
       fontFamily: theme.fontFamily,
       fontSize: fs,
-      color: '#1f2937',
+      color: "#1f2937",
       paddingTop: 28,
       paddingBottom: 28,
       paddingHorizontal: 32,
-      backgroundColor: '#ffffff',
+      backgroundColor: "#ffffff",
     },
     header: {
-      flexDirection: 'row',
-      alignItems: 'center',
+      flexDirection: "row",
+      alignItems: "center",
       marginBottom: 8,
       gap: 10,
     },
     photo: {
-      ...getPhotoDimensions(theme.photoSize ?? 'md'),
-      borderRadius: getPhotoBorderRadius(theme.photoShape ?? 'round', theme.photoSize ?? 'md'),
-      objectFit: 'cover',
+      ...getPhotoDimensions(theme.photoSize ?? "md"),
+      borderRadius: getPhotoBorderRadius(
+        theme.photoShape ?? "round",
+        theme.photoSize ?? "md",
+      ),
+      objectFit: "cover",
     },
     headerText: {
       flex: 1,
@@ -39,17 +42,17 @@ function makeStyles(theme: CompactTheme) {
     },
     titleText: {
       fontSize: fs + 1,
-      color: '#6b7280',
+      color: "#6b7280",
       marginBottom: 3,
     },
     contactRow: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
+      flexDirection: "row",
+      flexWrap: "wrap",
       gap: 6,
     },
     contactItem: {
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
     },
     divider: {
       height: 1,
@@ -57,7 +60,7 @@ function makeStyles(theme: CompactTheme) {
       marginBottom: 10,
     },
     body: {
-      flexDirection: 'row',
+      flexDirection: "row",
       gap: 14,
     },
     leftColumn: {
@@ -73,7 +76,7 @@ function makeStyles(theme: CompactTheme) {
       fontSize: fs,
       fontFamily: theme.fontFamily,
       color: theme.primaryColor,
-      textTransform: 'uppercase',
+      textTransform: "uppercase",
       letterSpacing: 1,
       marginBottom: 5,
       borderBottomWidth: 1,
@@ -81,8 +84,8 @@ function makeStyles(theme: CompactTheme) {
       paddingBottom: 2,
     },
     entryRow: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+      flexDirection: "row",
+      justifyContent: "space-between",
       marginBottom: 1,
     },
     entryTitle: {
@@ -91,21 +94,21 @@ function makeStyles(theme: CompactTheme) {
     },
     entryPeriod: {
       fontSize: fs - 1,
-      color: '#9ca3af',
+      color: "#9ca3af",
     },
     entrySubtitle: {
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
       marginBottom: 1,
     },
     entryDescription: {
       fontSize: fs - 1,
-      color: '#374151',
+      color: "#374151",
       marginBottom: 4,
     },
     skillsRow: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
+      flexDirection: "row",
+      flexWrap: "wrap",
       gap: 4,
     },
     skillPill: {
@@ -117,42 +120,43 @@ function makeStyles(theme: CompactTheme) {
       paddingVertical: 2,
       borderRadius: 3,
     },
-  })
+  });
 }
 
 interface Props {
-  data: CvData
-  theme: CompactTheme
+  data: CvData;
+  theme: CompactTheme;
 }
 
 export function CompactTemplate({ data, theme }: Props) {
-  const styles = makeStyles(theme)
-  const { profile, skillSections } = data
-  const timeline = data.timeline ?? []
-  const photoSrc = (theme as unknown as Record<string, string>).croppedPhoto || profile.photo
+  const styles = makeStyles(theme);
+  const { profile, skillSections } = data;
+  const timeline = data.timeline ?? [];
+  const photoSrc =
+    (theme as unknown as Record<string, string>).croppedPhoto || profile.photo;
 
-  const leftSections = timeline.slice(0, 1)
-  const rightSections = timeline.slice(1)
+  const leftSections = timeline.slice(0, 1);
+  const rightSections = timeline.slice(1);
 
-  const contactParts: string[] = []
-  if (profile.email) contactParts.push(profile.email)
-  if (profile.phone) contactParts.push(profile.phone)
-  if (profile.address) contactParts.push(profile.address.replace(/\n/g, ', '))
-  if (profile.website) contactParts.push(profile.website)
+  const contactParts: string[] = [];
+  if (profile.email) contactParts.push(profile.email);
+  if (profile.phone) contactParts.push(profile.phone);
+  if (profile.address) contactParts.push(profile.address.replace(/\n/g, ", "));
+  if (profile.website) contactParts.push(profile.website);
 
   return (
     <Page size="A4" style={styles.page}>
       {/* Header */}
       <View style={styles.header}>
-        {photoSrc ? (
-          <Image style={styles.photo} src={photoSrc} />
-        ) : null}
+        {photoSrc ? <Image style={styles.photo} src={photoSrc} /> : null}
         <View style={styles.headerText}>
           <Text style={styles.name}>{profile.name}</Text>
           <Text style={styles.titleText}>{profile.title}</Text>
           <View style={styles.contactRow}>
-            {contactParts.map((part, i) => (
-              <Text key={i} style={styles.contactItem}>{part}</Text>
+            {contactParts.map((part) => (
+              <Text key={part} style={styles.contactItem}>
+                {part}
+              </Text>
             ))}
           </View>
         </View>
@@ -177,12 +181,14 @@ export function CompactTemplate({ data, theme }: Props) {
                     </View>
                     <Text style={styles.entrySubtitle}>{entry.subtitle}</Text>
                     {entry.description ? (
-                      <Text style={styles.entryDescription}>{entry.description}</Text>
+                      <Text style={styles.entryDescription}>
+                        {entry.description}
+                      </Text>
                     ) : null}
                   </View>
                 ))}
               </View>
-            ) : null
+            ) : null,
           )}
         </View>
 
@@ -200,12 +206,14 @@ export function CompactTemplate({ data, theme }: Props) {
                     </View>
                     <Text style={styles.entrySubtitle}>{entry.subtitle}</Text>
                     {entry.description ? (
-                      <Text style={styles.entryDescription}>{entry.description}</Text>
+                      <Text style={styles.entryDescription}>
+                        {entry.description}
+                      </Text>
                     ) : null}
                   </View>
                 ))}
               </View>
-            ) : null
+            ) : null,
           )}
 
           {(skillSections ?? []).map((skillSection) =>
@@ -214,14 +222,16 @@ export function CompactTemplate({ data, theme }: Props) {
                 <Text style={styles.sectionTitle}>{skillSection.name}</Text>
                 <View style={styles.skillsRow}>
                   {skillSection.skills.map((skill) => (
-                    <Text key={skill.id} style={styles.skillPill}>{skill.label}</Text>
+                    <Text key={skill.id} style={styles.skillPill}>
+                      {skill.label}
+                    </Text>
                   ))}
                 </View>
               </View>
-            ) : null
+            ) : null,
           )}
         </View>
       </View>
     </Page>
-  )
+  );
 }

@@ -1,42 +1,42 @@
-import { useAtom } from 'jotai'
-import { cvDataAtom } from '../../state/atoms'
-import { CollapsiblePanel } from '../shared/CollapsiblePanel'
-import { SortableList } from '../shared/SortableList'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import type { Skill, SkillSection } from '../../types/cv'
+import { useAtom } from "jotai";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { cvDataAtom } from "../../state/atoms";
+import type { Skill, SkillSection } from "../../types/cv";
+import { CollapsiblePanel } from "../shared/CollapsiblePanel";
+import { SortableList } from "../shared/SortableList";
 
 function SkillSectionPanel({
   section,
   onUpdate,
   onRemove,
 }: {
-  section: SkillSection
-  onUpdate: (s: SkillSection) => void
-  onRemove: () => void
+  section: SkillSection;
+  onUpdate: (s: SkillSection) => void;
+  onRemove: () => void;
 }) {
   const updateSkill = (index: number, field: string, value: string) => {
-    const next = [...section.skills]
-    next[index] = { ...next[index], [field]: value }
-    onUpdate({ ...section, skills: next })
-  }
+    const next = [...section.skills];
+    next[index] = { ...next[index], [field]: value };
+    onUpdate({ ...section, skills: next });
+  };
 
   const createSkill = (): Skill => ({
     id: crypto.randomUUID(),
-    label: '',
-  })
+    label: "",
+  });
 
   return (
     <CollapsiblePanel
-      title={section.name || 'Neue Kenntnisse-Kategorie'}
+      title={section.name || "Neue Kenntnisse-Kategorie"}
       actions={
         <Button
           type="button"
           variant="ghost"
           size="sm"
           onClick={(e) => {
-            e.stopPropagation()
-            onRemove()
+            e.stopPropagation();
+            onRemove();
           }}
           className="text-red-400 hover:text-red-600 text-xs"
         >
@@ -61,47 +61,50 @@ function SkillSectionPanel({
             <Input
               placeholder="Bezeichnung"
               value={item.label}
-              onChange={(e) => updateSkill(i, 'label', e.target.value)}
+              onChange={(e) => updateSkill(i, "label", e.target.value)}
             />
             <Input
               placeholder="Level (z.B. Fortgeschritten, 5 Jahre, C1)"
-              value={item.level ?? ''}
-              onChange={(e) => updateSkill(i, 'level', e.target.value)}
+              value={item.level ?? ""}
+              onChange={(e) => updateSkill(i, "level", e.target.value)}
             />
           </div>
         )}
       />
     </CollapsiblePanel>
-  )
+  );
 }
 
 export function SkillsSection() {
-  const [data, setData] = useAtom(cvDataAtom)
-  const skillSections = data.skillSections ?? []
+  const [data, setData] = useAtom(cvDataAtom);
+  const skillSections = data.skillSections ?? [];
 
   const addSection = () => {
     const newSection: SkillSection = {
       id: crypto.randomUUID(),
-      name: '',
+      name: "",
       skills: [],
-    }
-    setData((prev) => ({ ...prev, skillSections: [...(prev.skillSections ?? []), newSection] }))
-  }
+    };
+    setData((prev) => ({
+      ...prev,
+      skillSections: [...(prev.skillSections ?? []), newSection],
+    }));
+  };
 
   const updateSection = (index: number, section: SkillSection) => {
     setData((prev) => {
-      const next = [...(prev.skillSections ?? [])]
-      next[index] = section
-      return { ...prev, skillSections: next }
-    })
-  }
+      const next = [...(prev.skillSections ?? [])];
+      next[index] = section;
+      return { ...prev, skillSections: next };
+    });
+  };
 
   const removeSection = (index: number) => {
     setData((prev) => ({
       ...prev,
       skillSections: (prev.skillSections ?? []).filter((_, i) => i !== index),
-    }))
-  }
+    }));
+  };
 
   return (
     <div>
@@ -122,5 +125,5 @@ export function SkillsSection() {
         + Kenntnisse-Kategorie hinzufügen
       </Button>
     </div>
-  )
+  );
 }

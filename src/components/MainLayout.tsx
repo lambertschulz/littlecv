@@ -1,17 +1,12 @@
-import { useAtomValue } from 'jotai'
-import { activeViewAtom } from '@/state/atoms'
-import { EditorPanel } from '@/components/editor/EditorPanel'
-import { Preview } from '@/components/Preview'
-import { StylePanel } from '@/components/style/StylePanel'
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/components/ui/tabs'
+import { useAtomValue } from "jotai";
+import { EditorPanel } from "@/components/editor/EditorPanel";
+import { Preview } from "@/components/Preview";
+import { StylePanel } from "@/components/style/StylePanel";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { activeViewAtom } from "@/state/atoms";
 
 export function MainLayout() {
-  const activeView = useAtomValue(activeViewAtom)
+  const activeView = useAtomValue(activeViewAtom);
 
   return (
     <div className="flex-1 overflow-hidden">
@@ -26,7 +21,10 @@ export function MainLayout() {
             <TabsContent value="editor" className="flex-1 overflow-y-auto m-0">
               <EditorPanel />
             </TabsContent>
-            <TabsContent value="style" className="flex-1 overflow-y-auto m-0 min-w-0">
+            <TabsContent
+              value="style"
+              className="flex-1 overflow-y-auto m-0 min-w-0"
+            >
               <StylePanel />
             </TabsContent>
           </Tabs>
@@ -38,10 +36,10 @@ export function MainLayout() {
 
       {/* Mobile: single panel driven by activeViewAtom */}
       <div className="md:hidden h-full w-full overflow-y-auto overflow-x-hidden pb-14">
-        {activeView === 'editor' && <EditorPanel />}
-        {activeView === 'style' && <StylePanel />}
-        {activeView === 'preview' && <Preview />}
+        {activeView === "editor" && <EditorPanel />}
+        {activeView === "style" && <StylePanel />}
+        {activeView === "preview" && <Preview />}
       </div>
     </div>
-  )
+  );
 }

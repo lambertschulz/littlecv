@@ -1,30 +1,30 @@
-import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
-import type { CvData } from '../../types/cv'
-import type { ElegantTheme } from './theme'
+import { Image, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import type { CvData } from "../../types/cv";
+import type { ElegantTheme } from "./theme";
 
-const fontSizeMap = { sm: 9, md: 10, lg: 11 }
+const fontSizeMap = { sm: 9, md: 10, lg: 11 };
 
 function makeStyles(theme: ElegantTheme) {
-  const fs = fontSizeMap[theme.fontSize]
+  const fs = fontSizeMap[theme.fontSize];
   return StyleSheet.create({
     page: {
       fontFamily: theme.fontFamily,
       fontSize: fs,
-      color: '#1f2937',
-      backgroundColor: '#ffffff',
-      alignItems: 'center',
-      justifyContent: 'center',
+      color: "#1f2937",
+      backgroundColor: "#ffffff",
+      alignItems: "center",
+      justifyContent: "center",
     },
     container: {
-      alignItems: 'center',
+      alignItems: "center",
       paddingHorizontal: 60,
-      width: '100%',
+      width: "100%",
     },
     photo: {
       width: 80,
       height: 80,
       borderRadius: 40,
-      objectFit: 'cover',
+      objectFit: "cover",
       borderWidth: 2,
       borderColor: theme.accentColor,
       marginBottom: 16,
@@ -34,13 +34,13 @@ function makeStyles(theme: ElegantTheme) {
       fontFamily: theme.fontFamily,
       color: theme.primaryColor,
       marginBottom: 6,
-      textAlign: 'center',
+      textAlign: "center",
     },
     titleText: {
       fontSize: fs + 2,
       color: theme.accentColor,
       marginBottom: 16,
-      textAlign: 'center',
+      textAlign: "center",
     },
     doubleLine: {
       width: 120,
@@ -56,13 +56,13 @@ function makeStyles(theme: ElegantTheme) {
       backgroundColor: theme.accentColor,
     },
     infoBlock: {
-      alignItems: 'center',
+      alignItems: "center",
       marginBottom: 16,
     },
     infoLabel: {
       fontSize: fs - 1,
       color: theme.accentColor,
-      textTransform: 'uppercase',
+      textTransform: "uppercase",
       letterSpacing: 1,
       marginBottom: 3,
     },
@@ -70,37 +70,38 @@ function makeStyles(theme: ElegantTheme) {
       fontSize: fs + 3,
       color: theme.primaryColor,
       fontFamily: theme.fontFamily,
-      textAlign: 'center',
+      textAlign: "center",
     },
     separator: {
       fontSize: fs,
       color: theme.accentColor,
       marginVertical: 10,
     },
-  })
+  });
 }
 
 interface Props {
-  data: CvData
-  theme: ElegantTheme
+  data: CvData;
+  theme: ElegantTheme;
 }
 
 export function ElegantCoverPage({ data, theme }: Props) {
-  if (!data.coverPage) return null
+  if (!data.coverPage) return null;
 
-  const styles = makeStyles(theme)
-  const { profile } = data
-  const { company, position, date } = data.coverPage
-  const photoSrc = (theme as unknown as Record<string, string>).croppedPhoto || profile.photo
+  const styles = makeStyles(theme);
+  const { profile } = data;
+  const { company, position, date } = data.coverPage;
+  const photoSrc =
+    (theme as unknown as Record<string, string>).croppedPhoto || profile.photo;
 
   return (
     <Page size="A4" style={styles.page}>
       <View style={styles.container}>
-        {photoSrc ? (
-          <Image style={styles.photo} src={photoSrc} />
-        ) : null}
+        {photoSrc ? <Image style={styles.photo} src={photoSrc} /> : null}
         <Text style={styles.name}>{profile.name}</Text>
-        {profile.title ? <Text style={styles.titleText}>{profile.title}</Text> : null}
+        {profile.title ? (
+          <Text style={styles.titleText}>{profile.title}</Text>
+        ) : null}
 
         <View style={styles.doubleLine}>
           <View style={styles.lineTop} />
@@ -127,5 +128,5 @@ export function ElegantCoverPage({ data, theme }: Props) {
         </View>
       </View>
     </Page>
-  )
+  );
 }

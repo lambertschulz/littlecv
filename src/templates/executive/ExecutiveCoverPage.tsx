@@ -1,24 +1,24 @@
-import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
-import type { CvData } from '../../types/cv'
-import type { ExecutiveTheme } from './theme'
+import { Image, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import type { CvData } from "../../types/cv";
+import type { ExecutiveTheme } from "./theme";
 
-const fontSizeMap = { sm: 9, md: 10, lg: 11 }
+const fontSizeMap = { sm: 9, md: 10, lg: 11 };
 
 function makeStyles(theme: ExecutiveTheme) {
-  const fs = fontSizeMap[theme.fontSize]
+  const fs = fontSizeMap[theme.fontSize];
   return StyleSheet.create({
     page: {
       fontFamily: theme.fontFamily,
       fontSize: fs,
-      color: '#1f2937',
-      backgroundColor: '#ffffff',
-      alignItems: 'center',
-      justifyContent: 'center',
+      color: "#1f2937",
+      backgroundColor: "#ffffff",
+      alignItems: "center",
+      justifyContent: "center",
     },
     container: {
-      alignItems: 'center',
+      alignItems: "center",
       paddingHorizontal: 60,
-      width: '100%',
+      width: "100%",
     },
     topDoubleRuleOuter: {
       width: 180,
@@ -36,7 +36,7 @@ function makeStyles(theme: ExecutiveTheme) {
       width: 72,
       height: 72,
       borderRadius: 36,
-      objectFit: 'cover',
+      objectFit: "cover",
       borderWidth: 1,
       borderColor: theme.primaryColor,
       marginBottom: 16,
@@ -45,16 +45,16 @@ function makeStyles(theme: ExecutiveTheme) {
       fontSize: fs + 14,
       fontFamily: theme.fontFamily,
       color: theme.primaryColor,
-      textTransform: 'uppercase',
+      textTransform: "uppercase",
       letterSpacing: 4,
       marginBottom: 6,
-      textAlign: 'center',
+      textAlign: "center",
     },
     titleText: {
       fontSize: fs + 1,
-      color: '#6b7280',
+      color: "#6b7280",
       marginBottom: 16,
-      textAlign: 'center',
+      textAlign: "center",
     },
     bottomDoubleRuleOuter: {
       width: 180,
@@ -69,13 +69,13 @@ function makeStyles(theme: ExecutiveTheme) {
       marginBottom: 28,
     },
     infoBlock: {
-      alignItems: 'center',
+      alignItems: "center",
       marginBottom: 16,
     },
     infoLabel: {
       fontSize: fs - 1,
-      color: '#9ca3af',
-      textTransform: 'uppercase',
+      color: "#9ca3af",
+      textTransform: "uppercase",
       letterSpacing: 1,
       marginBottom: 2,
     },
@@ -83,29 +83,30 @@ function makeStyles(theme: ExecutiveTheme) {
       fontSize: fs + 3,
       color: theme.primaryColor,
       fontFamily: theme.fontFamily,
-      textAlign: 'center',
+      textAlign: "center",
     },
     separator: {
       width: 24,
       height: 1,
-      backgroundColor: '#d1d5db',
+      backgroundColor: "#d1d5db",
       marginVertical: 10,
     },
-  })
+  });
 }
 
 interface Props {
-  data: CvData
-  theme: ExecutiveTheme
+  data: CvData;
+  theme: ExecutiveTheme;
 }
 
 export function ExecutiveCoverPage({ data, theme }: Props) {
-  if (!data.coverPage) return null
+  if (!data.coverPage) return null;
 
-  const styles = makeStyles(theme)
-  const { profile } = data
-  const { company, position, date } = data.coverPage
-  const photoSrc = (theme as unknown as Record<string, string>).croppedPhoto || profile.photo
+  const styles = makeStyles(theme);
+  const { profile } = data;
+  const { company, position, date } = data.coverPage;
+  const photoSrc =
+    (theme as unknown as Record<string, string>).croppedPhoto || profile.photo;
 
   return (
     <Page size="A4" style={styles.page}>
@@ -114,12 +115,12 @@ export function ExecutiveCoverPage({ data, theme }: Props) {
         <View style={styles.topDoubleRuleOuter} />
         <View style={styles.topDoubleRuleInner} />
 
-        {photoSrc ? (
-          <Image style={styles.photo} src={photoSrc} />
-        ) : null}
+        {photoSrc ? <Image style={styles.photo} src={photoSrc} /> : null}
 
         <Text style={styles.name}>{profile.name}</Text>
-        {profile.title ? <Text style={styles.titleText}>{profile.title}</Text> : null}
+        {profile.title ? (
+          <Text style={styles.titleText}>{profile.title}</Text>
+        ) : null}
 
         {/* Double-line rule below name */}
         <View style={styles.bottomDoubleRuleOuter} />
@@ -145,5 +146,5 @@ export function ExecutiveCoverPage({ data, theme }: Props) {
         </View>
       </View>
     </Page>
-  )
+  );
 }

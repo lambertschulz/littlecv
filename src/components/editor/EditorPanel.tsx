@@ -1,8 +1,8 @@
-import { ProfileSection } from './ProfileSection'
-import { SectionsEditor } from './SectionsEditor'
-import { SkillsSection } from './SkillsSection'
-import { CoverLetterSection } from './CoverLetterSection'
-import { CoverPageSection } from './CoverPageSection'
+import { CoverLetterSection } from "./CoverLetterSection";
+import { CoverPageSection } from "./CoverPageSection";
+import { ProfileSection } from "./ProfileSection";
+import { SectionsEditor } from "./SectionsEditor";
+import { SkillsSection } from "./SkillsSection";
 
 export function EditorPanel() {
   return (
@@ -13,5 +13,5 @@ export function EditorPanel() {
       <CoverLetterSection />
       <CoverPageSection />
     </div>
-  )
+  );
 }

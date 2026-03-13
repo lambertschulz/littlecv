@@ -1,30 +1,30 @@
-import { useState } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
-import { useAtom } from 'jotai'
-import { HeartIcon } from 'lucide-react'
-import { activeTemplateKeyAtom, favoriteTemplatesAtom } from '@/state/atoms'
-import { templateRegistry } from '@/templates/registry'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import useEmblaCarousel from "embla-carousel-react";
+import { useAtom } from "jotai";
+import { HeartIcon } from "lucide-react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { activeTemplateKeyAtom, favoriteTemplatesAtom } from "@/state/atoms";
+import { templateRegistry } from "@/templates/registry";
 
 export function TemplateCarousel() {
-  const [activeKey, setActiveKey] = useAtom(activeTemplateKeyAtom)
-  const [favorites, setFavorites] = useAtom(favoriteTemplatesAtom)
-  const [filter, setFilter] = useState<'all' | 'favorites'>('all')
+  const [activeKey, setActiveKey] = useAtom(activeTemplateKeyAtom);
+  const [favorites, setFavorites] = useAtom(favoriteTemplatesAtom);
+  const [filter, setFilter] = useState<"all" | "favorites">("all");
 
-  const [emblaRef] = useEmblaCarousel({ align: 'start', dragFree: true })
+  const [emblaRef] = useEmblaCarousel({ align: "start", dragFree: true });
 
   const templates =
-    filter === 'favorites'
+    filter === "favorites"
       ? templateRegistry.filter((t) => favorites.includes(t.key))
-      : templateRegistry
+      : templateRegistry;
 
   const toggleFavorite = (key: string, e: React.MouseEvent) => {
-    e.stopPropagation()
+    e.stopPropagation();
     setFavorites((prev) =>
-      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
-    )
-  }
+      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key],
+    );
+  };
 
   return (
     <div className="p-4 space-y-3">
@@ -32,15 +32,15 @@ export function TemplateCarousel() {
       <div className="flex gap-2">
         <Button
           size="sm"
-          variant={filter === 'all' ? 'default' : 'outline'}
-          onClick={() => setFilter('all')}
+          variant={filter === "all" ? "default" : "outline"}
+          onClick={() => setFilter("all")}
         >
           Alle
         </Button>
         <Button
           size="sm"
-          variant={filter === 'favorites' ? 'default' : 'outline'}
-          onClick={() => setFilter('favorites')}
+          variant={filter === "favorites" ? "default" : "outline"}
+          onClick={() => setFilter("favorites")}
         >
           Favoriten
         </Button>
@@ -50,25 +50,28 @@ export function TemplateCarousel() {
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex gap-3">
           {templates.length === 0 ? (
-            <p className="text-sm text-muted-foreground py-4">Keine Favoriten gespeichert.</p>
+            <p className="text-sm text-muted-foreground py-4">
+              Keine Favoriten gespeichert.
+            </p>
           ) : (
             templates.map((t) => {
-              const isActive = t.key === activeKey
-              const isFav = favorites.includes(t.key)
+              const isActive = t.key === activeKey;
+              const isFav = favorites.includes(t.key);
               return (
-                <div
+                <button
+                  type="button"
                   key={t.key}
                   className={cn(
-                    'relative flex-none w-28 cursor-pointer rounded-lg border-2 overflow-hidden transition-all',
+                    "relative flex-none w-28 cursor-pointer rounded-lg border-2 overflow-hidden transition-all text-left p-0",
                     isActive
-                      ? 'border-primary ring-2 ring-primary/30'
-                      : 'border-border hover:border-muted-foreground'
+                      ? "border-primary ring-2 ring-primary/30"
+                      : "border-border hover:border-muted-foreground",
                   )}
                   onClick={() => setActiveKey(t.key)}
                 >
                   {/* Thumbnail */}
                   <img
-                    src={`${import.meta.env.BASE_URL}${t.thumbnail.replace(/^\//, '')}`}
+                    src={`${import.meta.env.BASE_URL}${t.thumbnail.replace(/^\//, "")}`}
                     alt={t.label}
                     className="w-full h-36 object-cover object-top bg-muted"
                   />
@@ -77,25 +80,39 @@ export function TemplateCarousel() {
                     <p className="text-xs font-medium truncate">{t.label}</p>
                   </div>
                   {/* Heart button */}
-                  <button
+                  <label
                     className={cn(
-                      'absolute top-1.5 right-1.5 rounded-full p-1 bg-background/70 backdrop-blur-sm transition-colors',
-                      isFav ? 'text-red-500' : 'text-muted-foreground hover:text-red-400'
+                      "absolute top-1.5 right-1.5 rounded-full p-1 bg-background/70 backdrop-blur-sm transition-colors cursor-pointer",
+                      isFav
+                        ? "text-red-500"
+                        : "text-muted-foreground hover:text-red-400",
                     )}
-                    onClick={(e) => toggleFavorite(t.key, e)}
-                    aria-label={isFav ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
                   >
+                    <input
+                      type="checkbox"
+                      className="sr-only"
+                      checked={isFav}
+                      onChange={(e) => {
+                        e.stopPropagation();
+                        toggleFavorite(t.key, e as unknown as React.MouseEvent);
+                      }}
+                      aria-label={
+                        isFav
+                          ? "Aus Favoriten entfernen"
+                          : "Zu Favoriten hinzufügen"
+                      }
+                    />
                     <HeartIcon
                       className="size-3.5"
-                      fill={isFav ? 'currentColor' : 'none'}
+                      fill={isFav ? "currentColor" : "none"}
                     />
-                  </button>
-                </div>
-              )
+                  </label>
+                </button>
+              );
             })
           )}
         </div>
       </div>
     </div>
-  )
+  );
 }

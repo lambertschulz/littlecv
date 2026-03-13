@@ -1,26 +1,26 @@
-import { Page, View, Text, StyleSheet } from '@react-pdf/renderer'
-import type { CvData } from '../../types/cv'
-import type { CompactTheme } from './theme'
+import { Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import type { CvData } from "../../types/cv";
+import type { CompactTheme } from "./theme";
 
-const fontSizeMap = { sm: 8, md: 9, lg: 10 }
+const fontSizeMap = { sm: 8, md: 9, lg: 10 };
 
 function makeStyles(theme: CompactTheme) {
-  const fs = fontSizeMap[theme.fontSize]
+  const fs = fontSizeMap[theme.fontSize];
   return StyleSheet.create({
     page: {
       fontFamily: theme.fontFamily,
       fontSize: fs,
-      color: '#1f2937',
+      color: "#1f2937",
       paddingTop: 44,
       paddingBottom: 44,
       paddingHorizontal: 48,
-      backgroundColor: '#ffffff',
+      backgroundColor: "#ffffff",
     },
     senderRow: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
+      flexDirection: "row",
+      flexWrap: "wrap",
       gap: 8,
-      alignItems: 'baseline',
+      alignItems: "baseline",
       borderBottomWidth: 1,
       borderBottomColor: theme.primaryColor,
       paddingBottom: 8,
@@ -33,12 +33,12 @@ function makeStyles(theme: CompactTheme) {
     },
     senderDetail: {
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
     },
     date: {
-      textAlign: 'right',
+      textAlign: "right",
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
       marginBottom: 14,
     },
     recipientBlock: {
@@ -51,7 +51,7 @@ function makeStyles(theme: CompactTheme) {
     },
     recipientAddress: {
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
     },
     subject: {
       fontSize: fs + 1,
@@ -60,37 +60,39 @@ function makeStyles(theme: CompactTheme) {
     },
     body: {
       fontSize: fs,
-      color: '#374151',
+      color: "#374151",
       lineHeight: 1.5,
-      textAlign: 'justify',
+      textAlign: "justify",
     },
-  })
+  });
 }
 
 interface Props {
-  data: CvData
-  theme: CompactTheme
+  data: CvData;
+  theme: CompactTheme;
 }
 
 export function CompactCoverLetter({ data, theme }: Props) {
-  if (!data.coverLetter) return null
+  if (!data.coverLetter) return null;
 
-  const styles = makeStyles(theme)
-  const { profile } = data
-  const { recipient, recipientAddress, subject, body, date } = data.coverLetter
+  const styles = makeStyles(theme);
+  const { profile } = data;
+  const { recipient, recipientAddress, subject, body, date } = data.coverLetter;
 
-  const senderParts: string[] = []
-  if (profile.address) senderParts.push(profile.address.replace(/\n/g, ', '))
-  if (profile.email) senderParts.push(profile.email)
-  if (profile.phone) senderParts.push(profile.phone)
+  const senderParts: string[] = [];
+  if (profile.address) senderParts.push(profile.address.replace(/\n/g, ", "));
+  if (profile.email) senderParts.push(profile.email);
+  if (profile.phone) senderParts.push(profile.phone);
 
   return (
     <Page size="A4" style={styles.page}>
       {/* Compact sender row */}
       <View style={styles.senderRow}>
         <Text style={styles.senderName}>{profile.name}</Text>
-        {senderParts.map((part, i) => (
-          <Text key={i} style={styles.senderDetail}>{part}</Text>
+        {senderParts.map((part) => (
+          <Text key={part} style={styles.senderDetail}>
+            {part}
+          </Text>
         ))}
       </View>
 
@@ -111,5 +113,5 @@ export function CompactCoverLetter({ data, theme }: Props) {
       {/* Body */}
       <Text style={styles.body}>{body}</Text>
     </Page>
-  )
+  );
 }

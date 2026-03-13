@@ -158,6 +158,121 @@
       ]
     }
   },
-  "hotPaths": [],
+  "hotPaths": [
+    {
+      "path": "src/components/style/TemplateCarousel.tsx",
+      "accessCount": 8,
+      "lastAccessed": 1773386440525,
+      "type": "file"
+    },
+    {
+      "path": "biome.json",
+      "accessCount": 7,
+      "lastAccessed": 1773386482426,
+      "type": "file"
+    },
+    {
+      "path": "src/components/BottomTabBar.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1773386322411,
+      "type": "file"
+    },
+    {
+      "path": "src/components/ui/label.tsx",
+      "accessCount": 4,
+      "lastAccessed": 1773386417681,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 3,
+      "lastAccessed": 1773386048971,
+      "type": "file"
+    },
+    {
+      "path": "src/components/Header.tsx",
+      "accessCount": 3,
+      "lastAccessed": 1773386574667,
+      "type": "file"
+    },
+    {
+      "path": "src/main.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773386294385,
+      "type": "file"
+    },
+    {
+      "path": "src/components/theme/PhotoCropper.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773386319600,
+      "type": "file"
+    },
+    {
+      "path": "src/components/theme/FontManager.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773386322611,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/classic/ClassicTemplate.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773386356948,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/lisa/LisaTemplate.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773386358243,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/compact/CompactCoverLetter.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773386359560,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/compact/CompactTemplate.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773386360914,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/modern/ModernTemplate.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773386361794,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/elegant/ElegantTemplate.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773386363153,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/executive/ExecutiveTemplate.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773386364532,
+      "type": "file"
+    },
+    {
+      "path": "src/templates/minimalist/MinimalistTemplate.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1773386365754,
+      "type": "file"
+    },
+    {
+      "path": "src/templates",
+      "accessCount": 1,
+      "lastAccessed": 1773386284862,
+      "type": "directory"
+    },
+    {
+      "path": "src/components/ui/dropdown-menu.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1773386561349,
+      "type": "file"
+    }
+  ],
   "userDirectives": []
 }

@@ -1,35 +1,38 @@
-import { Page, View, Text, Image, StyleSheet } from '@react-pdf/renderer'
-import type { CvData } from '../../types/cv'
-import type { ModernTheme } from './theme'
-import { getPhotoDimensions, getPhotoBorderRadius } from '../photoUtils'
+import { Image, Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import type { CvData } from "../../types/cv";
+import { getPhotoBorderRadius, getPhotoDimensions } from "../photoUtils";
+import type { ModernTheme } from "./theme";
 
-const fontSizeMap = { sm: 9, md: 10, lg: 11 }
+const fontSizeMap = { sm: 9, md: 10, lg: 11 };
 
 function makeStyles(theme: ModernTheme) {
-  const fs = fontSizeMap[theme.fontSize]
+  const fs = fontSizeMap[theme.fontSize];
   return StyleSheet.create({
     page: {
       fontFamily: theme.fontFamily,
       fontSize: fs,
-      color: '#1f2937',
+      color: "#1f2937",
       paddingTop: 40,
       paddingBottom: 40,
       paddingHorizontal: 48,
-      backgroundColor: '#ffffff',
+      backgroundColor: "#ffffff",
     },
     header: {
-      flexDirection: 'row',
+      flexDirection: "row",
       marginBottom: 20,
       gap: 16,
     },
     photo: {
-      ...getPhotoDimensions(theme.photoSize ?? 'md'),
-      borderRadius: getPhotoBorderRadius(theme.photoShape ?? 'round', theme.photoSize ?? 'md'),
-      objectFit: 'cover',
+      ...getPhotoDimensions(theme.photoSize ?? "md"),
+      borderRadius: getPhotoBorderRadius(
+        theme.photoShape ?? "round",
+        theme.photoSize ?? "md",
+      ),
+      objectFit: "cover",
     },
     headerText: {
       flex: 1,
-      justifyContent: 'center',
+      justifyContent: "center",
     },
     name: {
       fontSize: fs + 10,
@@ -39,17 +42,17 @@ function makeStyles(theme: ModernTheme) {
     },
     title: {
       fontSize: fs + 2,
-      color: '#6b7280',
+      color: "#6b7280",
       marginBottom: 6,
     },
     contactRow: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
+      flexDirection: "row",
+      flexWrap: "wrap",
       gap: 8,
     },
     contactItem: {
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
     },
     divider: {
       height: 2,
@@ -71,8 +74,8 @@ function makeStyles(theme: ModernTheme) {
       marginBottom: 8,
     },
     entryRow: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
+      flexDirection: "row",
+      justifyContent: "space-between",
       marginBottom: 2,
     },
     entryTitle: {
@@ -81,109 +84,113 @@ function makeStyles(theme: ModernTheme) {
     },
     entryPeriod: {
       fontSize: fs - 1,
-      color: '#9ca3af',
+      color: "#9ca3af",
     },
     entrySubtitle: {
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
       marginBottom: 2,
     },
     entryDescription: {
       fontSize: fs - 1,
-      color: '#374151',
+      color: "#374151",
       marginBottom: 6,
     },
     skillsRow: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
+      flexDirection: "row",
+      flexWrap: "wrap",
       gap: 4,
     },
     skillPill: {
       backgroundColor: theme.accentColor,
-      color: '#ffffff',
+      color: "#ffffff",
       fontSize: fs - 1,
       paddingHorizontal: 6,
       paddingVertical: 2,
       borderRadius: 4,
     },
-  })
+  });
 }
 
 interface Props {
-  data: CvData
-  theme: ModernTheme
+  data: CvData;
+  theme: ModernTheme;
 }
 
 export function ModernTemplate({ data, theme }: Props) {
-  const styles = makeStyles(theme)
-  const { profile, skillSections } = data
-  const timeline = data.timeline ?? []
-  const photoSrc = (theme as unknown as Record<string, string>).croppedPhoto || profile.photo
+  const styles = makeStyles(theme);
+  const { profile, skillSections } = data;
+  const timeline = data.timeline ?? [];
+  const photoSrc =
+    (theme as unknown as Record<string, string>).croppedPhoto || profile.photo;
 
-  const contactParts: string[] = []
-  if (profile.email) contactParts.push(profile.email)
-  if (profile.phone) contactParts.push(profile.phone)
-  if (profile.address) contactParts.push(profile.address.replace(/\n/g, ', '))
-  if (profile.website) contactParts.push(profile.website)
+  const contactParts: string[] = [];
+  if (profile.email) contactParts.push(profile.email);
+  if (profile.phone) contactParts.push(profile.phone);
+  if (profile.address) contactParts.push(profile.address.replace(/\n/g, ", "));
+  if (profile.website) contactParts.push(profile.website);
 
   return (
     <Page size="A4" style={styles.page}>
-        {/* Header */}
-        <View style={styles.header}>
-          {photoSrc ? (
-            <Image style={styles.photo} src={photoSrc} />
-          ) : null}
-          <View style={styles.headerText}>
-            <Text style={styles.name}>{profile.name}</Text>
-            <Text style={styles.title}>{profile.title}</Text>
-            <View style={styles.contactRow}>
-              {contactParts.map((part, i) => (
-                <Text key={i} style={styles.contactItem}>{part}</Text>
+      {/* Header */}
+      <View style={styles.header}>
+        {photoSrc ? <Image style={styles.photo} src={photoSrc} /> : null}
+        <View style={styles.headerText}>
+          <Text style={styles.name}>{profile.name}</Text>
+          <Text style={styles.title}>{profile.title}</Text>
+          <View style={styles.contactRow}>
+            {contactParts.map((part) => (
+              <Text key={part} style={styles.contactItem}>
+                {part}
+              </Text>
+            ))}
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.divider} />
+
+      {/* Timeline Sections */}
+      {timeline.map((section) =>
+        section.entries.length > 0 ? (
+          <View key={section.id} style={styles.section}>
+            <Text style={styles.sectionTitle}>{section.name}</Text>
+            <View style={styles.sectionDivider} />
+            {section.entries.map((entry) => (
+              <View key={entry.id}>
+                <View style={styles.entryRow}>
+                  <Text style={styles.entryTitle}>{entry.title}</Text>
+                  <Text style={styles.entryPeriod}>{entry.period}</Text>
+                </View>
+                <Text style={styles.entrySubtitle}>{entry.subtitle}</Text>
+                {entry.description ? (
+                  <Text style={styles.entryDescription}>
+                    {entry.description}
+                  </Text>
+                ) : null}
+              </View>
+            ))}
+          </View>
+        ) : null,
+      )}
+
+      {/* Skill Sections */}
+      {(skillSections ?? []).map((skillSection) =>
+        skillSection.skills.length > 0 ? (
+          <View key={skillSection.id} style={styles.section}>
+            <Text style={styles.sectionTitle}>{skillSection.name}</Text>
+            <View style={styles.sectionDivider} />
+            <View style={styles.skillsRow}>
+              {skillSection.skills.map((skill) => (
+                <Text key={skill.id} style={styles.skillPill}>
+                  {skill.label}
+                  {skill.level ? ` · ${skill.level}` : ""}
+                </Text>
               ))}
             </View>
           </View>
-        </View>
-
-        <View style={styles.divider} />
-
-        {/* Timeline Sections */}
-        {timeline.map((section) =>
-          section.entries.length > 0 ? (
-            <View key={section.id} style={styles.section}>
-              <Text style={styles.sectionTitle}>{section.name}</Text>
-              <View style={styles.sectionDivider} />
-              {section.entries.map((entry) => (
-                <View key={entry.id}>
-                  <View style={styles.entryRow}>
-                    <Text style={styles.entryTitle}>{entry.title}</Text>
-                    <Text style={styles.entryPeriod}>{entry.period}</Text>
-                  </View>
-                  <Text style={styles.entrySubtitle}>{entry.subtitle}</Text>
-                  {entry.description ? (
-                    <Text style={styles.entryDescription}>{entry.description}</Text>
-                  ) : null}
-                </View>
-              ))}
-            </View>
-          ) : null
-        )}
-
-        {/* Skill Sections */}
-        {(skillSections ?? []).map((skillSection) =>
-          skillSection.skills.length > 0 ? (
-            <View key={skillSection.id} style={styles.section}>
-              <Text style={styles.sectionTitle}>{skillSection.name}</Text>
-              <View style={styles.sectionDivider} />
-              <View style={styles.skillsRow}>
-                {skillSection.skills.map((skill) => (
-                  <Text key={skill.id} style={styles.skillPill}>
-                    {skill.label}{skill.level ? ` · ${skill.level}` : ''}
-                  </Text>
-                ))}
-              </View>
-            </View>
-          ) : null
-        )}
+        ) : null,
+      )}
     </Page>
-  )
+  );
 }

@@ -1,20 +1,20 @@
-import { Page, View, Text, StyleSheet } from '@react-pdf/renderer'
-import type { CvData } from '../../types/cv'
-import type { ElegantTheme } from './theme'
+import { Page, StyleSheet, Text, View } from "@react-pdf/renderer";
+import type { CvData } from "../../types/cv";
+import type { ElegantTheme } from "./theme";
 
-const fontSizeMap = { sm: 9, md: 10, lg: 11 }
+const fontSizeMap = { sm: 9, md: 10, lg: 11 };
 
 function makeStyles(theme: ElegantTheme) {
-  const fs = fontSizeMap[theme.fontSize]
+  const fs = fontSizeMap[theme.fontSize];
   return StyleSheet.create({
     page: {
       fontFamily: theme.fontFamily,
       fontSize: fs,
-      color: '#1f2937',
+      color: "#1f2937",
       paddingTop: 56,
       paddingBottom: 56,
       paddingHorizontal: 64,
-      backgroundColor: '#ffffff',
+      backgroundColor: "#ffffff",
     },
     senderBlock: {
       marginBottom: 6,
@@ -27,7 +27,7 @@ function makeStyles(theme: ElegantTheme) {
     },
     senderDetail: {
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
     },
     doubleLine: {
       marginTop: 10,
@@ -43,7 +43,7 @@ function makeStyles(theme: ElegantTheme) {
       backgroundColor: theme.accentColor,
     },
     date: {
-      textAlign: 'right',
+      textAlign: "right",
       fontSize: fs - 1,
       color: theme.accentColor,
       marginBottom: 20,
@@ -58,43 +58,49 @@ function makeStyles(theme: ElegantTheme) {
     },
     recipientAddress: {
       fontSize: fs - 1,
-      color: '#6b7280',
+      color: "#6b7280",
     },
     subject: {
       fontSize: fs + 2,
       fontFamily: theme.fontFamily,
-      color: '#111827',
+      color: "#111827",
       marginBottom: 16,
     },
     body: {
       fontSize: fs,
-      color: '#374151',
+      color: "#374151",
       lineHeight: 1.6,
-      textAlign: 'justify',
+      textAlign: "justify",
     },
-  })
+  });
 }
 
 interface Props {
-  data: CvData
-  theme: ElegantTheme
+  data: CvData;
+  theme: ElegantTheme;
 }
 
 export function ElegantCoverLetter({ data, theme }: Props) {
-  if (!data.coverLetter) return null
+  if (!data.coverLetter) return null;
 
-  const styles = makeStyles(theme)
-  const { profile } = data
-  const { recipient, recipientAddress, subject, body, date } = data.coverLetter
+  const styles = makeStyles(theme);
+  const { profile } = data;
+  const { recipient, recipientAddress, subject, body, date } = data.coverLetter;
 
   return (
     <Page size="A4" style={styles.page}>
       {/* Sender block */}
       <View style={styles.senderBlock}>
         <Text style={styles.senderName}>{profile.name}</Text>
-        {profile.address ? <Text style={styles.senderDetail}>{profile.address}</Text> : null}
-        {profile.email ? <Text style={styles.senderDetail}>{profile.email}</Text> : null}
-        {profile.phone ? <Text style={styles.senderDetail}>{profile.phone}</Text> : null}
+        {profile.address ? (
+          <Text style={styles.senderDetail}>{profile.address}</Text>
+        ) : null}
+        {profile.email ? (
+          <Text style={styles.senderDetail}>{profile.email}</Text>
+        ) : null}
+        {profile.phone ? (
+          <Text style={styles.senderDetail}>{profile.phone}</Text>
+        ) : null}
       </View>
 
       {/* Double-line accent */}
@@ -120,5 +126,5 @@ export function ElegantCoverLetter({ data, theme }: Props) {
       {/* Body */}
       <Text style={styles.body}>{body}</Text>
     </Page>
-  )
+  );
 }
