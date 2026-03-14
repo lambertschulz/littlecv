@@ -1,7 +1,6 @@
-import { useAtom } from "jotai";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { cvDataAtom } from "../../state/atoms";
+import { useProfileSection } from "../../state/useProfileSection";
 import type { Skill, SkillSection } from "../../types/cv";
 import { CollapsiblePanel } from "../shared/CollapsiblePanel";
 import { SortableList } from "../shared/SortableList";
@@ -76,8 +75,9 @@ function SkillSectionPanel({
 }
 
 export function SkillsSection() {
-  const [data, setData] = useAtom(cvDataAtom);
-  const skillSections = data.skillSections ?? [];
+  const { value, setValue, isOverridden, resetToBase } =
+    useProfileSection("skillSections");
+  const skillSections = (value as SkillSection[]) ?? [];
 
   const addSection = () => {
     const newSection: SkillSection = {
@@ -85,45 +85,42 @@ export function SkillsSection() {
       name: "",
       skills: [],
     };
-    setData((prev) => ({
-      ...prev,
-      skillSections: [...(prev.skillSections ?? []), newSection],
-    }));
+    setValue([...skillSections, newSection]);
   };
 
   const updateSection = (index: number, section: SkillSection) => {
-    setData((prev) => {
-      const next = [...(prev.skillSections ?? [])];
-      next[index] = section;
-      return { ...prev, skillSections: next };
-    });
+    const next = [...skillSections];
+    next[index] = section;
+    setValue(next);
   };
 
   const removeSection = (index: number) => {
-    setData((prev) => ({
-      ...prev,
-      skillSections: (prev.skillSections ?? []).filter((_, i) => i !== index),
-    }));
+    setValue(skillSections.filter((_, i) => i !== index));
   };
 
   return (
-    <div>
-      {skillSections.map((section, i) => (
-        <SkillSectionPanel
-          key={section.id}
-          section={section}
-          onUpdate={(s) => updateSection(i, s)}
-          onRemove={() => removeSection(i)}
-        />
-      ))}
-      <Button
-        type="button"
-        variant="outline"
-        onClick={addSection}
-        className="w-full border-dashed text-muted-foreground hover:text-foreground"
-      >
-        + Kenntnisse-Kategorie hinzufügen
-      </Button>
-    </div>
+    <CollapsiblePanel
+      title="Kenntnisse"
+      overrideStatus={{ isOverridden, onReset: resetToBase }}
+    >
+      <div className="space-y-0">
+        {skillSections.map((section, i) => (
+          <SkillSectionPanel
+            key={section.id}
+            section={section}
+            onUpdate={(s) => updateSection(i, s)}
+            onRemove={() => removeSection(i)}
+          />
+        ))}
+        <Button
+          type="button"
+          variant="outline"
+          onClick={addSection}
+          className="w-full border-dashed text-muted-foreground hover:text-foreground"
+        >
+          + Kenntnisse-Kategorie hinzufügen
+        </Button>
+      </div>
+    </CollapsiblePanel>
   );
 }

@@ -1,4 +1,4 @@
-import { useAtom, useAtomValue } from "jotai";
+import { useAtomValue } from "jotai";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -7,19 +7,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  activeTemplateKeyAtom,
-  activeThemeAtom,
-  cvDataAtom,
-} from "@/state/atoms";
+import { effectiveCvDataAtom } from "@/state/atoms";
+import { useProfileSection } from "@/state/useProfileSection";
 import { getTemplate } from "@/templates/registry";
 import { PhotoCropper } from "./PhotoCropper";
 
 export function ThemeEditor() {
-  const templateKey = useAtomValue(activeTemplateKeyAtom);
-  const [theme, setTheme] = useAtom(activeThemeAtom);
-  const cvData = useAtomValue(cvDataAtom);
-  const template = getTemplate(templateKey);
+  const { value: templateKey } = useProfileSection("activeTemplate");
+  const { value: themes, setValue: setThemes } =
+    useProfileSection("templateThemes");
+  const cvData = useAtomValue(effectiveCvDataAtom);
+  const template = getTemplate(templateKey as string);
+  const themesMap = themes as Record<string, object>;
+  const theme = themesMap[templateKey as string] ?? {};
 
   if (!template) return null;
 
@@ -28,6 +28,10 @@ export function ThemeEditor() {
     string,
     string
   >;
+
+  const setTheme = (newTheme: object) => {
+    setThemes({ ...themesMap, [templateKey as string]: newTheme });
+  };
 
   const updateField = (key: string, value: string) => {
     setTheme({ ...mergedTheme, [key]: value });

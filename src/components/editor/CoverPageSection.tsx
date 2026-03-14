@@ -1,13 +1,13 @@
-import { useAtom } from "jotai";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { cvDataAtom } from "../../state/atoms";
+import { useProfileSection } from "../../state/useProfileSection";
 import type { CoverPage } from "../../types/cv";
 import { CollapsiblePanel } from "../shared/CollapsiblePanel";
 
 export function CoverPageSection() {
-  const [data, setData] = useAtom(cvDataAtom);
-  const { coverPage } = data;
+  const { value, setValue, isOverridden, resetToBase } =
+    useProfileSection("coverPage");
+  const coverPage = value as CoverPage | undefined;
 
   const activate = () => {
     const defaultCoverPage: CoverPage = {
@@ -15,24 +15,23 @@ export function CoverPageSection() {
       position: "",
       date: new Date().toLocaleDateString("de-DE"),
     };
-    setData((prev) => ({ ...prev, coverPage: defaultCoverPage }));
+    setValue(defaultCoverPage);
   };
 
   const deactivate = () => {
-    setData((prev) => ({ ...prev, coverPage: undefined }));
+    setValue(undefined);
   };
 
-  const update = (field: string, value: string) => {
-    setData((prev) => ({
-      ...prev,
-      coverPage: prev.coverPage
-        ? { ...prev.coverPage, [field]: value }
-        : prev.coverPage,
-    }));
+  const update = (field: string, val: string) => {
+    if (!coverPage) return;
+    setValue({ ...coverPage, [field]: val });
   };
 
   return (
-    <CollapsiblePanel title="Deckblatt">
+    <CollapsiblePanel
+      title="Deckblatt"
+      overrideStatus={{ isOverridden, onReset: resetToBase }}
+    >
       {!coverPage ? (
         <Button variant="link" className="px-0 text-sm" onClick={activate}>
           Deckblatt aktivieren

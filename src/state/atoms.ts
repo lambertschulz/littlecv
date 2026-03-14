@@ -4,7 +4,13 @@ import { templateRegistry } from "../templates/registry";
 
 // Migrate old localStorage data (sections -> timeline, skills -> skillSections)
 // Runs once at module load before atoms are created
-import type { ActiveView, Attachment, CvData, SkillSection } from "../types/cv";
+import type {
+  ActiveView,
+  Attachment,
+  CvData,
+  SkillSection,
+  UserProfile,
+} from "../types/cv";
 
 (function migrateLegacyStorage() {
   try {
@@ -73,18 +79,6 @@ export const templateThemesAtom = atomWithStorage<Record<string, object>>(
   defaultThemes,
 );
 
-export const activeThemeAtom = atom(
-  (get) => {
-    const themes = get(templateThemesAtom);
-    const key = get(activeTemplateKeyAtom);
-    return themes[key] ?? {};
-  },
-  (get, set, newTheme: object) => {
-    const key = get(activeTemplateKeyAtom);
-    set(templateThemesAtom, (prev) => ({ ...prev, [key]: newTheme }));
-  },
-);
-
 export const activeViewAtom = atom<ActiveView>("editor");
 
 export const favoriteTemplatesAtom = atomWithStorage<string[]>(
@@ -97,3 +91,56 @@ export const customFontsAtom = atomWithStorage<
 >("custom-fonts", []);
 
 export const attachmentsAtom = atomWithStorage<Attachment[]>("attachments", []);
+
+// --- Profiles ---
+
+export const profilesAtom = atomWithStorage<UserProfile[]>("profiles", []);
+
+export const activeProfileIdAtom = atomWithStorage<string | null>(
+  "active-profile-id",
+  null,
+);
+
+export const activeProfileAtom = atom((get) => {
+  const id = get(activeProfileIdAtom);
+  if (!id) return null;
+  return get(profilesAtom).find((p) => p.id === id) ?? null;
+});
+
+// Effective atoms: merge base with active profile overrides (for Preview/PDF export)
+
+export const effectiveCvDataAtom = atom((get) => {
+  const base = get(cvDataAtom);
+  const profile = get(activeProfileAtom);
+  if (!profile) return base;
+  const o = profile.overrides;
+  return {
+    profile: o.profile ?? base.profile,
+    timeline: o.timeline ?? base.timeline,
+    skillSections: o.skillSections ?? base.skillSections,
+    coverLetter: o.coverLetter ?? base.coverLetter,
+    coverPage: o.coverPage ?? base.coverPage,
+  };
+});
+
+export const effectiveAttachmentsAtom = atom((get) => {
+  const profile = get(activeProfileAtom);
+  return profile?.overrides.attachments ?? get(attachmentsAtom);
+});
+
+export const effectiveTemplateKeyAtom = atom((get) => {
+  const profile = get(activeProfileAtom);
+  return profile?.overrides.activeTemplate ?? get(activeTemplateKeyAtom);
+});
+
+export const effectiveThemesAtom = atom((get) => {
+  const profile = get(activeProfileAtom);
+  return profile?.overrides.templateThemes ?? get(templateThemesAtom);
+});
+
+// Derived: active theme for the current template (profile-aware, read-only)
+export const activeThemeAtom = atom((get) => {
+  const themes = get(effectiveThemesAtom);
+  const key = get(effectiveTemplateKeyAtom);
+  return themes[key] ?? {};
+});

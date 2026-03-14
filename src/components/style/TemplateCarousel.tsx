@@ -4,11 +4,13 @@ import { HeartIcon } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { activeTemplateKeyAtom, favoriteTemplatesAtom } from "@/state/atoms";
+import { favoriteTemplatesAtom } from "@/state/atoms";
+import { useProfileSection } from "@/state/useProfileSection";
 import { templateRegistry } from "@/templates/registry";
 
 export function TemplateCarousel() {
-  const [activeKey, setActiveKey] = useAtom(activeTemplateKeyAtom);
+  const { value: activeKey, setValue: setActiveKey } =
+    useProfileSection("activeTemplate");
   const [favorites, setFavorites] = useAtom(favoriteTemplatesAtom);
   const [filter, setFilter] = useState<"all" | "favorites">("all");
 

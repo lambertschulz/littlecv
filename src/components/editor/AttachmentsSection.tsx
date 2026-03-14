@@ -1,14 +1,15 @@
-import { useAtom } from "jotai";
 import { ArrowDown, ArrowUp, FileText, Trash2 } from "lucide-react";
 import { useRef } from "react";
-import { attachmentsAtom } from "../../state/atoms";
+import { useProfileSection } from "../../state/useProfileSection";
 import type { Attachment } from "../../types/cv";
+import { CollapsiblePanel } from "../shared/CollapsiblePanel";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { CollapsiblePanel } from "../shared/CollapsiblePanel";
 
 export function AttachmentsSection() {
-  const [attachments, setAttachments] = useAtom(attachmentsAtom);
+  const { value, setValue, isOverridden, resetToBase } =
+    useProfileSection("attachments");
+  const attachments = (value as Attachment[]) ?? [];
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleFiles = (files: FileList | null) => {
@@ -22,7 +23,7 @@ export function AttachmentsSection() {
           dataUrl: reader.result as string,
           mimeType: file.type,
         };
-        setAttachments((prev) => [...prev, newAtt]);
+        setValue([...attachments, newAtt]);
       };
       reader.readAsDataURL(file);
     }
@@ -30,32 +31,29 @@ export function AttachmentsSection() {
   };
 
   const remove = (id: string) => {
-    setAttachments((prev) => prev.filter((a) => a.id !== id));
+    setValue(attachments.filter((a) => a.id !== id));
   };
 
   const updateLabel = (id: string, label: string) => {
-    setAttachments((prev) =>
-      prev.map((a) => (a.id === id ? { ...a, label } : a)),
-    );
+    setValue(attachments.map((a) => (a.id === id ? { ...a, label } : a)));
   };
 
   const move = (index: number, direction: -1 | 1) => {
     const target = index + direction;
     if (target < 0 || target >= attachments.length) return;
-    setAttachments((prev) => {
-      const next = [...prev];
-      [next[index], next[target]] = [next[target], next[index]];
-      return next;
-    });
+    const next = [...attachments];
+    [next[index], next[target]] = [next[target], next[index]];
+    setValue(next);
   };
 
   const title =
-    attachments.length > 0
-      ? `Anlagen (${attachments.length})`
-      : "Anlagen";
+    attachments.length > 0 ? `Anlagen (${attachments.length})` : "Anlagen";
 
   return (
-    <CollapsiblePanel title={title}>
+    <CollapsiblePanel
+      title={title}
+      overrideStatus={{ isOverridden, onReset: resetToBase }}
+    >
       <div className="space-y-3">
         {attachments.map((att, i) => (
           <div key={att.id} className="flex items-center gap-2">

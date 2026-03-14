@@ -5,27 +5,46 @@ import { MainLayout } from "./components/MainLayout";
 import { exportJson, importJson } from "./services/export-json";
 import { exportPdf } from "./services/export-pdf";
 import {
+  activeProfileIdAtom,
   activeTemplateKeyAtom,
   activeThemeAtom,
   attachmentsAtom,
   cvDataAtom,
+  effectiveAttachmentsAtom,
+  effectiveCvDataAtom,
+  effectiveTemplateKeyAtom,
+  profilesAtom,
   templateThemesAtom,
 } from "./state/atoms";
 import { getTemplate } from "./templates/registry";
 import type { ExportScope } from "./types/cv";
 
 function App() {
-  const [data, setData] = useAtom(cvDataAtom);
-  const [templateKey, setTemplateKey] = useAtom(activeTemplateKeyAtom);
-  const theme = useAtomValue(activeThemeAtom);
-  const [themes, setThemes] = useAtom(templateThemesAtom);
-  const [attachments, setAttachments] = useAtom(attachmentsAtom);
+  // Base atoms (for JSON export/import)
+  const [baseData, setBaseData] = useAtom(cvDataAtom);
+  const [baseTemplateKey, setBaseTemplateKey] = useAtom(activeTemplateKeyAtom);
+  const [baseThemes, setBaseThemes] = useAtom(templateThemesAtom);
+  const [baseAttachments, setBaseAttachments] = useAtom(attachmentsAtom);
+  const [profiles, setProfiles] = useAtom(profilesAtom);
+  const [activeProfileId, setActiveProfileId] = useAtom(activeProfileIdAtom);
+
+  // Effective atoms (for PDF export — profile-merged)
+  const effectiveData = useAtomValue(effectiveCvDataAtom);
+  const effectiveTemplateKey = useAtomValue(effectiveTemplateKeyAtom);
+  const effectiveTheme = useAtomValue(activeThemeAtom);
+  const effectiveAttachments = useAtomValue(effectiveAttachmentsAtom);
 
   const handleExportPdf = async (scope: ExportScope) => {
     try {
-      const template = getTemplate(templateKey);
+      const template = getTemplate(effectiveTemplateKey);
       if (template) {
-        await exportPdf(data, template, theme, scope, attachments);
+        await exportPdf(
+          effectiveData,
+          template,
+          effectiveTheme,
+          scope,
+          effectiveAttachments,
+        );
       }
     } catch (e) {
       console.error("PDF export failed:", e);
@@ -34,20 +53,31 @@ function App() {
 
   const handleExportJson = () => {
     exportJson({
-      cvData: data,
-      activeTemplate: templateKey,
-      templateThemes: themes,
-      attachments,
+      version: 2,
+      cvData: baseData,
+      activeTemplate: baseTemplateKey,
+      templateThemes: baseThemes,
+      attachments: baseAttachments,
+      profiles,
+      activeProfileId,
     });
   };
 
   const handleImportJson = async () => {
     try {
       const imported = await importJson();
-      setData(imported.cvData);
-      setTemplateKey(imported.activeTemplate);
-      setThemes(imported.templateThemes);
-      if (imported.attachments) setAttachments(imported.attachments);
+      setBaseData(imported.cvData);
+      setBaseTemplateKey(imported.activeTemplate);
+      setBaseThemes(imported.templateThemes);
+      if (imported.attachments) setBaseAttachments(imported.attachments);
+      // V2: restore profiles
+      if (imported.profiles) {
+        setProfiles(imported.profiles);
+        setActiveProfileId(imported.activeProfileId ?? null);
+      } else {
+        setProfiles([]);
+        setActiveProfileId(null);
+      }
     } catch (e) {
       console.error("Import failed:", e);
     }

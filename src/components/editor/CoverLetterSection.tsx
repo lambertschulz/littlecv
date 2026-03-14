@@ -1,14 +1,14 @@
-import { useAtom } from "jotai";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { cvDataAtom } from "../../state/atoms";
+import { useProfileSection } from "../../state/useProfileSection";
 import type { CoverLetter } from "../../types/cv";
 import { CollapsiblePanel } from "../shared/CollapsiblePanel";
 
 export function CoverLetterSection() {
-  const [data, setData] = useAtom(cvDataAtom);
-  const { coverLetter } = data;
+  const { value, setValue, isOverridden, resetToBase } =
+    useProfileSection("coverLetter");
+  const coverLetter = value as CoverLetter | undefined;
 
   const activate = () => {
     const defaultCoverLetter: CoverLetter = {
@@ -16,24 +16,23 @@ export function CoverLetterSection() {
       body: "",
       date: new Date().toLocaleDateString("de-DE"),
     };
-    setData((prev) => ({ ...prev, coverLetter: defaultCoverLetter }));
+    setValue(defaultCoverLetter);
   };
 
   const deactivate = () => {
-    setData((prev) => ({ ...prev, coverLetter: undefined }));
+    setValue(undefined);
   };
 
-  const update = (field: string, value: string) => {
-    setData((prev) => ({
-      ...prev,
-      coverLetter: prev.coverLetter
-        ? { ...prev.coverLetter, [field]: value }
-        : prev.coverLetter,
-    }));
+  const update = (field: string, val: string) => {
+    if (!coverLetter) return;
+    setValue({ ...coverLetter, [field]: val });
   };
 
   return (
-    <CollapsiblePanel title="Anschreiben">
+    <CollapsiblePanel
+      title="Anschreiben"
+      overrideStatus={{ isOverridden, onReset: resetToBase }}
+    >
       {!coverLetter ? (
         <Button variant="link" className="px-0 text-sm" onClick={activate}>
           Anschreiben aktivieren

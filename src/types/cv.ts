@@ -66,3 +66,32 @@ export interface Attachment {
 export type ExportScope = "all" | "cv" | "coverLetter" | "coverPage";
 
 export type ActiveView = "editor" | "style" | "preview";
+
+// --- Profiles ---
+
+export type OverridableSection =
+  | "profile"
+  | "timeline"
+  | "skillSections"
+  | "coverLetter"
+  | "coverPage"
+  | "attachments"
+  | "activeTemplate"
+  | "templateThemes";
+
+export interface ProfileOverrides {
+  profile?: Profile;
+  timeline?: TimelineSection[];
+  skillSections?: SkillSection[];
+  coverLetter?: CoverLetter;
+  coverPage?: CoverPage;
+  attachments?: Attachment[];
+  activeTemplate?: string;
+  templateThemes?: Record<string, object>;
+}
+
+export interface UserProfile {
+  id: string;
+  name: string;
+  overrides: ProfileOverrides;
+}

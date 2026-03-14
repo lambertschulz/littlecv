@@ -1,24 +1,25 @@
-import { useAtom } from "jotai";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { cvDataAtom } from "../../state/atoms";
+import { useProfileSection } from "../../state/useProfileSection";
+import type { Profile } from "../../types/cv";
 import { CollapsiblePanel } from "../shared/CollapsiblePanel";
 import { PhotoUpload } from "../shared/PhotoUpload";
 
 export function ProfileSection() {
-  const [data, setData] = useAtom(cvDataAtom);
-  const { profile } = data;
+  const { value, setValue, isOverridden, resetToBase } =
+    useProfileSection("profile");
+  const profile = value as Profile;
 
-  const update = (field: string, value: string | undefined) => {
-    setData((prev) => ({
-      ...prev,
-      profile: { ...prev.profile, [field]: value },
-    }));
+  const update = (field: string, val: string | undefined) => {
+    setValue({ ...profile, [field]: val });
   };
 
   return (
-    <CollapsiblePanel title="Profil">
+    <CollapsiblePanel
+      title="Profil"
+      overrideStatus={{ isOverridden, onReset: resetToBase }}
+    >
       <div className="space-y-3">
         <PhotoUpload
           value={profile.photo}
