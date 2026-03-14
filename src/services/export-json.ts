@@ -1,10 +1,19 @@
-import type { CvData, SkillSection } from "../types/cv";
+import type {
+  Attachment,
+  CvData,
+  SkillSection,
+  UserProfile,
+} from "../types/cv";
 import { saveBlob } from "./save-blob";
 
-interface SaveData {
+export interface SaveData {
+  version?: number;
   cvData: CvData;
   activeTemplate: string;
   templateThemes: Record<string, object>;
+  attachments?: Attachment[];
+  profiles?: UserProfile[];
+  activeProfileId?: string | null;
 }
 
 function migrateCvData(raw: Record<string, unknown>): CvData {

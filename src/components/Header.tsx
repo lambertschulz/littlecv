@@ -1,3 +1,4 @@
+import { ProfileSwitcher } from "@/components/ProfileSwitcher";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -20,10 +21,13 @@ export function Header({
 }: HeaderProps) {
   return (
     <header className="h-14 border-b flex items-center px-4 shrink-0 justify-between bg-background">
-      <h1 className="text-lg font-bold">
-        <span className="hidden sm:inline">Bewerbungsmappe</span>
-        <span className="sm:hidden">Bewerbung</span>
-      </h1>
+      <div className="flex items-center gap-3">
+        <h1 className="text-lg font-bold">
+          <span className="hidden sm:inline">Bewerbungsmappe</span>
+          <span className="sm:hidden">Bewerbung</span>
+        </h1>
+        <ProfileSwitcher />
+      </div>
 
       <div className="flex items-center gap-2">
         <Button variant="outline" size="sm" onClick={onExportJson}>

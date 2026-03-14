@@ -1,8 +1,7 @@
-import { useAtom } from "jotai";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { cvDataAtom } from "../../state/atoms";
+import { useProfileSection } from "../../state/useProfileSection";
 import type { SectionEntry, TimelineSection } from "../../types/cv";
 import { CollapsiblePanel } from "../shared/CollapsiblePanel";
 import { SortableList } from "../shared/SortableList";
@@ -90,8 +89,9 @@ function SectionPanel({
 }
 
 export function SectionsEditor() {
-  const [data, setData] = useAtom(cvDataAtom);
-  const timeline = data.timeline ?? [];
+  const { value, setValue, isOverridden, resetToBase } =
+    useProfileSection("timeline");
+  const timeline = (value as TimelineSection[]) ?? [];
 
   const addSection = () => {
     const newSection: TimelineSection = {
@@ -99,45 +99,42 @@ export function SectionsEditor() {
       name: "",
       entries: [],
     };
-    setData((prev) => ({
-      ...prev,
-      timeline: [...(prev.timeline ?? []), newSection],
-    }));
+    setValue([...timeline, newSection]);
   };
 
   const updateSection = (index: number, section: TimelineSection) => {
-    setData((prev) => {
-      const next = [...(prev.timeline ?? [])];
-      next[index] = section;
-      return { ...prev, timeline: next };
-    });
+    const next = [...timeline];
+    next[index] = section;
+    setValue(next);
   };
 
   const removeSection = (index: number) => {
-    setData((prev) => ({
-      ...prev,
-      timeline: (prev.timeline ?? []).filter((_, i) => i !== index),
-    }));
+    setValue(timeline.filter((_, i) => i !== index));
   };
 
   return (
-    <div>
-      {timeline.map((section, i) => (
-        <SectionPanel
-          key={section.id}
-          section={section}
-          onUpdate={(s) => updateSection(i, s)}
-          onRemove={() => removeSection(i)}
-        />
-      ))}
-      <Button
-        type="button"
-        variant="outline"
-        onClick={addSection}
-        className="w-full border-dashed text-muted-foreground hover:text-foreground"
-      >
-        + Kategorie hinzufügen
-      </Button>
-    </div>
+    <CollapsiblePanel
+      title="Lebenslauf"
+      overrideStatus={{ isOverridden, onReset: resetToBase }}
+    >
+      <div className="space-y-0">
+        {timeline.map((section, i) => (
+          <SectionPanel
+            key={section.id}
+            section={section}
+            onUpdate={(s) => updateSection(i, s)}
+            onRemove={() => removeSection(i)}
+          />
+        ))}
+        <Button
+          type="button"
+          variant="outline"
+          onClick={addSection}
+          className="w-full border-dashed text-muted-foreground hover:text-foreground"
+        >
+          + Kategorie hinzufügen
+        </Button>
+      </div>
+    </CollapsiblePanel>
   );
 }

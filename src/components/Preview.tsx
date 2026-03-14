@@ -2,9 +2,9 @@ import { Document, pdf } from "@react-pdf/renderer";
 import { useAtomValue } from "jotai";
 import { createElement, useEffect, useMemo, useState } from "react";
 import {
-  activeTemplateKeyAtom,
   activeThemeAtom,
-  cvDataAtom,
+  effectiveCvDataAtom,
+  effectiveTemplateKeyAtom,
 } from "../state/atoms";
 import { getTemplate } from "../templates/registry";
 
@@ -18,8 +18,8 @@ function useDebounced<T>(value: T, delay: number): T {
 }
 
 export function Preview() {
-  const data = useAtomValue(cvDataAtom);
-  const templateKey = useAtomValue(activeTemplateKeyAtom);
+  const data = useAtomValue(effectiveCvDataAtom);
+  const templateKey = useAtomValue(effectiveTemplateKeyAtom);
   const theme = useAtomValue(activeThemeAtom);
 
   // Debounce all inputs so PDF only regenerates after typing stops

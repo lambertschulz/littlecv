@@ -1,3 +1,4 @@
+import { AttachmentsSection } from "./AttachmentsSection";
 import { CoverLetterSection } from "./CoverLetterSection";
 import { CoverPageSection } from "./CoverPageSection";
 import { ProfileSection } from "./ProfileSection";
@@ -12,6 +13,7 @@ export function EditorPanel() {
       <SkillsSection />
       <CoverLetterSection />
       <CoverPageSection />
+      <AttachmentsSection />
     </div>
   );
 }
