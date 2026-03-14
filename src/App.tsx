@@ -1,6 +1,8 @@
 import { useAtom, useAtomValue } from "jotai";
+import { atomWithStorage } from "jotai/utils";
 import { BottomTabBar } from "./components/BottomTabBar";
 import { Header } from "./components/Header";
+import { LandingPage } from "./components/LandingPage";
 import { MainLayout } from "./components/MainLayout";
 import { exportJson, importJson } from "./services/export-json";
 import { exportPdf } from "./services/export-pdf";
@@ -19,7 +21,11 @@ import {
 import { getTemplate } from "./templates/registry";
 import type { ExportScope } from "./types/cv";
 
+const hasStartedAtom = atomWithStorage("has-started", false);
+
 function App() {
+  const [hasStarted, setHasStarted] = useAtom(hasStartedAtom);
+
   // Base atoms (for JSON export/import)
   const [baseData, setBaseData] = useAtom(cvDataAtom);
   const [baseTemplateKey, setBaseTemplateKey] = useAtom(activeTemplateKeyAtom);
@@ -82,6 +88,14 @@ function App() {
       console.error("Import failed:", e);
     }
   };
+
+  if (!hasStarted) {
+    return (
+      <div className="flex flex-col h-dvh">
+        <LandingPage onStart={() => setHasStarted(true)} />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col h-dvh">
