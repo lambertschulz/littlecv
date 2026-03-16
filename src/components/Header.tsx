@@ -1,9 +1,11 @@
+import { EllipsisVertical } from "lucide-react";
 import { ProfileSwitcher } from "@/components/ProfileSwitcher";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import type { ExportScope } from "@/types/cv";
@@ -20,8 +22,8 @@ export function Header({
   onImportJson,
 }: HeaderProps) {
   return (
-    <header className="h-14 border-b flex items-center px-4 shrink-0 justify-between bg-background">
-      <div className="flex items-center gap-3">
+    <header className="h-14 border-b flex items-center px-2 sm:px-4 shrink-0 justify-between bg-background">
+      <div className="flex items-center gap-2 sm:gap-3">
         <h1 className="text-lg font-bold">
           <span className="hidden sm:inline">Bewerbungsmappe</span>
           <span className="sm:hidden">Bewerbung</span>
@@ -29,7 +31,8 @@ export function Header({
         <ProfileSwitcher />
       </div>
 
-      <div className="flex items-center gap-2">
+      {/* Desktop: separate buttons */}
+      <div className="hidden sm:flex items-center gap-2">
         <Button variant="outline" size="sm" onClick={onExportJson}>
           Speichern
         </Button>
@@ -56,6 +59,38 @@ export function Header({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+
+      {/* Mobile: single menu */}
+      <DropdownMenu>
+        <DropdownMenuTrigger
+          render={
+            <Button variant="ghost" size="sm" className="sm:hidden" />
+          }
+        >
+          <EllipsisVertical className="w-5 h-5" />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem onClick={onExportJson}>
+            Speichern
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={onImportJson}>
+            Laden
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={() => onExportPdf("all")}>
+            PDF – Alles
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => onExportPdf("cv")}>
+            PDF – Nur Lebenslauf
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => onExportPdf("coverLetter")}>
+            PDF – Nur Anschreiben
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => onExportPdf("coverPage")}>
+            PDF – Nur Deckblatt
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </header>
   );
 }
