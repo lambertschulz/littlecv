@@ -66,5 +66,5 @@ async function mergePdfAttachments(
   }
 
   const mergedBytes = await merged.save();
-  return new Blob([mergedBytes], { type: "application/pdf" });
+  return new Blob([mergedBytes as BlobPart], { type: "application/pdf" });
 }

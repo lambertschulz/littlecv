@@ -62,11 +62,11 @@ export function ProfileSwitcher() {
   // One+ profiles: show dropdown switcher
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm">
-          {activeProfile ? activeProfile.name : "Basis"}
-          <span className="ml-1">▾</span>
-        </Button>
+      <DropdownMenuTrigger
+        render={<Button variant="outline" size="sm" />}
+      >
+        {activeProfile ? activeProfile.name : "Basis"}
+        <span className="ml-1">▾</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         <DropdownMenuItem
