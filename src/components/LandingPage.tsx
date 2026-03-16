@@ -1,4 +1,11 @@
-import { FileText, Image, Layout, Palette, Paperclip, Save } from "lucide-react";
+import {
+  FileText,
+  Image,
+  Layout,
+  Palette,
+  Paperclip,
+  Save,
+} from "lucide-react";
 import { Button } from "./ui/button";
 
 interface LandingPageProps {
@@ -43,9 +50,7 @@ export function LandingPage({ onStart }: LandingPageProps) {
     <div className="flex-1 overflow-y-auto">
       <div className="max-w-2xl mx-auto px-6 py-16 space-y-12">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">
-            Bewerbungsmappe
-          </h1>
+          <h1 className="text-4xl font-bold tracking-tight">Bewerbungsmappe</h1>
           <p className="text-lg text-muted-foreground max-w-md mx-auto">
             Erstelle deine komplette Bewerbung direkt im Browser — kostenlos,
             ohne Anmeldung, komplett lokal.
@@ -61,9 +66,7 @@ export function LandingPage({ onStart }: LandingPageProps) {
               <f.icon className="w-5 h-5 mt-0.5 shrink-0 text-muted-foreground" />
               <div>
                 <h3 className="font-medium text-sm">{f.title}</h3>
-                <p className="text-sm text-muted-foreground mt-0.5">
-                  {f.desc}
-                </p>
+                <p className="text-sm text-muted-foreground mt-0.5">{f.desc}</p>
               </div>
             </div>
           ))}
